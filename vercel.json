@@ -1,5 +1,4 @@
 {
-  "name": "fromagerie-digitale-site",
   "framework": "nextjs",
   "regions": ["cdg1"]
 }
