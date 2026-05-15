@@ -10,7 +10,7 @@ export function StatementSection() {
         {/* Ligne fine en haut */}
         <div className="border-t border-fd-navy/12 mb-14" />
 
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 lg:gap-10">
 
           {/* Label gauche */}
           <motion.p

@@ -4,8 +4,8 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title:      'Politique de confidentialité',
   description: 'Politique de confidentialité et protection des données personnelles de Fromagerie Digitale, conformément au RGPD.',
-  alternates: { canonical: 'https://fromageriedigitale.fr/politique-de-confidentialite' },
-  robots:     { index: false, follow: false },
+  alternates: { canonical: 'https://fromageriedigitale.com/politique-de-confidentialite' },
+  robots:     { index: false, follow: true },
 }
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
@@ -51,7 +51,7 @@ export default function PolitiqueConfidentialitePage() {
           </Section>
 
           <Section title="2. Données collectées">
-            <p>Dans le cadre de l&apos;utilisation du site fromageriedigitale.fr, nous collectons les données suivantes :</p>
+            <p>Dans le cadre de l&apos;utilisation du site fromageriedigitale.com, nous collectons les données suivantes :</p>
 
             <div className="mt-3 space-y-4">
               <div>

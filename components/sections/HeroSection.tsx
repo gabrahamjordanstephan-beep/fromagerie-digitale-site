@@ -57,7 +57,7 @@ export function HeroSection() {
     <section className="relative min-h-screen bg-fd-navy overflow-hidden flex items-center">
 
       {/* Photo — saigne jusqu'au bord droit, aucun border-radius */}
-      <div className="absolute right-0 top-0 bottom-0 w-[48%] lg:w-[44%]">
+      <div className="absolute right-0 top-0 bottom-0 hidden sm:block w-[48%] lg:w-[44%]">
         <motion.div
           className="absolute inset-0"
           initial={{ clipPath: 'inset(0 100% 0 0)' }}
@@ -133,7 +133,7 @@ export function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5, duration: 0.6 }}
-            className="flex gap-10 mt-16 border-t border-white/8 pt-8"
+            className="flex gap-4 sm:gap-10 mt-16 border-t border-white/8 pt-8"
           >
             {[
               { n: '20+', l: 'fromagers accompagnés' },

@@ -4,8 +4,8 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title:      'Mentions légales',
   description: 'Mentions légales du site Fromagerie Digitale, agence digitale spécialisée fromageries artisanales.',
-  alternates: { canonical: 'https://fromageriedigitale.fr/mentions-legales' },
-  robots:     { index: false, follow: false },
+  alternates: { canonical: 'https://fromageriedigitale.com/mentions-legales' },
+  robots:     { index: false, follow: true },
 }
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
@@ -37,7 +37,7 @@ export default function MentionsLegalesPage() {
         <div className="max-w-3xl mx-auto">
 
           <Section title="1. Éditeur du site">
-            <p>Le présent site <strong className="text-fd-navy">fromageriedigitale.fr</strong> est édité par :</p>
+            <p>Le présent site <strong className="text-fd-navy">fromageriedigitale.com</strong> est édité par :</p>
             <ul className="space-y-1 mt-2">
               <li><strong className="text-fd-navy">Raison sociale :</strong> Fromagerie Digitale</li>
               <li><strong className="text-fd-navy">SIREN :</strong> 908 178 866</li>
@@ -63,7 +63,7 @@ export default function MentionsLegalesPage() {
 
           <Section title="3. Propriété intellectuelle">
             <p>
-              L&apos;ensemble des contenus présents sur le site fromageriedigitale.fr (textes, images, graphismes,
+              L&apos;ensemble des contenus présents sur le site fromageriedigitale.com (textes, images, graphismes,
               logo, icônes, sons, logiciels) est la propriété exclusive de Fromagerie Digitale, sauf
               mentions contraires.
             </p>
@@ -91,13 +91,13 @@ export default function MentionsLegalesPage() {
             <p>
               Le site peut contenir des liens vers des sites tiers. Fromagerie Digitale n&apos;exerce aucun
               contrôle sur ces sites et ne peut être tenue responsable de leur contenu. La mise en place
-              d&apos;un lien vers fromageriedigitale.fr est soumise à l&apos;accord préalable et écrit de l&apos;éditeur.
+              d&apos;un lien vers fromageriedigitale.com est soumise à l&apos;accord préalable et écrit de l&apos;éditeur.
             </p>
           </Section>
 
           <Section title="6. Cookies">
             <p>
-              Le site fromageriedigitale.fr est susceptible d&apos;utiliser des cookies à des fins de mesure
+              Le site fromageriedigitale.com est susceptible d&apos;utiliser des cookies à des fins de mesure
               d&apos;audience et de fonctionnement. Conformément à la loi « Informatique et Libertés » du
               6 janvier 1978 modifiée et au RGPD, vous disposez d&apos;un droit d&apos;accès, de rectification et
               de suppression des données vous concernant.

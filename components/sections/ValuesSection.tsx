@@ -31,7 +31,7 @@ export function ValuesSection() {
       <div className="max-w-[1400px] mx-auto">
 
         {/* En-tête */}
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10 mb-20">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 lg:gap-10 mb-20">
           <motion.p
             className="text-fd-navy/30 text-[11px] tracking-[0.28em] uppercase font-medium lg:w-44 shrink-0 pt-2"
             initial={{ opacity: 0 }}

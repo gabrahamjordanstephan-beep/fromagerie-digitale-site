@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
 import { ContactForm }  from '@/components/sections/ContactForm'
-import { Mail, MapPin, Clock } from 'lucide-react'
+import { Mail, MapPin, Clock, Linkedin } from 'lucide-react'
 
 export const metadata: Metadata = {
   title:      'Contact',
   description:
     'Contactez Fromagerie Digitale pour discuter de votre projet digital. Formulaire, email, ou chat — on vous répond rapidement.',
-  alternates: { canonical: 'https://fromageriedigitale.fr/contact' },
+  alternates: { canonical: 'https://fromageriedigitale.com/contact' },
 }
 
 export default function ContactPage() {
@@ -69,9 +69,25 @@ export default function ContactPage() {
               </div>
               <h3 className="font-semibold text-fd-navy mb-1">Localisation</h3>
               <p className="text-fd-navy/50 text-xs mb-2">Intervention toute la France</p>
-              <p className="text-fd-navy text-sm">Corbeil-Essonnes</p>
+              <p className="text-fd-navy text-sm">Paris 17e</p>
               <p className="text-fd-navy text-sm">Île-de-France</p>
             </div>
+
+            <a
+              href="https://www.linkedin.com/company/fromageriedigitale/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white rounded-fd-lg shadow-fd-card p-6 flex items-center gap-4 hover:shadow-md transition-shadow duration-200"
+            >
+              <div className="w-12 h-12 rounded-fd bg-[#0A66C2]/10 flex items-center justify-center shrink-0">
+                <Linkedin size={20} className="text-[#0A66C2]" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-fd-navy mb-1">LinkedIn</h3>
+                <p className="text-fd-navy/50 text-xs mb-1">Suivez nos actualités</p>
+                <p className="text-[#0A66C2] text-sm font-medium">@fromageriedigitale</p>
+              </div>
+            </a>
 
             {/* Badge rassurant */}
             <div className="bg-fd-navy rounded-fd-lg p-6 text-center">
