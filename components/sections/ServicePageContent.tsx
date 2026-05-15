@@ -56,7 +56,7 @@ export function ServicePageContent({ service, others }: Props) {
       <section className="relative min-h-screen bg-fd-navy overflow-hidden flex items-center pt-20">
 
         {/* Image bleeding to right edge */}
-        <div className="absolute right-0 top-0 bottom-0 hidden sm:block w-[46%] lg:w-[42%]">
+        <div className="absolute right-0 top-0 bottom-0 w-[46%] lg:w-[42%]">
           <motion.div
             className="absolute inset-0"
             initial={{ clipPath: 'inset(0 100% 0 0)' }}
@@ -73,6 +73,8 @@ export function ServicePageContent({ service, others }: Props) {
             />
             <div className="absolute inset-0 bg-gradient-to-r from-fd-navy via-fd-navy/55 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-t from-fd-navy/50 via-transparent to-fd-navy/20" />
+            {/* Overlay renforcé sur mobile pour protéger la lisibilité du texte */}
+            <div className="absolute inset-0 bg-fd-navy/70 sm:hidden" />
           </motion.div>
         </div>
 
