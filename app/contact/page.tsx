@@ -44,14 +44,19 @@ export default function ContactPage() {
 
           {/* Infos directes — US-10 */}
           <div className="lg:col-span-2 space-y-6">
-            <div className="bg-white rounded-fd-lg shadow-fd-card p-6">
-              <div className="w-12 h-12 rounded-fd bg-fd-blue/10 flex items-center justify-center mb-4">
+            <a
+              href="mailto:contact@fromageriedigitale.com"
+              className="bg-white rounded-fd-lg shadow-fd-card p-6 flex items-start gap-4 hover:shadow-md transition-shadow duration-200 block"
+            >
+              <div className="w-12 h-12 rounded-fd bg-fd-blue/10 flex items-center justify-center shrink-0">
                 <Mail size={20} className="text-fd-blue" />
               </div>
-              <h3 className="font-semibold text-fd-navy mb-1">Formulaire de contact</h3>
-              <p className="text-fd-navy/50 text-xs mb-2">Remplissez le formulaire ci-contre</p>
-              <p className="text-fd-blue text-sm font-medium">Réponse sous 24h</p>
-            </div>
+              <div>
+                <h3 className="font-semibold text-fd-navy mb-1">Email</h3>
+                <p className="text-fd-navy/50 text-xs mb-2">Réponse sous 24h</p>
+                <p className="text-fd-blue text-sm font-medium break-all">contact@fromageriedigitale.com</p>
+              </div>
+            </a>
 
             <div className="bg-white rounded-fd-lg shadow-fd-card p-6">
               <div className="w-12 h-12 rounded-fd bg-fd-blue/10 flex items-center justify-center mb-4">
