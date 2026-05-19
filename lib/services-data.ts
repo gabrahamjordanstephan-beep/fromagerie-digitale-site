@@ -237,8 +237,52 @@ export const services: Service[] = [
     },
   },
   {
-    slug:    'formation',
+    slug:    'content-marketing',
     num:     '06',
+    name:    'Content Marketing',
+    tagline: 'Racontez votre histoire, attirez des clients qui vous ressemblent',
+    description:
+      'Un fromager artisanal a une histoire unique à raconter : un terroir, un geste, un savoir-faire transmis. Le content marketing transforme cette histoire en contenu qui attire naturellement vos clients idéaux sur Google, fidélise votre communauté et construit une autorité durable dans l\'univers fromager. Articles de blog, newsletters, fiches de dégustation — chaque mot travaille pour vous, 24h/24.',
+    image: '/images/hero-artisan.jpeg',
+    benefits: [
+      {
+        title: 'Trafic organique durable',
+        desc:  'Des articles optimisés SEO sur vos fromages, votre terroir et vos recettes attirent des visiteurs qualifiés chaque mois, sans publicité.',
+      },
+      {
+        title: 'Autorité dans l\'univers fromager',
+        desc:  'Devenez la référence en ligne pour les amateurs de fromage artisanal dans votre région et au-delà.',
+      },
+      {
+        title: 'Fidélisation par l\'email',
+        desc:  'Une newsletter régulière transforme vos clients occasionnels en acheteurs fidèles et ambassadeurs de votre fromagerie.',
+      },
+      {
+        title: 'Mots-clés longue traîne',
+        desc:  '"Accord mets-fromages Noël", "meilleur comté artisanal Jura" — captez les recherches précises de clients prêts à acheter.',
+      },
+      {
+        title: 'Contenu réutilisable',
+        desc:  'Chaque article alimente vos réseaux sociaux, votre newsletter et améliore votre référencement. Un investissement, de multiples canaux.',
+      },
+    ],
+    includes: [
+      'Stratégie éditoriale SEO : mots-clés fromagers, calendrier saisonnier',
+      'Rédaction mensuelle d\'articles de blog optimisés (terroir, recettes, affinages)',
+      'Fiches de dégustation et guides d\'accord mets-fromages',
+      'Création et envoi de la newsletter mensuelle',
+      'Optimisation on-page de chaque article (titre, méta, maillage interne)',
+      'Suivi des positions Google et du trafic organique',
+      'Rapport mensuel de performance et recommandations',
+    ],
+    meta: {
+      title:       'Content Marketing pour Fromageries Artisanales | Fromagerie Digitale',
+      description: 'Blog, newsletter, fiches de dégustation : attirez des clients qualifiés avec du contenu qui raconte votre terroir et booste votre SEO.',
+    },
+  },
+  {
+    slug:    'formation',
+    num:     '07',
     name:    'Formation Digitale',
     tagline: 'Devenez autonome dans votre communication digitale',
     description:
