@@ -14,53 +14,8 @@ export type Service = {
 
 export const services: Service[] = [
   {
-    slug:    'seo-local',
-    num:     '01',
-    name:    'SEO Local',
-    tagline: 'Soyez trouvé quand vos clients cherchent leur fromager',
-    description:
-      'Quand un amateur de fromage tape "fromagerie près de chez moi" sur Google, votre boutique doit apparaître en premier. Notre service de SEO local est calibré pour les artisans fromagers : on optimise votre présence sur Google Maps, on travaille vos mots-clés de terroir, et on construit une réputation en ligne qui attire une clientèle de proximité qualifiée, prête à acheter.',
-    image: '/images/strip-boutique.jpeg',
-    benefits: [
-      {
-        title: 'Pack Local Google',
-        desc:  'Apparaissez dans les 3 premières positions Google Maps. Là où 80 % des clics se font.',
-      },
-      {
-        title: 'Clientèle sans publicité',
-        desc:  'Augmentez votre fréquentation grâce au référencement naturel, sans dépenser en annonces.',
-      },
-      {
-        title: 'Réputation maîtrisée',
-        desc:  'Pilotez vos avis Google : réponses, collecte, gestion des avis négatifs.',
-      },
-      {
-        title: 'Domination locale',
-        desc:  'Soyez le premier résultat sur "fromage [votre ville]", "fromagerie artisanale [région]".',
-      },
-      {
-        title: 'Touristes & visiteurs',
-        desc:  'Attirez des clients de passage qui cherchent une expérience gastronomique locale authentique.',
-      },
-    ],
-    includes: [
-      'Audit complet de votre présence digitale locale',
-      'Optimisation de votre fiche Google Business Profile',
-      'Création et mise en cohérence des citations locales (50+ annuaires)',
-      'Stratégie de contenu local (pages de quartier, actualités saisonnières)',
-      'Formation à la gestion et collecte des avis Google',
-      'Intégration des données structurées (Schema.org LocalBusiness)',
-      'Rapport mensuel de positionnement et trafic',
-      'Accompagnement sur 6 mois minimum',
-    ],
-    meta: {
-      title:       'SEO Local pour Fromageries Artisanales | Fromagerie Digitale',
-      description: 'Dominez les recherches Google locales et attirez plus de clients dans votre fromagerie. Service SEO spécialisé artisans fromagers.',
-    },
-  },
-  {
     slug:    'ecommerce',
-    num:     '02',
+    num:     '01',
     name:    'E-commerce',
     tagline: 'Vendez vos fromages partout en France, 24h/24',
     description:
@@ -105,7 +60,7 @@ export const services: Service[] = [
   },
   {
     slug:    'branding',
-    num:     '03',
+    num:     '02',
     name:    'Branding',
     tagline: 'Une identité qui raconte votre terroir et votre savoir-faire',
     description:
@@ -150,7 +105,7 @@ export const services: Service[] = [
   },
   {
     slug:    'social-media',
-    num:     '04',
+    num:     '03',
     name:    'Social Media',
     tagline: 'Des contenus qui font saliver et créent une communauté',
     description:
@@ -194,7 +149,7 @@ export const services: Service[] = [
   },
   {
     slug:    'ads',
-    num:     '05',
+    num:     '04',
     name:    'Ads Meta & Google',
     tagline: 'Attirez exactement les clients que vous voulez, quand vous le voulez',
     description:
@@ -238,11 +193,11 @@ export const services: Service[] = [
   },
   {
     slug:    'content-marketing',
-    num:     '06',
+    num:     '05',
     name:    'Content Marketing',
     tagline: 'Racontez votre histoire, attirez des clients qui vous ressemblent',
     description:
-      'Un fromager artisanal a une histoire unique à raconter : un terroir, un geste, un savoir-faire transmis. Le content marketing transforme cette histoire en contenu qui attire naturellement vos clients idéaux sur Google, fidélise votre communauté et construit une autorité durable dans l\'univers fromager. Articles de blog, newsletters, fiches de dégustation — chaque mot travaille pour vous, 24h/24.',
+      'Un fromager artisanal a une histoire unique à raconter : un terroir, un geste, un savoir-faire transmis. Le content marketing transforme cette histoire en contenu qui attire naturellement vos clients idéaux sur Google, fidélise votre communauté et construit une autorité durable dans l\'univers fromager. Articles de blog, newsletters, fiches de dégustation : chaque mot travaille pour vous, 24h/24.',
     image: '/images/hero-artisan.jpeg',
     benefits: [
       {
@@ -265,24 +220,33 @@ export const services: Service[] = [
         title: 'Contenu réutilisable',
         desc:  'Chaque article alimente vos réseaux sociaux, votre newsletter et améliore votre référencement. Un investissement, de multiples canaux.',
       },
+      {
+        title: 'Données structurées produits & recettes',
+        desc:  'Intégration Schema.org Product et Recipe : vos fromages et accords mets-fromages apparaissent dans les Rich Snippets Google, attirant plus de clics.',
+      },
+      {
+        title: 'Autorité E-E-A-T pour l\'artisan',
+        desc:  'Vos articles valorisent votre terroir et savoir-faire, renforçant la confiance de Google et de vos visiteurs. Un signal de qualité que les grandes marques ne peuvent pas imiter.',
+      },
     ],
     includes: [
       'Stratégie éditoriale SEO : mots-clés fromagers, calendrier saisonnier',
+      'Audit et stratégie de mots-clés longue traîne fromagerie (ex: "comté artisanal Jura", "fromage bleu affinage cave")',
       'Rédaction mensuelle d\'articles de blog optimisés (terroir, recettes, affinages)',
       'Fiches de dégustation et guides d\'accord mets-fromages',
+      'Implémentation des données structurées Schema.org (Product, Recipe, LocalBusiness)',
+      'Maillage interne intelligent entre articles, fiches produits et pages services',
       'Création et envoi de la newsletter mensuelle',
-      'Optimisation on-page de chaque article (titre, méta, maillage interne)',
-      'Suivi des positions Google et du trafic organique',
-      'Rapport mensuel de performance et recommandations',
+      'Rapport mensuel : positions Google, trafic organique, clics Rich Snippets',
     ],
     meta: {
-      title:       'Content Marketing pour Fromageries Artisanales | Fromagerie Digitale',
-      description: 'Blog, newsletter, fiches de dégustation : attirez des clients qualifiés avec du contenu qui raconte votre terroir et booste votre SEO.',
+      title:       'Content Marketing SEO pour Fromageries Artisanales | Fromagerie Digitale',
+      description: 'Blog SEO, newsletter et Schema.org pour fromagers : dominez les recherches longue traîne, attirez des clients qualifiés et construisez votre autorité en ligne.',
     },
   },
   {
     slug:    'formation',
-    num:     '07',
+    num:     '06',
     name:    'Formation Digitale',
     tagline: 'Devenez autonome dans votre communication digitale',
     description:
