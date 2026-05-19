@@ -104,8 +104,52 @@ export const services: Service[] = [
     },
   },
   {
-    slug:    'social-media',
+    slug:    'packaging',
     num:     '03',
+    name:    'Design Packaging',
+    tagline: 'Vos fromages méritent un emballage qui raconte leur histoire avant le premier goût',
+    description:
+      'Sur le marché du fromage artisanal, l\'emballage est souvent le premier contact entre votre produit et un client qui ne vous connaît pas encore. Une étiquette bien pensée, un coffret soigné, un papier d\'emballage à votre image : ces détails font la différence entre un fromage qu\'on remarque et un fromage qu\'on achète. Nous créons des packagings pour fromageries qui allient authenticité artisanale, exigences réglementaires et impact visuel en rayon comme en boutique en ligne.',
+    image: '/images/strip-boutique.jpeg',
+    benefits: [
+      {
+        title: 'Premier contact décisif',
+        desc:  '80% de la décision d\'achat se joue au moment où le client voit votre produit. Un packaging soigné justifie votre prix artisanal avant même la dégustation.',
+      },
+      {
+        title: 'Cohérence rayon et web',
+        desc:  'Vos étiquettes sont pensées pour être aussi efficaces en boutique physique que sur vos photos Instagram et vos fiches produits en ligne.',
+      },
+      {
+        title: 'Conformité alimentaire intégrée',
+        desc:  'Mentions obligatoires INCO, allergènes, dates de conservation : on intègre toutes les exigences réglementaires sans sacrifier l\'esthétique.',
+      },
+      {
+        title: 'Différenciation face au mass-market',
+        desc:  'Votre emballage affirme immédiatement l\'artisanat face aux références industrielles. C\'est votre argument silencieux le plus puissant en rayon.',
+      },
+      {
+        title: 'Gamme cohérente et évolutive',
+        desc:  'Un système graphique qui permet de créer de nouvelles étiquettes pour chaque fromage sans repartir de zéro à chaque lancement.',
+      },
+    ],
+    includes: [
+      'Audit de vos emballages actuels et étude du positionnement concurrentiel',
+      'Création des étiquettes pour vos fromages (portion, meule, demi-meule, format vrac)',
+      'Design des coffrets cadeaux et packaging saisonnier (Noël, Pâques, foires)',
+      'Papier d\'emballage et sacs boutique à votre image',
+      'Intégration des mentions obligatoires réglementaires (INCO, allergènes, traçabilité)',
+      'Adaptation pour l\'e-commerce (photogénie, résistance au transport frigorifique)',
+      'Livraison des fichiers prêts à l\'impression (PDF HD, Illustrator, formats imprimeur)',
+    ],
+    meta: {
+      title:       'Design Packaging Fromagerie Artisanale | Étiquettes & Emballages | Fromagerie Digitale',
+      description: 'Étiquettes fromage, coffrets cadeaux et emballages artisanaux sur mesure. Packaging fromagerie conforme INCO, pensé pour le rayon et l\'e-commerce.',
+    },
+  },
+  {
+    slug:    'social-media',
+    num:     '04',
     name:    'Marketing des Réseaux Sociaux',
     tagline: 'Des contenus qui font saliver et créent une communauté',
     description:
@@ -149,7 +193,7 @@ export const services: Service[] = [
   },
   {
     slug:    'ads',
-    num:     '04',
+    num:     '05',
     name:    'Ads Meta & Google',
     tagline: 'Attirez exactement les clients que vous voulez, quand vous le voulez',
     description:
@@ -193,7 +237,7 @@ export const services: Service[] = [
   },
   {
     slug:    'content-marketing',
-    num:     '05',
+    num:     '06',
     name:    'Content Marketing',
     tagline: 'Racontez votre histoire, attirez des clients qui vous ressemblent',
     description:
@@ -246,7 +290,7 @@ export const services: Service[] = [
   },
   {
     slug:    'formation',
-    num:     '06',
+    num:     '07',
     name:    'Formation Digitale',
     tagline: 'Devenez autonome dans votre communication digitale',
     description:

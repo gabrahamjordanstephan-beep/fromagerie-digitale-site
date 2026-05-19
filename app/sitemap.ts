@@ -8,6 +8,7 @@ const pages = [
   { path: '/services',          priority: 0.9, changeFrequency: 'monthly' as const, updated: new Date('2025-05-03') },
   { path: '/services/ecommerce',    priority: 0.8, changeFrequency: 'monthly' as const, updated: new Date('2025-05-03') },
   { path: '/services/branding',     priority: 0.8, changeFrequency: 'monthly' as const, updated: new Date('2025-05-03') },
+  { path: '/services/packaging',    priority: 0.8, changeFrequency: 'monthly' as const, updated: new Date('2026-05-20') },
   { path: '/services/social-media', priority: 0.8, changeFrequency: 'monthly' as const, updated: new Date('2025-05-03') },
   { path: '/services/ads',            priority: 0.8, changeFrequency: 'monthly' as const, updated: new Date('2025-05-03') },
   { path: '/services/content-marketing', priority: 0.8, changeFrequency: 'monthly' as const, updated: new Date('2026-05-19') },
