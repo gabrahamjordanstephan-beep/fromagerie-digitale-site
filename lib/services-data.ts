@@ -106,7 +106,7 @@ export const services: Service[] = [
   {
     slug:    'social-media',
     num:     '03',
-    name:    'Social Media',
+    name:    'Marketing des Réseaux Sociaux',
     tagline: 'Des contenus qui font saliver et créent une communauté',
     description:
       'Les amateurs de fromage adorent en parler, en photographier, en partager. Votre fromagerie mérite une présence sociale qui reflète votre passion et votre expertise. Nous créons et gérons des contenus authentiques : photos appétissantes, vidéos coulisses, stories du quotidien. Ils transforment vos abonnés en clients réguliers et vos clients en ambassadeurs.',
