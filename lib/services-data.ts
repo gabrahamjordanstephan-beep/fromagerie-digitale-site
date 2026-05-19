@@ -16,7 +16,7 @@ export const services: Service[] = [
   {
     slug:    'ecommerce',
     num:     '01',
-    name:    'E-commerce',
+    name:    'Développement Web',
     tagline: 'Vendez vos fromages partout en France, 24h/24',
     description:
       'Votre boutique physique ferme à 19h. Votre boutique en ligne, jamais. Nous créons des sites e-commerce taillés pour les fromagers artisanaux : pensés pour la saisonnalité des fromages, la conservation pendant le transport, et l\'expérience d\'achat premium que vos clients attendent. Du coffret cadeau de Noël à l\'abonnement mensuel, on conçoit une boutique à votre image.',
