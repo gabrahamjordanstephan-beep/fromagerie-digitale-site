@@ -5,45 +5,16 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowUpRight } from 'lucide-react'
+import { services as servicesData } from '@/lib/services-data'
 
-const services = [
-  {
-    id: 'seo',    num: '01', name: 'SEO Local',
-    desc: 'Soyez trouvé par vos clients locaux.',
-    href: '/services/seo-local',
-    img: '/images/strip-boutique.jpeg',
-  },
-  {
-    id: 'ecom',   num: '02', name: 'E-commerce',
-    desc: 'Vendez vos fromages partout en France.',
-    href: '/services/ecommerce',
-    img: '/images/strip-ecommerce.jpeg',
-  },
-  {
-    id: 'brand',  num: '03', name: 'Branding',
-    desc: 'Une identité qui raconte votre terroir.',
-    href: '/services/branding',
-    img: '/images/cta-bg.jpeg',
-  },
-  {
-    id: 'social', num: '04', name: 'Social Media',
-    desc: 'Des contenus qui font saliver.',
-    href: '/services/social-media',
-    img: '/images/strip-social.jpeg',
-  },
-  {
-    id: 'ads',    num: '05', name: 'Ads Meta & Google',
-    desc: 'Attirez des amateurs de fromage.',
-    href: '/services/ads',
-    img: '/images/strip-fromager.jpeg',
-  },
-  {
-    id: 'form',   num: '06', name: 'Formation Digitale',
-    desc: 'Prenez en main votre communication.',
-    href: '/services/formation',
-    img: '/images/strip-plateau.jpeg',
-  },
-]
+const services = servicesData.map(s => ({
+  id:   s.slug,
+  num:  s.num,
+  name: s.name,
+  desc: s.tagline,
+  href: `/services/${s.slug}`,
+  img:  s.image,
+}))
 
 export function ServicesPreview() {
   const [hovered, setHovered] = useState<string | null>(null)
