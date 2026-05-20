@@ -1,13 +1,11 @@
 import Link from 'next/link'
+import { Linkedin } from 'lucide-react'
+import { services as servicesData } from '@/lib/services-data'
 
-const services = [
-  { label: 'SEO Local',          href: '/services/seo-local' },
-  { label: 'E-commerce',         href: '/services/ecommerce' },
-  { label: 'Branding',           href: '/services/branding' },
-  { label: 'Social Media',       href: '/services/social-media' },
-  { label: 'Ads Meta & Google',  href: '/services/ads' },
-  { label: 'Formation Digitale', href: '/services/formation' },
-]
+const services = servicesData.map(s => ({
+  label: s.name,
+  href:  `/services/${s.slug}`,
+}))
 
 export function Footer() {
   const year = new Date().getFullYear()
@@ -51,6 +49,18 @@ export function Footer() {
               <Link href="/contact" className="block text-white/50 hover:text-fd-gold text-sm transition-colors duration-200">
                 Formulaire de contact
               </Link>
+              <a href="mailto:contact@fromageriedigitale.com" className="block text-white/50 hover:text-fd-gold text-sm transition-colors duration-200">
+                contact@fromageriedigitale.com
+              </a>
+              <a
+                href="https://www.linkedin.com/company/fromageriedigitale/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-white/50 hover:text-[#0A66C2] text-sm transition-colors duration-200"
+              >
+                <Linkedin size={14} />
+                LinkedIn
+              </a>
               <p className="text-white/30 text-sm">Paris, Île-de-France</p>
             </div>
           </div>
