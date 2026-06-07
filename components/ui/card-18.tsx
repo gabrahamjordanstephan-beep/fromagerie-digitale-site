@@ -1,7 +1,7 @@
 'use client'
 import * as React from 'react'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { motion } from 'framer-motion'
+import { motion, type Variants } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
@@ -25,9 +25,8 @@ const categoryColors: Record<string, string> = {
   'Réseaux sociaux':    'bg-fd-navy/8 text-fd-navy',
 }
 
-export interface BlogPostCardProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof cardVariants> {
+export interface BlogPostCardProps extends VariantProps<typeof cardVariants> {
+  className?: string
   tag: string
   date: string
   title: string
@@ -41,11 +40,11 @@ export interface BlogPostCardProps
 const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
   (
     { className, variant, tag, date, title, description, imageUrl, href,
-      readMoreText = "Lire l'article", readingTime, ...props },
+      readMoreText = "Lire l'article", readingTime },
     ref
   ) => {
-    const cardHover = {
-      hover: { y: -4, transition: { duration: 0.2, ease: 'easeInOut' } },
+    const cardHover: Variants = {
+      hover: { y: -4, transition: { duration: 0.2, ease: 'easeInOut' as const } },
     }
 
     const tagClass = categoryColors[tag] ?? 'bg-fd-navy/8 text-fd-navy'
@@ -116,7 +115,6 @@ const BlogPostCard = React.forwardRef<HTMLDivElement, BlogPostCardProps>(
         className={cn(cardVariants({ variant, className }))}
         variants={cardHover}
         whileHover="hover"
-        {...(props as React.HTMLAttributes<HTMLDivElement>)}
       >
         <a href={href} className="absolute inset-0 z-10" aria-label={`Lire : ${title}`}>
           <span className="sr-only">Lire l&apos;article</span>
