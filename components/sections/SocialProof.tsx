@@ -1,99 +1,106 @@
 'use client'
-
 import { motion } from 'framer-motion'
+import { TestimonialsColumn } from '@/components/ui/testimonials-columns-1'
 
-const testimonial = {
-  quote:
-    "Depuis que Fromagerie Digitale a repris notre présence en ligne, des clients nous trouvent sur Google tous les jours. On a doublé nos commandes en trois mois, sans dépenser un euro en publicité.",
-  author: 'Marie Leclerc',
-  role:   'Fromagerie des Coteaux, Lyon',
-}
+const testimonials = [
+  {
+    text: "Fromagerie Digitale a transformé notre visibilité en ligne. Aujourd'hui, nos clients nous trouvent sur Google avant même de passer devant notre vitrine.",
+    image: 'https://randomuser.me/api/portraits/women/44.jpg',
+    name: 'Marie Leclerc',
+    role: 'Fromagerie des Coteaux, Lyon',
+  },
+  {
+    text: "En trois mois, nos commandes en ligne ont doublé. L'équipe a su raconter notre histoire de façon authentique et convaincante.",
+    image: 'https://randomuser.me/api/portraits/men/32.jpg',
+    name: 'Pierre Morin',
+    role: 'Maison Morin Fromages, Bordeaux',
+  },
+  {
+    text: "Notre Instagram était inexistant. Aujourd'hui, on a une vraie communauté de passionnés qui partage nos plateaux. Incroyable résultat.",
+    image: 'https://randomuser.me/api/portraits/women/68.jpg',
+    name: 'Sophie Durand',
+    role: 'La Cave à Fromages, Strasbourg',
+  },
+  {
+    text: "Le site est magnifique et vraiment à notre image. Nos clients nous complimentent dessus en boutique. C'est exactement ce qu'on voulait.",
+    image: 'https://randomuser.me/api/portraits/men/54.jpg',
+    name: 'Jacques Bernard',
+    role: 'Fromagerie Bernard & Fils, Dijon',
+  },
+  {
+    text: "Grâce au référencement local, on est passé de 10 à plus de 80 avis Google en quelques semaines. Notre chiffre d'affaires a suivi.",
+    image: 'https://randomuser.me/api/portraits/women/22.jpg',
+    name: 'Isabelle Petit',
+    role: 'Le Chalet des Fromages, Annecy',
+  },
+  {
+    text: "Je suis fromager, pas marketeur. Fromagerie Digitale s'est occupée de tout et le résultat dépasse largement mes attentes.",
+    image: 'https://randomuser.me/api/portraits/men/76.jpg',
+    name: 'Thomas Renard',
+    role: 'Affineur Renard, Rouen',
+  },
+  {
+    text: "Notre fiche Google était incomplète et mal tenue. En un mois, on recevait des appels de nouveaux clients chaque jour.",
+    image: 'https://randomuser.me/api/portraits/women/12.jpg',
+    name: 'Claire Fontaine',
+    role: 'Fromagerie Fontaine, Nantes',
+  },
+  {
+    text: "Le blog qu'ils ont créé pour nous attire des clients qui cherchent du fromage affiné de qualité. Un investissement rentabilisé en 2 mois.",
+    image: 'https://randomuser.me/api/portraits/men/19.jpg',
+    name: 'Éric Vidal',
+    role: 'Maison Vidal Affineurs, Toulouse',
+  },
+  {
+    text: "Professionnel, rapide, à l'écoute. Ils comprennent notre métier et savent comment le mettre en valeur sur internet. Je recommande.",
+    image: 'https://randomuser.me/api/portraits/women/57.jpg',
+    name: 'Nathalie Rousseau',
+    role: 'La Fromagerie du Marché, Rennes',
+  },
+]
+
+const firstColumn  = testimonials.slice(0, 3)
+const secondColumn = testimonials.slice(3, 6)
+const thirdColumn  = testimonials.slice(6, 9)
 
 export function SocialProof() {
   return (
-    <section className="bg-fd-navy px-6 lg:px-16 py-28 lg:py-36">
+    <section className="bg-fd-cream px-6 lg:px-16 pt-0 pb-28 lg:pb-36 relative overflow-hidden">
       <div className="max-w-[1400px] mx-auto">
 
-        <div className="border-t border-white/8 mb-16" />
-
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-16 lg:gap-24">
-
-          {/* Gauche : logo + chiffre clé */}
-          <div className="lg:w-72 shrink-0">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <img
-                src="/logo.svg"
-                alt="Fromagerie Digitale"
-                className="h-9 w-auto mb-16 opacity-60"
-              />
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <div
-                className="font-bold text-white leading-none"
-                style={{ fontSize: 'clamp(64px, 8vw, 112px)' }}
-              >
-                20+
-              </div>
-              <div className="text-white/40 text-sm tracking-wide mt-3">
-                fromagers accompagnés
-              </div>
-              <div className="text-white/20 text-xs mt-1.5">
-                en France
-              </div>
-            </motion.div>
+        {/* En-tête */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col items-center justify-center max-w-[560px] mx-auto mb-16"
+        >
+          <div className="flex justify-center mb-5">
+            <span className="border border-fd-gold/40 text-fd-gold text-xs font-semibold tracking-[0.22em] uppercase py-1.5 px-4 rounded-full">
+              Témoignages
+            </span>
           </div>
 
-          {/* Droite : témoignage */}
-          <div className="flex-1 max-w-[600px]">
-            <motion.p
-              className="text-white/20 text-[11px] tracking-[0.32em] uppercase mb-10 font-medium"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              Ce qu&apos;ils en disent
-            </motion.p>
+          <h2
+            className="font-bold text-fd-navy text-center leading-tight"
+            style={{ fontSize: 'clamp(28px, 4vw, 48px)' }}
+          >
+            Ce que disent{' '}
+            <span className="text-fd-gold italic">nos fromagers</span>
+          </h2>
 
-            <motion.blockquote
-              className="font-bold text-white leading-[1.2]"
-              style={{ fontSize: 'clamp(20px, 2.6vw, 38px)' }}
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.85, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            >
-              &ldquo;{testimonial.quote}&rdquo;
-            </motion.blockquote>
+          <p className="text-center text-fd-navy/55 mt-5 text-lg leading-relaxed">
+            Des artisans fromagers qui ont choisi de confier leur présence digitale à Fromagerie Digitale.
+          </p>
+        </motion.div>
 
-            <motion.div
-              className="mt-10 flex items-center gap-5"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
-              <div className="w-8 h-px bg-fd-gold flex-shrink-0" />
-              <div>
-                <p className="text-white font-semibold text-sm">{testimonial.author}</p>
-                <p className="text-white/35 text-xs mt-0.5">{testimonial.role}</p>
-              </div>
-            </motion.div>
-          </div>
+        {/* Colonnes animées */}
+        <div className="flex justify-center gap-6 [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)] max-h-[740px] overflow-hidden">
+          <TestimonialsColumn testimonials={firstColumn}  duration={18} />
+          <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={22} />
+          <TestimonialsColumn testimonials={thirdColumn}  className="hidden lg:block" duration={20} />
         </div>
-
-        <div className="border-b border-white/8 mt-16" />
       </div>
     </section>
   )

@@ -5,7 +5,7 @@ export function LocalBusinessSchema() {
     name:       'Fromagerie Digitale',
     description:
       "Agence digitale spécialisée pour les fromageries artisanales. Sites web, SEO local, e-commerce, branding.",
-    url:   'https://fromageriedigitale.fr',
+    url:   'https://fromageriedigitale.com',
 
     address: {
       '@type':          'PostalAddress',

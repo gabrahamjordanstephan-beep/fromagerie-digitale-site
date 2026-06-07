@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
+import { blogPosts } from '@/lib/blog-data'
 
 const BASE = 'https://fromageriedigitale.com'
-const now  = new Date()
 
 const pages = [
   { path: '',                   priority: 1.0, changeFrequency: 'weekly'  as const, updated: new Date('2025-05-03') },
@@ -17,8 +17,21 @@ const pages = [
   { path: '/contact',           priority: 0.6, changeFrequency: 'yearly'  as const, updated: new Date('2025-05-03') },
 ]
 
+const blogEntries = blogPosts.map(post => ({
+  path:            `/blog/${post.slug}`,
+  priority:        0.7 as const,
+  changeFrequency: 'monthly' as const,
+  updated:         new Date(post.date),
+}))
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  return pages.map(({ path, priority, changeFrequency, updated }) => ({
+  const allPages = [
+    ...pages,
+    { path: '/blog', priority: 0.8 as const, changeFrequency: 'weekly' as const, updated: new Date('2025-05-10') },
+    ...blogEntries,
+  ]
+
+  return allPages.map(({ path, priority, changeFrequency, updated }) => ({
     url:             `${BASE}${path}`,
     lastModified:    updated,
     priority,

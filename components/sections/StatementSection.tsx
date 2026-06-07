@@ -1,13 +1,13 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { HeroHighlight, Highlight } from '@/components/ui/hero-highlight'
 
 export function StatementSection() {
   return (
-    <section className="bg-fd-cream px-6 lg:px-16 py-28 lg:py-36">
+    <HeroHighlight containerClassName="px-6 lg:px-16 py-28 lg:py-36">
       <div className="max-w-[1400px] mx-auto">
 
-        {/* Ligne fine en haut */}
         <div className="border-t border-fd-navy/12 mb-14" />
 
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 lg:gap-10">
@@ -34,14 +34,14 @@ export function StatementSection() {
           >
             Nous croyons que chaque fromager
             mérite une présence digitale{' '}
-            <em className="text-fd-gold not-italic">à la hauteur</em>
-            {' '}de son savoir-faire.
+            <Highlight className="text-fd-navy">
+              à la hauteur de son savoir-faire.
+            </Highlight>
           </motion.p>
         </div>
 
-        {/* Ligne fine en bas */}
         <div className="border-b border-fd-navy/12 mt-14" />
       </div>
-    </section>
+    </HeroHighlight>
   )
 }

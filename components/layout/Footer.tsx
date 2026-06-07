@@ -46,6 +46,9 @@ export function Footer() {
               <Link href="/a-propos" className="block text-white/50 hover:text-white text-sm transition-colors duration-200">
                 À propos
               </Link>
+              <Link href="/blog" className="block text-white/50 hover:text-white text-sm transition-colors duration-200">
+                Blog
+              </Link>
               <Link href="/contact" className="block text-white/50 hover:text-fd-gold text-sm transition-colors duration-200">
                 Formulaire de contact
               </Link>

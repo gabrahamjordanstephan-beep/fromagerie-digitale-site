@@ -5,7 +5,7 @@
 
 ## Identité du projet
 
-- **Site :** fromageriedigitale.fr
+- **Site :** fromageriedigitale.com
 - **Tagline :** "L'agence qui parle le langage des fromagers"
 - **Baseline :** "Votre histoire, en ligne."
 - **Fondatrice :** Alice Gautro
@@ -51,7 +51,7 @@
 ```bash
 RESEND_API_KEY=                           # Resend dashboard
 CONTACT_EMAIL_TO=fromageriedigitaleagence@gmail.com  # ⚠️ Changer en prod vers gabrahamjordanstephan@gmail.com après vérification domaine
-NEXT_PUBLIC_SITE_URL=https://fromageriedigitale.fr
+NEXT_PUBLIC_SITE_URL=https://fromageriedigitale.com
 # Sprint 2+ :
 NEXT_PUBLIC_SANITY_PROJECT_ID=
 NEXT_PUBLIC_SANITY_DATASET=production
@@ -130,8 +130,8 @@ app/
 
 En développement : `from: onboarding@resend.dev`, `to: fromageriedigitaleagence@gmail.com`
 
-En production (après vérification domaine fromageriedigitale.fr sur Resend) :
-- Changer `from` → `contact@fromageriedigitale.fr`
+En production (après vérification domaine fromageriedigitale.com sur Resend) :
+- Changer `from` → `contact@fromageriedigitale.com`
 - Changer `CONTACT_EMAIL_TO` → `gabrahamjordanstephan@gmail.com`
 
 ---
@@ -177,7 +177,7 @@ export default function InteractiveComponent() { ... }
 export const metadata: Metadata = {
   title: 'Titre',
   description: 'Max 160 chars',
-  alternates: { canonical: 'https://fromageriedigitale.fr/...' },
+  alternates: { canonical: 'https://fromageriedigitale.com/...' },
 }
 ```
 

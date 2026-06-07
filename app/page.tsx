@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title:       "Fromagerie Digitale — Agence digitale pour fromagers",
   description:
     "Agence digitale spécialisée pour les fromageries artisanales. Sites web, SEO local, e-commerce, branding. Votre histoire, en ligne.",
-  alternates:  { canonical: 'https://fromageriedigitale.fr' },
+  alternates:  { canonical: 'https://fromageriedigitale.com' },
 }
 
 export default function HomePage() {

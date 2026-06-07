@@ -53,7 +53,7 @@ export async function POST(request: Request) {
             <p><strong>Message :</strong></p>
             <p style="white-space:pre-wrap;line-height:1.6;">${message}</p>
           </div>
-          <p style="text-align:center;color:#999;font-size:11px;margin-top:16px;">Reçu via fromageriedigitale.fr</p>
+          <p style="text-align:center;color:#999;font-size:11px;margin-top:16px;">Reçu via fromageriedigitale.com</p>
         </div>
       `,
     })

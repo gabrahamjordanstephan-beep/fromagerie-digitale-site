@@ -43,7 +43,7 @@ export default function OgImage() {
             L&apos;agence digitale spécialisée pour les fromageries artisanales
           </div>
           <div style={{ fontSize: 18, color: '#C9A84C', letterSpacing: '0.1em', fontWeight: 600 }}>
-            fromageriedigitale.fr
+            fromageriedigitale.com
           </div>
         </div>
       </div>

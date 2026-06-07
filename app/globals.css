@@ -20,6 +20,53 @@
   }
 }
 
+/* Prose custom theme pour les articles du blog */
+@layer components {
+  .prose-fd {
+    --tw-prose-body:        #314C5C;
+    --tw-prose-headings:    #314C5C;
+    --tw-prose-lead:        #4A7BA7;
+    --tw-prose-links:       #4A7BA7;
+    --tw-prose-bold:        #314C5C;
+    --tw-prose-counters:    #C9A84C;
+    --tw-prose-bullets:     #C9A84C;
+    --tw-prose-hr:          rgba(49,76,92,0.12);
+    --tw-prose-quotes:      #314C5C;
+    --tw-prose-quote-borders: #C9A84C;
+    --tw-prose-captions:    #314C5C;
+    --tw-prose-code:        #314C5C;
+    --tw-prose-pre-code:    #F5F0E8;
+    --tw-prose-pre-bg:      #1C2C37;
+    --tw-prose-th-borders:  rgba(49,76,92,0.15);
+    --tw-prose-td-borders:  rgba(49,76,92,0.08);
+  }
+
+  .prose-fd h2 {
+    @apply mt-12 mb-5 text-2xl font-bold;
+  }
+
+  .prose-fd h3 {
+    @apply mt-8 mb-4 text-xl font-semibold;
+  }
+
+  .prose-fd p {
+    @apply mb-6 leading-relaxed;
+  }
+
+  .prose-fd a {
+    @apply underline decoration-fd-blue/40 hover:decoration-fd-blue transition-colors duration-150;
+  }
+
+  .prose-fd ul li::marker,
+  .prose-fd ol li::marker {
+    color: #C9A84C;
+  }
+
+  .prose-fd strong {
+    @apply font-semibold;
+  }
+}
+
 @layer utilities {
   .animate-delay-100 { animation-delay: 100ms; }
   .animate-delay-200 { animation-delay: 200ms; }

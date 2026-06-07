@@ -4,7 +4,7 @@ import { ServicesPageContent }    from '@/components/sections/ServicesPageConten
 export const metadata: Metadata = {
   title:       'Nos Services | Fromagerie Digitale',
   description: 'Six services digitaux conçus pour les fromageries artisanales : SEO local, e-commerce, branding, social media, publicité et formation.',
-  alternates:  { canonical: 'https://fromageriedigitale.fr/services' },
+  alternates:  { canonical: 'https://fromageriedigitale.com/services' },
 }
 
 export default function ServicesPage() {

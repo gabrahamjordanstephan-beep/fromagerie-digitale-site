@@ -29,8 +29,8 @@ const nextConfig = {
   async redirects() {
     return [{
       source:      '/:path*',
-      has:         [{ type: 'host', value: 'www.fromageriedigitale.fr' }],
-      destination: 'https://fromageriedigitale.fr/:path*',
+      has:         [{ type: 'host', value: 'www.fromageriedigitale.com' }],
+      destination: 'https://fromageriedigitale.com/:path*',
       permanent:   true,
     }]
   },

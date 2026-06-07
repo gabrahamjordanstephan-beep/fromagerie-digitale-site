@@ -9,7 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.2.5",
     "caniuse-lite": "^1.0.30001791",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "crisp-sdk-web": "^1.0.22",
     "framer-motion": "^12.38.0",
     "lucide-react": "^0.400.0",
@@ -17,6 +20,7 @@
     "react": "^18",
     "react-dom": "^18",
     "resend": "^3.2.0",
+    "tailwind-merge": "^3.6.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {

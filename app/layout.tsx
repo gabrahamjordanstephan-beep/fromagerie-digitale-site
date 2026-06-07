@@ -5,7 +5,7 @@ import { Footer }             from '@/components/layout/Footer'
 import { LocalBusinessSchema } from '@/components/seo/LocalBusinessSchema'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://fromageriedigitale.fr'),
+  metadataBase: new URL('https://fromageriedigitale.com'),
   title: {
     default:  "Fromagerie Digitale — L'agence qui parle le langage des fromagers",
     template: '%s | Fromagerie Digitale',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     type:      'website',
     locale:    'fr_FR',
-    url:       'https://fromageriedigitale.fr',
+    url:       'https://fromageriedigitale.com',
     siteName:  'Fromagerie Digitale',
     title:     "Fromagerie Digitale — L'agence qui parle le langage des fromagers",
     description:
@@ -35,7 +35,8 @@ export const metadata: Metadata = {
     images: ['/opengraph-image'],
   },
   robots: { index: true, follow: true },
-  alternates: { canonical: 'https://fromageriedigitale.fr' },
+  verification: { google: 'RQQ135bc5ssUC3mxQxX9qB31FAtpsWiTCvywGaepiP0' },
+  alternates: { canonical: 'https://fromageriedigitale.com' },
 }
 
 export default function RootLayout({
