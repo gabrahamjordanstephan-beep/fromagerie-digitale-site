@@ -5,7 +5,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, ChevronDown } from 'lucide-react'
 
-// Révélation ligne par ligne (overflow hidden + slide up)
 function LineReveal({ children, delay = 0, className = '' }: {
   children: React.ReactNode
   delay?: number
@@ -52,11 +51,17 @@ function RotatingBadge() {
   )
 }
 
+const stats = [
+  { n: '2023', l: 'DEPUIS' },
+  { n: '20+',  l: 'FROMAGERS ACCOMPAGNÉS' },
+  { n: '100%', l: 'SPÉCIALISÉ FROMAGERIE' },
+]
+
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen bg-fd-navy overflow-hidden flex items-center">
+    <section className="relative min-h-screen bg-fd-navy overflow-hidden flex flex-col">
 
-      {/* Photo — saigne jusqu'au bord droit, aucun border-radius */}
+      {/* Photo — saigne jusqu'au bord droit */}
       <div className="absolute right-0 top-0 bottom-0 w-[48%] lg:w-[44%]">
         <motion.div
           className="absolute inset-0"
@@ -72,91 +77,145 @@ export function HeroSection() {
             priority
             sizes="44vw"
           />
-          {/* Fondu vers la gauche */}
           <div className="absolute inset-0 bg-gradient-to-r from-fd-navy via-fd-navy/50 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-fd-navy/60 via-transparent to-fd-navy/20" />
-          {/* Overlay renforcé sur mobile pour protéger la lisibilité du texte */}
           <div className="absolute inset-0 bg-fd-navy/70 sm:hidden" />
         </motion.div>
 
-        {/* Badge rotatif sur le bord de l'image */}
         <motion.div
           initial={{ opacity: 0, scale: 0.4 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 1.7, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute -left-16 bottom-20 z-20 hidden lg:block"
+          className="absolute -left-16 bottom-32 z-20 hidden lg:block"
         >
           <RotatingBadge />
         </motion.div>
       </div>
 
       {/* Contenu textuel */}
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-16 w-full pt-24 pb-20">
-        <div className="max-w-[640px]">
+      <div className="relative z-10 flex-1 flex items-center">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-16 w-full pt-24 pb-24">
+          <div className="max-w-[720px]">
 
-          {/* Label discret */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-white/30 text-[11px] tracking-[0.32em] uppercase mb-10 font-medium"
-          >
-            Agence Digitale — Fromageries Artisanales
-          </motion.p>
-
-          {/* Titre éditorial — révélation ligne par ligne */}
-          <h1 className="font-bold" style={{ fontSize: 'clamp(52px, 6.8vw, 100px)' }}>
-            <LineReveal delay={0.3} className="text-white">L&apos;agence qui</LineReveal>
-            <LineReveal delay={0.48} className="text-fd-gold italic">parle le langage</LineReveal>
-            <LineReveal delay={0.66} className="text-white">des fromagers</LineReveal>
-          </h1>
-
-          {/* Baseline + CTA en ligne */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.15, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-10 flex flex-col sm:flex-row items-start sm:items-end gap-8 sm:gap-12"
-          >
-            <p className="text-white/40 text-base leading-relaxed max-w-[280px]">
-              Nous transformons votre savoir-faire en présence digitale qui attire, convainc et fidélise.
-            </p>
-            <Link
-              href="/contact"
-              className="group flex items-center gap-2.5 text-fd-gold font-semibold text-sm border-b border-fd-gold/35 pb-0.5 hover:border-fd-gold whitespace-nowrap transition-colors duration-200"
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="text-white/30 text-[11px] tracking-[0.32em] uppercase mb-10 font-medium"
             >
-              Parlons de votre projet
-              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
-            </Link>
-          </motion.div>
+              Agence Digitale · Fromageries Artisanales
+            </motion.p>
 
-          {/* Stats horizontaux */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.5, duration: 0.6 }}
-            className="flex gap-4 sm:gap-10 mt-16 border-t border-white/8 pt-8"
-          >
-            {[
-              { n: '20+', l: 'fromagers accompagnés' },
-              { n: '3 sem.', l: 'délai de livraison' },
-              { n: '100%', l: 'spécialisé fromagerie' },
-            ].map(({ n, l }) => (
-              <div key={l} className="flex flex-col items-center text-center">
-                <div className="text-white font-bold text-4xl leading-none">{n}</div>
-                <div className="text-white/70 text-sm mt-2 tracking-wide">{l}</div>
-              </div>
-            ))}
-          </motion.div>
+            <h1 className="font-bold" style={{ fontSize: 'clamp(52px, 6.8vw, 100px)' }}>
+              <LineReveal delay={0.3} className="text-white">
+                L&apos;agence qui
+              </LineReveal>
+              <LineReveal
+                delay={0.48}
+                className="text-fd-gold"
+              >
+                <span
+                  style={{
+                    fontFamily: "'Caveat', cursive",
+                    fontWeight: 600,
+                    letterSpacing: '-0.01em',
+                    fontSize: '1.35em',
+                    lineHeight: 0.9,
+                    display: 'inline-block',
+                    transform: 'translateY(0.06em)',
+                  }}
+                >
+                  parle le langage
+                </span>
+              </LineReveal>
+              <LineReveal delay={0.66} className="text-white">
+                des fromagers.
+              </LineReveal>
+            </h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.15, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-10 max-w-[520px] text-white/75 leading-[1.5]"
+              style={{ fontSize: 'clamp(15px, 1.15vw, 18px)' }}
+            >
+              Nous transformons votre savoir-faire en une présence digitale{' '}
+              <span
+                className="text-fd-gold"
+                style={{
+                  fontFamily: "'Caveat', cursive",
+                  fontWeight: 600,
+                  fontSize: '1.35em',
+                  letterSpacing: '-0.01em',
+                }}
+              >
+                qui vous ressemble
+              </span>
+              , qui attire, convainc et fidélise.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.4, duration: 0.6 }}
+              className="mt-12"
+            >
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-4 text-fd-gold border-b-2 border-fd-gold/40 pb-2 hover:border-fd-gold transition-colors duration-300"
+                style={{ fontSize: 'clamp(18px, 1.5vw, 22px)', fontWeight: 600 }}
+              >
+                Parlons de votre projet
+                <span className="inline-flex w-11 h-11 rounded-full border border-fd-gold/40 items-center justify-center group-hover:bg-fd-gold group-hover:border-fd-gold transition-all duration-300">
+                  <ArrowRight
+                    size={18}
+                    strokeWidth={1.75}
+                    className="text-fd-gold group-hover:text-fd-navy group-hover:translate-x-0.5 transition-all duration-300"
+                  />
+                </span>
+              </Link>
+            </motion.div>
+
+          </div>
         </div>
       </div>
 
-      {/* Scroll */}
+      {/* Colophon — stats en bandeau bas, éditorial */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.75, duration: 0.7 }}
+        className="relative z-10 border-t border-white/10 bg-fd-navy/60 backdrop-blur-sm"
+      >
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-16 py-8 lg:py-10">
+          <ul className="flex flex-col sm:flex-row items-center sm:items-center justify-between gap-8 sm:gap-12">
+            {stats.map((s) => (
+              <li
+                key={s.l}
+                className="flex flex-col items-center text-center gap-2 relative flex-1 min-w-0"
+              >
+                <span className="text-white/60 text-xs sm:text-sm tracking-[0.22em] uppercase font-medium">
+                  {s.l}
+                </span>
+                <span
+                  className="text-fd-gold font-bold leading-none"
+                  style={{ fontSize: 'clamp(28px, 2.4vw, 40px)' }}
+                >
+                  {s.n}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </motion.div>
+
+      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
+        className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 hidden md:block"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}
