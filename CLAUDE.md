@@ -24,11 +24,12 @@
 | Langage | TypeScript strict (zéro `any`) |
 | Styling | Tailwind CSS avec palette FD |
 | Police | Poppins (Google Fonts) |
-| Email | Resend API (`onboarding@resend.dev` jusqu'à vérification domaine) |
-| CMS | Sanity.io v3 (Sprint 2+) |
+| Booking | Cal.com embed (`@calcom/embed-react`) — appel découverte 30 min |
+| CMS | Sanity.io v3 (Sprint 4+) |
 | Deploy | Vercel — région cdg1 |
 
-> ⚠️ Crisp chatbot supprimé — tous les boutons CTA pointent vers `/contact`
+> ⚠️ Crisp chatbot supprimé — tous les CTA pointent vers `/contact`
+> ⚠️ Formulaire de contact + API Resend supprimés (Sprint 3.5) — remplacés par Cal.com
 
 ---
 
@@ -36,11 +37,11 @@
 
 | Token | HEX | Usage |
 |---|---|---|
-| `fd-navy` | `#1B2A4A` | Fond principal, headers, textes |
-| `fd-gold` | `#C9A84C` | CTA, accents, baseline italic |
+| `fd-navy` | `#314C5C` | Fond principal, headers, textes |
+| `fd-gold` | `#F4BD45` | CTA, accents, baseline italic |
 | `fd-blue` | `#4A7BA7` | Cercles décoratifs, liens, icônes |
 | `fd-cream` | `#F5F0E8` | Fond sections claires |
-| `fd-dark` | `#0F1A2E` | Fond très sombre |
+| `fd-dark` | `#1C2C37` | Fond très sombre |
 
 **Police :** Poppins — Bold titres, Regular corps, Italic baseline
 
@@ -49,14 +50,19 @@
 ## Variables d'environnement
 
 ```bash
-RESEND_API_KEY=                           # Resend dashboard
-CONTACT_EMAIL_TO=fromageriedigitaleagence@gmail.com  # ⚠️ Changer en prod vers gabrahamjordanstephan@gmail.com après vérification domaine
+# Cal.com — compte agence
+NEXT_PUBLIC_CAL_USERNAME=                 # ex: fromagerie-digitale
+NEXT_PUBLIC_CAL_EVENT_SLUG=decouverte-30min
+
 NEXT_PUBLIC_SITE_URL=https://fromageriedigitale.com
-# Sprint 2+ :
+
+# Sprint 4+ (migration blog vers Sanity) :
 NEXT_PUBLIC_SANITY_PROJECT_ID=
 NEXT_PUBLIC_SANITY_DATASET=production
 SANITY_API_TOKEN=
 ```
+
+> ⚠️ Sans `NEXT_PUBLIC_CAL_USERNAME`, la page /contact affiche un fallback mailto vers `contact@fromageriedigitale.com`.
 
 ---
 
@@ -72,14 +78,15 @@ app/
 ├── services/
 │   ├── page.tsx                      ← Vue d'ensemble 6 services
 │   └── [slug]/page.tsx               ← Page dynamique par service
-├── contact/page.tsx                  ← Formulaire de contact
+├── contact/page.tsx                  ← Page booking (Cal.com embed)
+├── blog/
+│   ├── page.tsx                      ← Index blog
+│   └── [slug]/page.tsx               ← Article dynamique
 ├── mentions-legales/page.tsx         ← Mentions légales (LCEN)
 ├── politique-de-confidentialite/     ← Politique RGPD
 │   └── page.tsx
 ├── sitemap.ts
-├── robots.ts
-└── api/
-    └── contact/route.ts              ← Resend API (vérifie sendError)
+└── robots.ts
 ```
 
 ---
@@ -104,13 +111,23 @@ app/
 | US-14 | Mentions légales + Politique de confidentialité | ✅ |
 | US-15 | SEO on-page (schema, og-image, favicon, canonicals) | ✅ |
 
-### 🔜 Sprint 3 — À FAIRE
+### ✅ Sprint 3 — LIVRÉ (partiel)
+| US | Titre | Statut |
+|---|---|---|
+| US-03 | Preuve sociale / témoignages animés | ✅ |
+| US-08 | Page blog + articles éditoriaux | ✅ (données locales `lib/blog-data.ts`, Sanity non branché) |
+
+### ✅ Sprint 3.5 — LIVRÉ
+| US | Titre | Statut |
+|---|---|---|
+| US-19 | Remplacer formulaire contact par Cal.com booking | ✅ |
+
+### 🔜 Sprint 4 — À FAIRE
 | US | Titre | Tags |
 |---|---|---|
-| US-03 | Preuve sociale / témoignages clients | [NEXTJS][TAILWIND] |
-| US-08 | Page blog / contenu éditorial | [NEXTJS][SANITY][SEO] |
 | US-16 | Google Business Profile | [SEO][OFF-PAGE] |
-| US-17 | Vérification domaine Resend + email prod | [RESEND] |
+| US-18 | Migrer blog vers Sanity CMS | [SANITY] |
+| US-20 | Créer compte Cal.com + config event type | [CAL] |
 
 ---
 
@@ -126,13 +143,13 @@ app/
 
 ---
 
-## Email — Note importante
+## Booking Cal.com — Note importante
 
-En développement : `from: onboarding@resend.dev`, `to: fromageriedigitaleagence@gmail.com`
-
-En production (après vérification domaine fromageriedigitale.com sur Resend) :
-- Changer `from` → `contact@fromageriedigitale.com`
-- Changer `CONTACT_EMAIL_TO` → `gabrahamjordanstephan@gmail.com`
+- Créer un compte Cal.com pour l'agence (Alice), lier Google Calendar
+- Créer un event type "Appel découverte" — 30 min — slug `decouverte-30min`
+- Renseigner `NEXT_PUBLIC_CAL_USERNAME` dans Vercel (Environment Variables)
+- Les notifications de réservation partent nativement vers l'email lié au compte Cal.com — aucun backend nécessaire côté site
+- Personnalisation visuelle (couleurs FD) faite dans `components/sections/BookingEmbed.tsx` via `cssVarsPerTheme`
 
 ---
 
@@ -183,4 +200,4 @@ export const metadata: Metadata = {
 
 ---
 
-*Dernière mise à jour : Sprint 2 livré — mai 2025*
+*Dernière mise à jour : Sprint 3 livré (blog + témoignages) — juillet 2025*
