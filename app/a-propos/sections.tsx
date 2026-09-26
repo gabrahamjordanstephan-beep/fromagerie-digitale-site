@@ -157,14 +157,14 @@ export function AProposHistoire() {
               Nous avons fondé cette agence après avoir observé, de près, la réalité du terrain :
               des fromageries extraordinaires{' '}
               <Link
-                href="/services/seo-local"
+                href="/services/autorite-geo"
                 className="text-fd-navy underline underline-offset-2 decoration-fd-navy/30 hover:decoration-fd-navy transition-all"
               >
                 invisibles sur Google
               </Link>
               , des boutiques sans présence sur{' '}
               <Link
-                href="/services/social-media"
+                href="/services/content-video-first"
                 className="text-fd-navy underline underline-offset-2 decoration-fd-navy/30 hover:decoration-fd-navy transition-all"
               >
                 les réseaux sociaux

@@ -44,11 +44,20 @@ function splitName(name: string): string[] {
 }
 
 type Props = {
-  service: Service
-  others:  Service[]
+  service:   Service
+  adjacent?: { prev: Service; next: Service } | null
 }
 
-export function ServicePageContent({ service, others }: Props) {
+/** Rend *mot* en italique gold, comme les <em> de la maquette. */
+function withEmphasis(text: string): React.ReactNode {
+  return text.split(/(\*[^*]+\*)/g).map((part, i) =>
+    part.startsWith('*') && part.endsWith('*') && part.length > 2
+      ? <em key={i} className="not-italic text-fd-gold font-semibold">{part.slice(1, -1)}</em>
+      : <span key={i}>{part}</span>
+  )
+}
+
+export function ServicePageContent({ service, adjacent }: Props) {
   return (
     <main>
 
@@ -127,226 +136,292 @@ export function ServicePageContent({ service, others }: Props) {
         </div>
       </section>
 
-      {/* ── DESCRIPTION ── cream, manifesto paragraph ── */}
+      {/* ── BLOC 01 · LE CONSTAT ── cream ── */}
       <section className="bg-fd-cream px-6 lg:px-16 py-28">
-        <div className="max-w-[1400px] mx-auto">
+        <div className="max-w-[1400px] mx-auto grid lg:grid-cols-[220px_1fr] gap-12 lg:gap-24">
+          <motion.p
+            className="text-fd-navy/40 text-[11px] tracking-[0.36em] uppercase font-medium pt-2"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            01 — Le constat
+          </motion.p>
           <div className="max-w-[820px]">
+            {service.constatTitle && (
+              <motion.h2
+                className="font-bold text-fd-navy leading-[1.15] mb-8"
+                style={{ fontSize: 'clamp(28px, 3.5vw, 52px)' }}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+              >
+                {withEmphasis(service.constatTitle)}
+              </motion.h2>
+            )}
+            {(service.constat ?? [service.description]).map((p, i) => (
+              <motion.p
+                key={i}
+                className="text-fd-navy/80 leading-relaxed mt-6 first:mt-0"
+                style={{ fontSize: 'clamp(16px, 1.4vw, 20px)' }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.65, delay: 0.1 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              >
+                {withEmphasis(p)}
+              </motion.p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── BLOC 02 · POUR QUI ── dark ── */}
+      <section className="bg-fd-dark px-6 lg:px-16 py-28">
+        <div className="max-w-[1400px] mx-auto grid lg:grid-cols-[220px_1fr] gap-12 lg:gap-24">
+          <motion.p
+            className="text-white/30 text-[11px] tracking-[0.36em] uppercase font-medium pt-2"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            02 — Pour qui
+          </motion.p>
+          <div className="max-w-[820px]">
+            <motion.h2
+              className="font-bold text-white leading-[1.15]"
+              style={{ fontSize: 'clamp(28px, 3.5vw, 52px)' }}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {withEmphasis(service.pourQui?.title ?? service.benefits[0]?.title ?? '')}
+            </motion.h2>
             <motion.p
-              className="text-fd-navy/30 text-[11px] tracking-[0.36em] uppercase mb-10 font-medium"
+              className="text-white/60 mt-8 leading-relaxed"
+              style={{ fontSize: 'clamp(16px, 1.4vw, 20px)' }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {service.pourQui?.desc ?? service.benefits[0]?.desc ?? ''}
+            </motion.p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── BLOC 03 · CE QU'ON LIVRE ── cream, livrables numérotés ── */}
+      <section className="bg-fd-cream px-6 lg:px-16 py-28">
+        <div className="max-w-[1400px] mx-auto grid lg:grid-cols-[220px_1fr] gap-12 lg:gap-24">
+          <motion.p
+            className="text-fd-navy/40 text-[11px] tracking-[0.36em] uppercase font-medium pt-2"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            03 — Ce qu'on livre
+          </motion.p>
+          <div className="max-w-[820px]">
+            <motion.h2
+              className="font-bold text-fd-navy leading-[1.15]"
+              style={{ fontSize: 'clamp(28px, 3.5vw, 52px)' }}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {service.includes.length} livrables,
+              <br />
+              <em className="not-italic text-fd-gold">un {service.name.toLowerCase().split(' ')[0]}.</em>
+            </motion.h2>
+            <ul className="mt-12 divide-y divide-fd-navy/10">
+              {service.includes.map((item, i) => (
+                <motion.li
+                  key={item}
+                  className="py-5 flex items-start gap-6"
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <span className="text-fd-gold font-bold text-sm tracking-widest w-8 shrink-0 pt-0.5">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span className="text-fd-navy/80 leading-relaxed" style={{ fontSize: 'clamp(15px, 1.3vw, 18px)' }}>
+                    {item}
+                  </span>
+                </motion.li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* ── BLOC 04 · NOTRE MÉTHODE ── dark ── */}
+      {service.methode && service.methode.length > 0 && (
+        <section className="bg-fd-dark px-6 lg:px-16 py-28">
+          <div className="max-w-[1400px] mx-auto grid lg:grid-cols-[220px_1fr] gap-12 lg:gap-24">
+            <motion.p
+              className="text-white/30 text-[11px] tracking-[0.36em] uppercase font-medium pt-2"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              Notre approche
+              04 — Notre méthode
             </motion.p>
-            <motion.p
-              className="font-bold text-fd-navy leading-[1.2]"
-              style={{ fontSize: 'clamp(24px, 3.2vw, 48px)' }}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            >
-              {service.description}
-            </motion.p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── BENEFITS ── dark, numbered rows ── */}
-      <section className="bg-fd-dark px-6 lg:px-16 py-28">
-        <div className="max-w-[1400px] mx-auto">
-
-          <motion.p
-            className="text-white/20 text-[11px] tracking-[0.36em] uppercase mb-20 font-medium"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            Ce que vous gagnez
-          </motion.p>
-
-          <div className="divide-y divide-white/8">
-            {service.benefits.map((benefit, i) => (
-              <motion.div
-                key={benefit.title}
-                className="py-10 flex flex-col md:flex-row md:items-start gap-6 md:gap-16 group"
+            <div>
+              <motion.h2
+                className="font-bold text-white leading-[1.15] mb-14"
+                style={{ fontSize: 'clamp(28px, 3.5vw, 52px)' }}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.65, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
               >
-                <span className="text-white/15 font-bold text-sm tracking-widest w-8 shrink-0 pt-1">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <div className="flex-1 flex flex-col md:flex-row md:items-start md:justify-between gap-4 md:gap-12">
-                  <h3
-                    className="font-bold text-white group-hover:text-fd-gold transition-colors duration-300"
-                    style={{ fontSize: 'clamp(20px, 2.4vw, 34px)' }}
-                  >
-                    {benefit.title}
-                  </h3>
-                  <p className="text-white/40 text-sm leading-relaxed md:max-w-xs md:text-right">
-                    {benefit.desc}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── INCLUDES ── cream, checklist ── */}
-      <section className="bg-fd-cream px-6 lg:px-16 py-28">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-16">
-
-            <div className="lg:max-w-xs">
-              <motion.p
-                className="text-fd-navy/30 text-[11px] tracking-[0.36em] uppercase mb-6 font-medium"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              >
-                Ce qui est inclus
-              </motion.p>
-              <motion.h2
-                className="font-bold text-fd-navy leading-tight"
-                style={{ fontSize: 'clamp(28px, 3vw, 48px)' }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              >
-                Tout est
+                {service.methode.length} étapes,
                 <br />
-                <em className="text-fd-gold not-italic">compris.</em>
+                <em className="not-italic text-fd-gold">
+                  {service.meta.duree ?? 'un tempo précis'}.
+                </em>
               </motion.h2>
-            </div>
-
-            <div className="flex-1 lg:max-w-[600px]">
-              <ul className="divide-y divide-fd-navy/8">
-                {service.includes.map((item, i) => (
-                  <motion.li
-                    key={item}
-                    className="py-5 flex items-start gap-4"
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+              <div className="grid sm:grid-cols-2 gap-x-16 gap-y-12">
+                {service.methode.map((step, i) => (
+                  <motion.div
+                    key={step.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
                   >
-                    <span className="text-fd-gold font-bold text-sm shrink-0 mt-0.5">✦</span>
-                    <span className="text-fd-navy/70 text-sm leading-relaxed">{item}</span>
-                  </motion.li>
+                    <div className="text-fd-gold font-bold text-xs tracking-widest mb-3">
+                      {String(i + 1).padStart(2, '0')}
+                    </div>
+                    <h4 className="font-bold text-white text-xl mb-3">{step.title}</h4>
+                    <p className="text-white/55 text-sm leading-relaxed">{step.desc}</p>
+                  </motion.div>
                 ))}
-              </ul>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* ── CTA ── navy, big editorial text ── */}
-      <section className="bg-fd-navy px-6 lg:px-16 py-36">
+      {/* ── ENCART DEVIS ── navy, carte éditoriale ── */}
+      <section className="bg-fd-navy px-6 lg:px-16 py-24">
         <div className="max-w-[1400px] mx-auto">
-
-          <motion.h2
-            className="font-bold text-white leading-[0.95]"
-            style={{ fontSize: 'clamp(48px, 7.5vw, 112px)' }}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          >
-            Commençons
-            <br />
-            <span className="text-fd-gold italic">quelque chose</span>
-            <br />
-            de grand.
-          </motion.h2>
-
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            className="border border-fd-gold/25 p-10 lg:p-14 grid lg:grid-cols-[1fr_auto] gap-10 items-end"
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-16 flex flex-col sm:flex-row items-start gap-10"
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
+            <div>
+              <h3 className="font-bold text-white leading-[1.15]" style={{ fontSize: 'clamp(28px, 3.2vw, 44px)' }}>
+                Un projet à la <em className="not-italic text-fd-gold">hauteur</em>
+                <br />de vos fromages.
+              </h3>
+              <p className="text-white/60 mt-5 max-w-xl leading-relaxed">
+                Chaque projet est unique. On chiffre à partir d'un premier échange d'une demi-heure, sans engagement.
+              </p>
+              {(service.meta.duree || service.meta.format) && (
+                <div className="mt-8 flex flex-wrap gap-x-12 gap-y-4">
+                  {service.meta.duree && (
+                    <div>
+                      <div className="text-fd-gold text-[10px] tracking-[0.36em] uppercase font-semibold mb-1">Délai</div>
+                      <div className="text-white font-bold">{service.meta.duree}</div>
+                    </div>
+                  )}
+                  {service.meta.format && (
+                    <div>
+                      <div className="text-fd-gold text-[10px] tracking-[0.36em] uppercase font-semibold mb-1">Format</div>
+                      <div className="text-white font-bold">{service.meta.format}</div>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
             <Link
               href="/contact"
-              className="group flex items-center gap-2.5 text-fd-gold font-semibold text-base border-b border-fd-gold/35 pb-0.5 hover:border-fd-gold whitespace-nowrap transition-colors duration-200"
+              className="group inline-flex items-center gap-3 bg-fd-gold text-fd-navy font-bold px-8 py-4 hover:bg-fd-gold/90 transition-colors whitespace-nowrap"
             >
-              Démarrer la conversation
-              <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform duration-200" />
+              Réserver un échange
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-200" />
             </Link>
           </motion.div>
         </div>
       </section>
 
-      {/* ── VOIR AUSSI ── dark, other services list ── */}
-      <section className="bg-fd-dark px-6 lg:px-16 py-24">
-        <div className="max-w-[1400px] mx-auto">
-
-          <motion.p
-            className="text-white/20 text-[11px] tracking-[0.36em] uppercase mb-16 font-medium"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            Voir aussi
-          </motion.p>
-
-          <div className="divide-y divide-white/8">
-            {others.map((s, i) => (
-              <motion.div
-                key={s.slug}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.55, delay: i * 0.07 }}
-              >
-                <Link
-                  href={`/services/${s.slug}`}
-                  className="group py-7 flex items-center justify-between gap-8 cursor-pointer"
+      {/* ── BLOC 05 · FAQ ── cream ── */}
+      {service.faq && service.faq.length > 0 && (
+        <section className="bg-fd-cream px-6 lg:px-16 py-28">
+          <div className="max-w-[1400px] mx-auto grid lg:grid-cols-[220px_1fr] gap-12 lg:gap-24">
+            <motion.p
+              className="text-fd-navy/40 text-[11px] tracking-[0.36em] uppercase font-medium pt-2"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              05 — Questions fréquentes
+            </motion.p>
+            <div className="max-w-[820px] divide-y divide-fd-navy/15">
+              {service.faq.map((item, i) => (
+                <motion.details
+                  key={item.q}
+                  className="group py-6"
+                  initial={{ opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.05 }}
                 >
-                  <div className="flex items-center gap-8">
-                    <span className="text-white/15 font-bold text-xs tracking-widest w-6 shrink-0">{s.num}</span>
-                    <h3
-                      className="font-bold text-white/60 group-hover:text-white transition-colors duration-300"
-                      style={{ fontSize: 'clamp(18px, 2.2vw, 30px)' }}
-                    >
-                      {s.name}
-                    </h3>
-                  </div>
-                  <ArrowRight
-                    size={18}
-                    className="text-white/20 group-hover:text-fd-gold group-hover:translate-x-1 transition-all duration-300 shrink-0"
-                  />
-                </Link>
-              </motion.div>
-            ))}
+                  <summary className="cursor-pointer list-none flex items-start justify-between gap-6 font-semibold text-fd-navy hover:text-fd-navy/70 transition-colors" style={{ fontSize: 'clamp(16px, 1.4vw, 20px)' }}>
+                    <span>{item.q}</span>
+                    <span className="text-fd-gold text-2xl leading-none shrink-0 pt-0.5 group-open:rotate-45 transition-transform duration-300">+</span>
+                  </summary>
+                  <p className="text-fd-navy/70 mt-4 leading-relaxed max-w-[720px]">{item.a}</p>
+                </motion.details>
+              ))}
+            </div>
           </div>
+        </section>
+      )}
 
-          <motion.div
-            className="mt-16 pt-10 border-t border-white/8"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
+      {/* ── PAGINATION INTER-OFFRES ── navy ── */}
+      {adjacent && (
+        <section className="bg-fd-navy px-6 lg:px-16 py-16 border-t border-white/10">
+          <div className="max-w-[1400px] mx-auto grid sm:grid-cols-2 gap-8">
+            <Link href={`/services/${adjacent.prev.slug}`} className="group flex flex-col gap-2">
+              <span className="text-fd-gold text-[10px] tracking-[0.36em] uppercase font-semibold">← Offre précédente</span>
+              <span className="text-white/70 group-hover:text-white transition-colors font-semibold" style={{ fontSize: 'clamp(18px, 2vw, 26px)' }}>
+                N°{adjacent.prev.num} · {adjacent.prev.name}
+              </span>
+            </Link>
+            <Link href={`/services/${adjacent.next.slug}`} className="group flex flex-col gap-2 sm:text-right">
+              <span className="text-fd-gold text-[10px] tracking-[0.36em] uppercase font-semibold">Offre suivante →</span>
+              <span className="text-white/70 group-hover:text-white transition-colors font-semibold" style={{ fontSize: 'clamp(18px, 2vw, 26px)' }}>
+                N°{adjacent.next.num} · {adjacent.next.name}
+              </span>
+            </Link>
+          </div>
+          <div className="max-w-[1400px] mx-auto mt-12 pt-8 border-t border-white/10 text-center">
             <Link
               href="/services"
-              className="group inline-flex items-center gap-2 text-white/30 hover:text-white text-sm font-medium transition-colors duration-200"
+              className="group inline-flex items-center gap-2 text-white/40 hover:text-white text-sm font-medium transition-colors"
             >
-              Tous nos services
+              Voir les neuf offres
               <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform duration-200" />
             </Link>
-          </motion.div>
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
 
     </main>
   )

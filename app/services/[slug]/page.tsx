@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound }       from 'next/navigation'
-import { services, getService, getOtherServices } from '@/lib/services-data'
+import { services, getService, getAdjacentServices } from '@/lib/services-data'
 import { ServicePageContent } from '@/components/sections/ServicePageContent'
 
 type Props = { params: { slug: string } }
@@ -23,7 +23,7 @@ export default function ServicePage({ params }: Props) {
   const service = getService(params.slug)
   if (!service) notFound()
 
-  const others = getOtherServices(params.slug)
+  const adjacent = getAdjacentServices(params.slug)
 
-  return <ServicePageContent service={service} others={others} />
+  return <ServicePageContent service={service} adjacent={adjacent} />
 }

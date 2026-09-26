@@ -24,33 +24,6 @@ function LineReveal({ children, delay = 0, className = '' }: {
   )
 }
 
-function RotatingBadge() {
-  const text = 'Fromagerie Digitale ✦ Fromagerie Digitale ✦ '
-  return (
-    <div className="relative w-32 h-32">
-      <motion.div
-        className="absolute inset-0"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-      >
-        <svg viewBox="0 0 130 130" className="w-full h-full">
-          <defs>
-            <path id="rc" d="M65,65 m -52,0 a52,52 0 1,1 104,0 a52,52 0 1,1 -104,0" />
-          </defs>
-          <text fill="#F4BD45" fontSize="10" fontFamily="Poppins,sans-serif" fontWeight="600" letterSpacing="1.8">
-            <textPath href="#rc">{text}</textPath>
-          </text>
-        </svg>
-      </motion.div>
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="w-14 h-14 rounded-full bg-fd-gold flex flex-col items-center justify-center gap-0.5">
-          <span style={{ fontFamily: 'Poppins,sans-serif', color: '#314C5C', fontSize: '16px', fontWeight: 800, lineHeight: 1 }}>FD</span>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 const stats = [
   { n: '2023', l: 'DEPUIS' },
   { n: '20+',  l: 'FROMAGERS ACCOMPAGNÉS' },
@@ -82,14 +55,6 @@ export function HeroSection() {
           <div className="absolute inset-0 bg-fd-navy/70 sm:hidden" />
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.4 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 1.7, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute -left-16 bottom-32 z-20 hidden lg:block"
-        >
-          <RotatingBadge />
-        </motion.div>
       </div>
 
       {/* Contenu textuel */}

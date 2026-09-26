@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { HeroSection }      from '@/components/sections/HeroSection'
 import { StatementSection } from '@/components/sections/StatementSection'
-import { SocialProof }      from '@/components/sections/SocialProof'
 import { ServicesPreview }  from '@/components/sections/ServicesPreview'
 import { ValuesSection }    from '@/components/sections/ValuesSection'
 import { PhotoFeature }     from '@/components/sections/PhotoFeature'
@@ -19,7 +18,6 @@ export default function HomePage() {
     <>
       <HeroSection />
       <StatementSection />
-      <SocialProof />
       <ServicesPreview />
       <ValuesSection />
       <PhotoFeature />

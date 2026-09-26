@@ -53,7 +53,7 @@ export function ServicesPageContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.7 }}
           >
-            Six services pensés pour les artisans fromagers. Rien de superflu, tout ce qu&apos;il faut pour briller en ligne.
+            Neuf services pensés pour les artisans fromagers. Rien de superflu, tout ce qu&apos;il faut pour briller en ligne.
           </motion.p>
         </div>
       </section>
