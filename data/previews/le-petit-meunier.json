@@ -1,0 +1,127 @@
+{
+  "slug": "le-petit-meunier",
+  "name": "Le Petit Meunier",
+  "tagline": "fromagerie fermière",
+  "metaTitle": "Le Petit Meunier — Fromagerie fermière d'Auvergne",
+  "metaDescription": "Fromages au lait cru affinés en cave par cinq générations sur le plateau du Cézallier.",
+  "hero": {
+    "eyebrow": "Auvergne · depuis 1892",
+    "titleLines": ["Le Petit", "Meunier"],
+    "titleItalic": "fromagerie fermière",
+    "subtitle": "Fromages au lait cru, affinés en cave par cinq générations sur le plateau du Cézallier.",
+    "ctaPrimary": "Découvrir la boutique",
+    "ctaSecondary": "Visiter la fromagerie"
+  },
+  "marquee": [
+    "Livraison offerte dès 60 €",
+    "Expédition sous 48 heures",
+    "Colis isotherme réfrigéré",
+    "Cinq générations d'affineurs",
+    "Fromages fermiers d'Auvergne"
+  ],
+  "products": [
+    {
+      "num": "01",
+      "category": "Signature",
+      "name": "Cantal",
+      "nameItalic": "fermier",
+      "badge": "AOP Auvergne",
+      "description": "Vieilli douze mois en cave d'affinage naturelle, notre Cantal développe une croûte fleurie et un cœur ferme, aux notes de noisette et de terre humide.",
+      "image": "https://images.unsplash.com/photo-1650969788858-3e19f17072e0?w=1200&q=80&auto=format&fit=crop",
+      "imageAlt": "Cantal fermier",
+      "meta": [
+        { "k": "12 mois", "v": "Affinage" },
+        { "k": "Salers", "v": "Race laitière" },
+        { "k": "12°C", "v": "Cave" }
+      ],
+      "price": "28 €",
+      "unit": "/ 500 g"
+    },
+    {
+      "num": "02",
+      "category": "Saisonnier",
+      "name": "Saint",
+      "nameItalic": "Nectaire",
+      "badge": "Nouveau",
+      "description": "Pâte pressée non cuite au lait cru de nos vaches Salers. Huit semaines de patience pour une pâte souple, un goût de sous-bois et une croûte grise typique.",
+      "image": "https://images.unsplash.com/photo-1634925353703-451b16b6d1a8?w=1200&q=80&auto=format&fit=crop",
+      "imageAlt": "Saint-Nectaire fermier",
+      "meta": [
+        { "k": "8 sem.", "v": "Affinage" },
+        { "k": "Cru", "v": "Lait" },
+        { "k": "Fermier", "v": "Origine" }
+      ],
+      "price": "22 €",
+      "unit": "/ 400 g",
+      "reverse": true
+    }
+  ],
+  "about": {
+    "eyebrow": "Notre histoire",
+    "title": "Cinq générations,",
+    "titleItalic": "un seul geste.",
+    "paragraphs": [
+      "La ferme est installée sur le plateau du Cézallier depuis 1892. Nous fabriquons chaque fromage à la main, à la sortie de la traite, avec le lait cru de nos quarante-deux vaches Salers.",
+      "Aucune poudre, aucune conservation. Juste du lait, du sel, de la présure — et le temps qu'il faut."
+    ],
+    "signature": "Famille Meunier",
+    "signatureRole": "Éleveurs et affineurs",
+    "backgroundImage": "https://images.unsplash.com/photo-1663841366331-71c93047c6de?w=1800&q=80&auto=format&fit=crop"
+  },
+  "values": {
+    "eyebrow": "Nos engagements",
+    "title": "Le lait,",
+    "titleItalic": "rien que le lait.",
+    "items": [
+      { "icon": "diamond", "title": "Lait cru fermier", "description": "42 vaches Salers en pâture 8 mois par an" },
+      { "icon": "house",   "title": "Cave naturelle",   "description": "Affinage lent en cave voûtée à 12 °C" },
+      { "icon": "box",     "title": "Livraison 48 h",   "description": "Colis isotherme partout en France" },
+      { "icon": "aop",     "title": "Appellations",     "description": "Cantal, Saint-Nectaire, Fourme d'Ambert" }
+    ]
+  },
+  "coming": {
+    "marquee": "◆ Bientôt en boutique ◆ Fourme d'Ambert édition limitée ◆ Coffret découverte",
+    "eyebrow": "À venir",
+    "title": "Fourme",
+    "titleItalic": "d'Ambert",
+    "description": "Persillée douce, affinée en cave humide. Ses veinures bleutées se déploient sur une pâte crémeuse à partager sur un pain de campagne.",
+    "cta": "M'avertir de la sortie",
+    "photos": [
+      { "image": "https://images.unsplash.com/photo-1582227253806-3ff5bf5819ce?w=800&q=80&auto=format&fit=crop", "alt": "Fourme d'Ambert", "label": "Persillée douce" },
+      { "image": "https://images.unsplash.com/photo-1654184750621-1110fe5afcdc?w=800&q=80&auto=format&fit=crop", "alt": "Cave d'affinage", "label": "Cave humide" }
+    ]
+  },
+  "gifts": {
+    "eyebrow": "Offrir la fromagerie",
+    "title": "Trois façons de",
+    "titleItalic": "partager.",
+    "items": [
+      { "num": "01", "title": "Coffret",     "titleItalic": "découverte", "description": "Trois fromages fermiers, une planche en chêne, un livret d'accord. Emballage soigné, prêt à offrir.", "link": "Composer un coffret" },
+      { "num": "02", "title": "Abonnement",  "titleItalic": "mensuel",    "description": "Chaque mois, une sélection de saison choisie par la famille Meunier. Sans engagement, résiliable en un clic.",  "link": "S'abonner" },
+      { "num": "03", "title": "Cadeau",      "titleItalic": "entreprise", "description": "Coffrets personnalisés pour vos clients ou vos équipes. Devis sur mesure, livraison groupée en France.",     "link": "Demander un devis" }
+    ]
+  },
+  "fd": {
+    "tag": "Cette maquette a été créée pour vous",
+    "titlePrefix": "Ce site vous plaît ?",
+    "titleItalic": "Fromagerie Digitale peut le construire — pour de vrai — en 15 jours.",
+    "description": "Nous concevons et développons des sites e-commerce sur-mesure pour les artisans de bouche. Design éditorial, paiement en ligne, livraison, référencement. À partir de 3 500 €.",
+    "cta": "Réserver 15 min avec Abraham",
+    "ctaUrl": "https://cal.com/fromageriedigitale/15min",
+    "ctaMeta": "Ou répondez à ce mail — je reviens vers vous sous 24 h"
+  },
+  "footer": {
+    "brand": "Le Petit Meunier",
+    "intro": "Fromagerie fermière familiale, plateau du Cézallier, Auvergne.",
+    "address": ["42 route des Estives", "15300 Allanche · Cantal"],
+    "columns": [
+      { "title": "Boutique", "links": ["Cantal fermier", "Saint-Nectaire", "Fourme d'Ambert", "Coffrets & cadeaux", "Abonnements"] },
+      { "title": "Ferme",    "links": ["Notre histoire", "Visite de la cave", "Journal", "Nos vaches Salers"] }
+    ],
+    "contact": {
+      "email": "contact@lepetitmeunier.fr",
+      "phone": "04 71 20 XX XX",
+      "hours": "Mardi – samedi\n9h – 12h · 14h – 18h"
+    }
+  }
+}
