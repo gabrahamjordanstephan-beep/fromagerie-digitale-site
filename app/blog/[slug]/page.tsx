@@ -1,135 +1,219 @@
 import type { Metadata } from 'next'
-import { notFound } from 'next/navigation'
+import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowLeft, Clock, Calendar } from 'lucide-react'
-import { blogPosts, getBlogPost, formatDate } from '@/lib/blog-data'
-import { CtaBanner } from '@/components/sections/CtaBanner'
+import { notFound } from 'next/navigation'
+import { ArrowUpRight, PathIcon } from '@/components/ui/icons'
+import { Breadcrumb } from '@/components/ui/Breadcrumb'
+import { CopyLink } from '@/components/blog/CopyLink'
+import { Checklist } from '@/components/blog/Checklist'
+import { JsonLd } from '@/components/seo/JsonLd'
+import { blogPosts, formatDate, getBlogPost, type BlogPost } from '@/lib/blog-data'
+import { FICHE_GOOGLE_CHECKS, FICHE_GOOGLE_INTRO, FICHE_GOOGLE_STEPS } from '@/lib/articles/fiche-google'
+import { SITE_URL } from '@/lib/site'
 
-interface Props {
-  params: { slug: string }
-}
+type Props = { params: { slug: string } }
 
 export function generateStaticParams() {
-  return blogPosts.map(p => ({ slug: p.slug }))
+  return blogPosts.map((p) => ({ slug: p.slug }))
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export function generateMetadata({ params }: Props): Metadata {
   const post = getBlogPost(params.slug)
   if (!post) return {}
-
   return {
     title: post.title,
     description: post.excerpt,
-    alternates: { canonical: `https://fromageriedigitale.com/blog/${post.slug}` },
+    alternates: { canonical: `/blog/${post.slug}` },
+    authors: [{ name: post.author.name }],
     openGraph: {
+      type: 'article',
       title: post.title,
       description: post.excerpt,
-      url: `https://fromageriedigitale.com/blog/${post.slug}`,
-      type: 'article',
+      url: `/blog/${post.slug}`,
       publishedTime: post.date,
       authors: [post.author.name],
+      images: [{ url: post.image, alt: post.imageAlt }],
     },
   }
 }
 
-const categoryColors: Record<string, string> = {
-  'Stratégie digitale': 'bg-fd-blue/20 text-fd-blue',
-  'SEO':                'bg-fd-gold/20 text-fd-gold',
-  'Réseaux sociaux':    'bg-white/15 text-white/80',
+const initials = (name: string) =>
+  name
+    .split(' ')
+    .map((w) => w[0])
+    .join('')
+    .slice(0, 2)
+    .toUpperCase()
+
+function FicheGoogleBody() {
+  return (
+    <>
+      <p className="text-lg">{FICHE_GOOGLE_INTRO}</p>
+      <nav aria-label="Sommaire" className="not-prose my-10 rounded-2xl border border-fd-line bg-fd-paper p-6">
+        <p className="m-0 mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-fd-slate">Sommaire</p>
+        <ol className="m-0 flex list-none flex-col gap-2 p-0">
+          {FICHE_GOOGLE_STEPS.map((s) => (
+            <li key={s.id}>
+              <a href={`#${s.id}`} className="text-[15px] text-fd-navy no-underline hover:underline">
+                <span className="mr-2 font-semibold text-fd-slate">{s.num}</span>
+                {s.title}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a href="#checklist" className="text-[15px] font-semibold text-fd-navy no-underline hover:underline">
+              Votre checklist
+            </a>
+          </li>
+        </ol>
+      </nav>
+      {FICHE_GOOGLE_STEPS.map((s) => (
+        <div key={s.id}>
+          <section id={s.id}>
+            <h2>
+              <span className="mr-3 text-fd-gold">{s.num}</span>
+              {s.title}
+            </h2>
+            <p>{s.body}</p>
+          </section>
+          {s.tip && (
+            <aside className="not-prose my-8 flex gap-4 rounded-2xl bg-fd-dark p-6 text-white">
+              <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/10">
+                <PathIcon d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.6.6 1 1.4 1 2.5h6c0-1.1.4-1.9 1-2.5A6 6 0 0 0 12 3z" size={20} stroke="#F4BD45" />
+              </span>
+              <span className="text-[15px] leading-relaxed">
+                <strong className="block text-fd-gold">Le réflexe cinq minutes</strong>
+                Chaque lundi, ouvrez votre fiche, ajoutez la photo de la semaine et répondez aux nouveaux avis. C&apos;est tout.
+              </span>
+            </aside>
+          )}
+          {s.cta && (
+            <aside className="not-prose my-8 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-fd-gold bg-[#FFF8E6] p-6">
+              <span className="flex flex-col gap-1">
+                <strong className="text-base text-fd-dark">Pas le temps de tout régler ?</strong>
+                <span className="text-[15px] text-fd-body">On audite votre fiche gratuitement lors du diagnostic offert.</span>
+              </span>
+              <Link href="/contact" className="fd-btn inline-flex min-h-[48px] items-center rounded-full bg-fd-dark px-5 text-sm font-semibold text-white no-underline">
+                Demander mon audit
+              </Link>
+            </aside>
+          )}
+        </div>
+      ))}
+      <Checklist items={FICHE_GOOGLE_CHECKS} />
+    </>
+  )
 }
 
-export default function BlogPostPage({ params }: Props) {
+export default function ArticlePage({ params }: Props) {
   const post = getBlogPost(params.slug)
   if (!post) notFound()
 
-  const currentIndex = blogPosts.findIndex(p => p.slug === post.slug)
-  const next = blogPosts[currentIndex + 1] ?? blogPosts[0]
+  const related: BlogPost[] = [
+    ...blogPosts.filter((p) => p.slug !== post.slug && p.category === post.category),
+    ...blogPosts.filter((p) => p.slug !== post.slug && p.category !== post.category),
+  ].slice(0, 3)
 
   return (
     <>
-      {/* ── Header article ── */}
-      <section className="bg-fd-navy pt-36 pb-20 px-6 lg:px-16">
-        <div className="max-w-[800px] mx-auto">
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'BlogPosting',
+          headline: post.title,
+          description: post.excerpt,
+          image: `${SITE_URL}${post.image}`,
+          datePublished: post.date,
+          dateModified: post.date,
+          author: { '@type': 'Person', name: post.author.name, url: `${SITE_URL}/a-propos` },
+          publisher: { '@id': `${SITE_URL}/#agence` },
+          mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
+          inLanguage: 'fr-FR',
+        }}
+      />
 
-          {/* Retour */}
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-white/40 hover:text-white text-sm transition-colors duration-200 mb-10"
-          >
-            <ArrowLeft size={14} />
-            Tous les articles
-          </Link>
-
-          {/* Catégorie */}
-          <span className={`inline-block text-xs font-semibold px-3 py-1.5 rounded-full mb-6 ${categoryColors[post.category] ?? 'bg-white/10 text-white/60'}`}>
-            {post.category}
-          </span>
-
-          {/* Titre */}
-          <h1
-            className="font-bold text-white leading-tight mb-8"
-            style={{ fontSize: 'clamp(28px, 4.5vw, 56px)' }}
-          >
-            {post.title}
-          </h1>
-
-          {/* Méta */}
-          <div className="flex flex-wrap items-center gap-6 text-white/40 text-sm border-t border-white/8 pt-8">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-fd-gold/20 flex items-center justify-center text-fd-gold text-xs font-bold">
-                {post.author.name.charAt(0)}
-              </div>
-              <div>
-                <p className="text-white/80 text-sm font-medium">{post.author.name}</p>
-                <p className="text-white/35 text-xs">{post.author.role}</p>
-              </div>
+      <section className="bg-fd-cream">
+        <div className="fd-hero mx-auto flex max-w-[860px] flex-col gap-5 px-gutter pb-10 pt-[clamp(40px,6vw,80px)]">
+          <Breadcrumb items={[{ href: '/', label: 'Accueil' }, { href: '/blog', label: 'Blog' }, { label: post.category }]} />
+          <span className="text-xs font-semibold uppercase tracking-[0.16em] text-fd-navy">{post.category}</span>
+          <h1 className="m-0 text-[clamp(34px,5vw,58px)] font-bold leading-[1.06] tracking-[-0.025em] text-fd-dark">{post.title}</h1>
+          <p className="m-0 text-lg leading-relaxed text-fd-body">{post.excerpt}</p>
+          <div className="flex flex-wrap items-center justify-between gap-4 border-t border-fd-sand pt-5">
+            <div className="flex items-center gap-3">
+              <span aria-hidden="true" className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-fd-dark text-sm font-bold text-fd-gold">
+                {initials(post.author.name)}
+              </span>
+              <span className="flex flex-col">
+                <Link href="/a-propos" className="text-[15px] font-semibold text-fd-dark no-underline hover:underline">
+                  {post.author.name}
+                </Link>
+                <span className="text-[13px] text-fd-slate">
+                  <time dateTime={post.date}>{formatDate(post.date)}</time> · {post.readingTime} min de lecture
+                </span>
+              </span>
             </div>
-            <span className="flex items-center gap-1.5">
-              <Calendar size={13} />
-              {formatDate(post.date)}
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Clock size={13} />
-              {post.readingTime} min de lecture
-            </span>
+            <CopyLink />
           </div>
         </div>
       </section>
 
-      {/* ── Corps de l'article ── */}
-      <section className="bg-white px-6 lg:px-16 py-20">
-        <div className="max-w-[800px] mx-auto">
-          <div
-            className="prose prose-lg prose-fd max-w-none"
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
+      <div className="bg-fd-cream">
+        <div className="mx-auto max-w-[1040px] px-gutter">
+          <div className="relative aspect-[21/9] overflow-hidden rounded-3xl bg-fd-navy">
+            <Image src={post.image} alt={post.imageAlt} fill priority sizes="(max-width: 1080px) 100vw, 1040px" className="object-cover" />
+          </div>
         </div>
-      </section>
+      </div>
 
-      {/* ── Article suivant ── */}
-      <section className="bg-fd-cream px-6 lg:px-16 py-16">
-        <div className="max-w-[800px] mx-auto">
-          <div className="border-t border-fd-navy/12 pt-12">
-            <p className="text-fd-navy/30 text-[11px] tracking-[0.28em] uppercase mb-6">
-              Article suivant
-            </p>
-            <Link href={`/blog/${next.slug}`} className="group flex items-start justify-between gap-8">
-              <div>
-                <span className="text-xs font-medium text-fd-blue mb-2 block">{next.category}</span>
-                <h3 className="font-bold text-fd-navy text-xl leading-snug group-hover:text-fd-blue transition-colors duration-200">
-                  {next.title}
-                </h3>
-              </div>
-              <ArrowLeft
-                size={20}
-                className="rotate-180 text-fd-navy/30 group-hover:text-fd-blue group-hover:translate-x-1 transition-all duration-200 flex-shrink-0 mt-1"
-              />
+      <article className="bg-fd-cream">
+        <div className="prose prose-lg prose-fd mx-auto max-w-[720px] px-gutter py-14">
+          {post.layout === 'fiche-google' ? <FicheGoogleBody /> : <div dangerouslySetInnerHTML={{ __html: post.content }} />}
+
+          <div className="not-prose mt-14 flex flex-wrap items-center gap-4 rounded-2xl border border-fd-line bg-white p-6">
+            <span aria-hidden="true" className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-fd-dark font-bold text-fd-gold">
+              {initials(post.author.name)}
+            </span>
+            <span className="flex min-w-[200px] flex-1 flex-col gap-0.5">
+              <span className="text-base font-semibold text-fd-dark">{post.author.name}</span>
+              <span className="text-sm leading-normal text-fd-slate">
+                {post.author.role} de Fromagerie Digitale. Nous aidons les fromagers à être trouvés, reconnus et choisis.
+              </span>
+            </span>
+            <Link href="/a-propos" className="inline-flex min-h-[44px] items-center rounded-full border border-fd-navy px-4 text-sm font-semibold text-fd-navy no-underline">
+              En savoir plus
             </Link>
           </div>
         </div>
-      </section>
+      </article>
 
-      <CtaBanner />
+      <section className="bg-white">
+        <div className="mx-auto flex max-w-page flex-col gap-8 px-gutter py-section">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <h2 className="m-0 text-[clamp(28px,3.4vw,40px)] font-bold text-fd-dark">À lire aussi</h2>
+            <Link href="/blog" className="inline-flex items-center gap-1.5 text-sm font-semibold text-fd-navy">
+              Tous les articles <ArrowUpRight size={16} />
+            </Link>
+          </div>
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-6">
+            {related.map((r) => (
+              <article key={r.slug} className="fd-card group relative flex flex-col overflow-hidden rounded-[20px] border border-fd-line bg-white">
+                <div className="relative aspect-[16/10] overflow-hidden bg-fd-navy">
+                  <Image src={r.image} alt="" fill sizes="(max-width: 700px) 100vw, 380px" className="object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
+                </div>
+                <div className="flex flex-1 flex-col gap-2 p-6">
+                  <span className="text-xs font-semibold uppercase tracking-[0.14em] text-fd-slate">{r.category}</span>
+                  <h3 className="m-0 text-lg font-bold leading-snug text-fd-dark">
+                    <Link href={`/blog/${r.slug}`} className="text-inherit no-underline after:absolute after:inset-0">
+                      {r.title}
+                    </Link>
+                  </h3>
+                  <span className="mt-auto pt-2 text-[13px] text-fd-slate">{r.readingTime} min de lecture</span>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   )
 }

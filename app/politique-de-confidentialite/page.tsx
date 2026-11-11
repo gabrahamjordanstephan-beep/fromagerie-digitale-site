@@ -4,7 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title:      'Politique de confidentialité',
   description: 'Politique de confidentialité et protection des données personnelles de Fromagerie Digitale, conformément au RGPD.',
-  alternates: { canonical: 'https://fromageriedigitale.com/politique-de-confidentialite' },
+  alternates: { canonical: '/politique-de-confidentialite' },
   robots:     { index: false, follow: true },
 }
 
@@ -17,10 +17,10 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
 
 export default function PolitiqueConfidentialitePage() {
   return (
-    <div className="pt-20 min-h-screen bg-fd-cream">
+    <div className="min-h-screen bg-fd-cream">
 
       {/* Header */}
-      <section className="bg-fd-navy py-20 px-6">
+      <section className="fd-grid-bg bg-fd-dark py-20 px-6">
         <div className="max-w-3xl mx-auto">
           <p className="text-fd-gold font-medium text-xs uppercase tracking-widest mb-4">
             Protection des données
@@ -28,7 +28,7 @@ export default function PolitiqueConfidentialitePage() {
           <h1 className="font-bold text-white" style={{ fontSize: 'clamp(28px, 5vw, 56px)' }}>
             Politique de confidentialité
           </h1>
-          <p className="text-white/40 text-sm mt-4">Dernière mise à jour : mai 2025 — Conforme au RGPD (UE) 2016/679</p>
+          <p className="text-white/40 text-sm mt-4">Dernière mise à jour : novembre 2026 · Conforme au RGPD (UE) 2016/679</p>
         </div>
       </section>
 
@@ -129,7 +129,7 @@ export default function PolitiqueConfidentialitePage() {
             <p>
               Vous avez également le droit d&apos;introduire une réclamation auprès de la{' '}
               <strong className="text-fd-navy">CNIL</strong> (Commission Nationale de l&apos;Informatique et des Libertés) :
-              cnil.fr — 3 Place de Fontenoy, 75007 Paris.
+              cnil.fr, 3 place de Fontenoy, 75007 Paris.
             </p>
           </Section>
 
@@ -151,8 +151,8 @@ export default function PolitiqueConfidentialitePage() {
               respect du RGPD :
             </p>
             <ul className="list-disc list-inside space-y-1 ml-2 mt-2">
-              <li><strong className="text-fd-navy">Vercel Inc.</strong> — Hébergement du site (USA — clauses contractuelles types UE)</li>
-              <li><strong className="text-fd-navy">Resend</strong> — Envoi des emails de contact (USA — clauses contractuelles types UE)</li>
+              <li><strong className="text-fd-navy">Vercel Inc.</strong> : hébergement du site (États-Unis, clauses contractuelles types UE)</li>
+              <li><strong className="text-fd-navy">Resend</strong> : envoi des emails du formulaire de contact (États-Unis, clauses contractuelles types UE)</li>
             </ul>
             <p className="mt-3">
               Aucun transfert de données n&apos;est effectué en dehors de ces sous-traitants identifiés.
@@ -178,7 +178,7 @@ export default function PolitiqueConfidentialitePage() {
               <Link href="/contact" className="text-fd-blue hover:underline">
                 notre formulaire de contact
               </Link>{' '}
-              — ou consultez nos{' '}
+              ou consultez nos{' '}
               <Link href="/mentions-legales" className="text-fd-blue hover:underline">
                 Mentions légales
               </Link>.

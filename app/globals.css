@@ -7,71 +7,157 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
   }
-
   body {
-    color: #314C5C;
-    background-color: #ffffff;
-    font-family: "Poppins", sans-serif;
+    @apply bg-fd-cream font-sans text-fd-ink;
   }
-
+  :focus-visible {
+    outline: 3px solid #f4bd45;
+    outline-offset: 3px;
+  }
   ::selection {
-    background-color: rgba(201, 168, 76, 0.2);
-    color: #314C5C;
+    background-color: rgba(244, 189, 69, 0.35);
+    color: #1c2c37;
+  }
+  [id] {
+    scroll-margin-top: 80px;
   }
 }
 
-/* Prose custom theme pour les articles du blog */
+/* ------------------------------------------------------------------ */
+/* Animations de la refonte (CSS uniquement, sans bibliothèque)        */
+/* ------------------------------------------------------------------ */
+@keyframes fdUp { from { opacity: 0; transform: translateY(16px) } to { opacity: 1; transform: none } }
+@keyframes fdUpLg { from { opacity: 0; transform: translateY(24px) } to { opacity: 1; transform: none } }
+@keyframes fdA { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: none } }
+@keyframes fdB { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: none } }
+@keyframes fdPop { from { opacity: 0; transform: scale(.6) } to { opacity: 1; transform: scale(1) } }
+@keyframes fdDraw { to { stroke-dashoffset: 0 } }
+@keyframes fdSpin { to { transform: rotate(360deg) } }
+@keyframes fdLit { from { opacity: .18 } to { opacity: 1 } }
+@keyframes fdShadow { to { box-shadow: 0 8px 24px rgba(28, 44, 55, .12) } }
+@keyframes fdPill { from { width: 0; opacity: 0 } to { width: var(--w); opacity: 1 } }
+@keyframes fdMarkGrow { from { background-size: 0% 34% } to { background-size: 100% 34% } }
+@keyframes fdRise { from { opacity: 0; transform: translateY(60px) } to { opacity: 1; transform: none } }
+@keyframes fdBadge { from { opacity: 0; transform: scale(.6) rotate(-20deg) } to { opacity: 1; transform: none } }
+
+@layer components {
+  /* Entrée du hero, enfant par enfant */
+  .fd-hero > * { animation: fdUp 480ms cubic-bezier(.2,.7,.2,1) backwards }
+  .fd-hero > *:nth-child(2) { animation-delay: 80ms }
+  .fd-hero > *:nth-child(3) { animation-delay: 160ms }
+  .fd-hero > *:nth-child(4) { animation-delay: 240ms }
+  .fd-hero > *:nth-child(5) { animation-delay: 320ms }
+
+  .fd-line { display: block; animation: fdUpLg 700ms cubic-bezier(.2,.7,.2,1) backwards }
+  .fd-line:nth-child(2) { animation-delay: 90ms }
+  .fd-line:nth-child(3) { animation-delay: 180ms }
+  .fd-fade { animation: fdUpLg 600ms cubic-bezier(.2,.7,.2,1) backwards }
+
+  /* Pastilles photo dans le titre */
+  .fd-pill {
+    --w: 2.3em;
+    position: relative;
+    display: inline-block;
+    vertical-align: -0.06em;
+    width: var(--w);
+    height: .78em;
+    margin: 0 .12em;
+    border-radius: 9999px;
+    overflow: hidden;
+    animation: fdPill 800ms 500ms cubic-bezier(.2,.7,.2,1) backwards;
+  }
+  .fd-pill-wide { --w: 2.9em; animation-delay: 650ms }
+  .fd-mark {
+    background: linear-gradient(#f4bd45, #f4bd45) no-repeat 0 82% / 100% 34%;
+    animation: fdMarkGrow 700ms 900ms cubic-bezier(.2,.7,.2,1) backwards;
+  }
+
+  /* Boutons pilule et cartes */
+  .fd-btn { transition: transform 200ms ease-out, box-shadow 200ms ease-out, background-color 200ms ease-out, color 200ms ease-out }
+  .fd-btn svg { transition: transform 200ms ease-out }
+  .fd-btn:active { transform: scale(.98) }
+  .fd-card { transition: transform 240ms ease-out, box-shadow 240ms ease-out, background-color 240ms ease-out }
+  .fd-seg { transition: background-color 220ms ease-out, color 220ms ease-out }
+  .fd-lever { transition: background-color 220ms ease-out }
+  .fd-lever svg { transition: transform 220ms ease-out }
+  @media (hover: hover) {
+    .fd-btn:not(:disabled):hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(28,44,55,.25) }
+    .fd-btn:hover svg { transform: translateX(4px) }
+    .fd-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(28,44,55,.14) }
+    .fd-lever:hover { background-color: #ffffff }
+    .fd-lever:hover svg { transform: translate(3px, -3px) }
+  }
+
+  /* Changements d'état : fondu relancé en alternant deux animations */
+  .fd-swap-a { animation: fdA 280ms ease-out both }
+  .fd-swap-b { animation: fdB 280ms ease-out both }
+  .fd-in { animation: fdA 240ms ease-out both }
+  .fd-pop { animation: fdPop 320ms cubic-bezier(.2,.9,.3,1.3) both }
+  .fd-draw path { stroke-dasharray: 24; stroke-dashoffset: 24; animation: fdDraw 360ms 220ms ease-out forwards }
+  .fd-spin { animation: fdSpin 800ms linear infinite }
+  .fd-fill { transition: width 420ms cubic-bezier(.2,.7,.2,1) }
+  .fd-node { transition: background-color 240ms ease-out, border-color 240ms ease-out, box-shadow 240ms ease-out, transform 240ms ease-out }
+  @media (hover: hover) { .fd-step:hover .fd-node { transform: scale(1.08) } }
+
+  /* Lien « visiter la démo » */
+  .fd-visit-pill, .fd-visit-frame { transition: transform 320ms ease-out, box-shadow 320ms ease-out }
+  @media (hover: hover) {
+    .fd-visit:hover .fd-visit-pill { transform: translateY(-4px) }
+    .fd-visit:hover .fd-visit-frame { transform: translateY(-4px); box-shadow: 0 32px 70px rgba(28,44,55,.25) }
+  }
+
+  /* Page À propos */
+  .fd-rise { animation: fdRise 800ms cubic-bezier(.2,.7,.2,1) backwards }
+  .fd-rise-2 { animation-delay: 120ms }
+  .fd-badge { animation: fdBadge 600ms 950ms cubic-bezier(.2,.9,.3,1.3) backwards }
+  .fd-chip { animation: fdA 500ms 750ms ease-out backwards }
+
+  /* Grille de fond des sections sombres */
+  .fd-grid-bg {
+    background-image:
+      linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  /* Surtitre de section */
+  .fd-eyebrow { @apply m-0 text-xs font-semibold uppercase tracking-[0.2em] }
+  .fd-h2 { @apply m-0 text-[clamp(32px,4.4vw,56px)] font-bold leading-[1.1] }
+}
+
+/* Apparition au défilement, uniquement si le navigateur sait le faire */
+@supports (animation-timeline: view()) {
+  .fd-reveal {
+    animation: fdUp linear backwards;
+    animation-timeline: view();
+    animation-range: entry 0% entry 45%;
+  }
+  .fd-manif { view-timeline-name: --manif }
+  .fd-word { animation: fdLit linear both; animation-timeline: --manif; animation-range: cover var(--a) cover var(--b) }
+  .fd-header { animation: fdShadow linear both; animation-timeline: scroll(); animation-range: 0 120px }
+}
+
+/* Articles du blog */
 @layer components {
   .prose-fd {
-    --tw-prose-body:        #314C5C;
-    --tw-prose-headings:    #314C5C;
-    --tw-prose-lead:        #4A7BA7;
-    --tw-prose-links:       #4A7BA7;
-    --tw-prose-bold:        #314C5C;
-    --tw-prose-counters:    #C9A84C;
-    --tw-prose-bullets:     #C9A84C;
-    --tw-prose-hr:          rgba(49,76,92,0.12);
-    --tw-prose-quotes:      #314C5C;
-    --tw-prose-quote-borders: #C9A84C;
-    --tw-prose-captions:    #314C5C;
-    --tw-prose-code:        #314C5C;
-    --tw-prose-pre-code:    #F5F0E8;
-    --tw-prose-pre-bg:      #1C2C37;
-    --tw-prose-th-borders:  rgba(49,76,92,0.15);
-    --tw-prose-td-borders:  rgba(49,76,92,0.08);
+    --tw-prose-body: #22343f;
+    --tw-prose-headings: #1c2c37;
+    --tw-prose-links: #314c5c;
+    --tw-prose-bold: #1c2c37;
+    --tw-prose-counters: #314c5c;
+    --tw-prose-bullets: #f4bd45;
+    --tw-prose-quotes: #1c2c37;
+    --tw-prose-quote-borders: #f4bd45;
+    --tw-prose-hr: #ddd3c2;
   }
-
-  .prose-fd h2 {
-    @apply mt-12 mb-5 text-2xl font-bold;
-  }
-
-  .prose-fd h3 {
-    @apply mt-8 mb-4 text-xl font-semibold;
-  }
-
-  .prose-fd p {
-    @apply mb-6 leading-relaxed;
-  }
-
-  .prose-fd a {
-    @apply underline decoration-fd-blue/40 hover:decoration-fd-blue transition-colors duration-150;
-  }
-
-  .prose-fd ul li::marker,
-  .prose-fd ol li::marker {
-    color: #C9A84C;
-  }
-
-  .prose-fd strong {
-    @apply font-semibold;
-  }
+  .prose-fd h2 { @apply mb-4 mt-12 text-[clamp(24px,2.6vw,32px)] font-bold leading-tight }
+  .prose-fd h3 { @apply mb-3 mt-8 text-xl font-semibold }
+  .prose-fd p { @apply leading-[1.75] }
+  .prose-fd a { @apply underline decoration-fd-gold decoration-2 underline-offset-4 }
 }
 
-@layer utilities {
-  .animate-delay-100 { animation-delay: 100ms; }
-  .animate-delay-200 { animation-delay: 200ms; }
-  .animate-delay-300 { animation-delay: 300ms; }
-  .animate-delay-400 { animation-delay: 400ms; }
-  .animate-delay-500 { animation-delay: 500ms; }
-  .animate-delay-600 { animation-delay: 600ms; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto }
+  *, *::before, *::after { animation: none !important; transition: none !important }
+  .fd-draw path { stroke-dashoffset: 0 !important }
 }

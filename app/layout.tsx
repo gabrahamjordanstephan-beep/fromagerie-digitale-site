@@ -1,58 +1,50 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
+import { Poppins } from 'next/font/google'
 import './globals.css'
 import { ConditionalChrome } from '@/components/layout/ConditionalChrome'
 import { LocalBusinessSchema } from '@/components/seo/LocalBusinessSchema'
+import { SITE_URL } from '@/lib/site'
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+  variable: '--font-poppins',
+})
+
+const DEFAULT_TITLE = "Fromagerie Digitale, l'agence qui parle le langage des fromagers"
+const DEFAULT_DESCRIPTION =
+  'Agence digitale dédiée aux fromageries artisanales : site, fiche Google, référencement local et IA, identité, vidéo et publicité. Diagnostic offert.'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://fromageriedigitale.com'),
-  title: {
-    default:  "Fromagerie Digitale — L'agence qui parle le langage des fromagers",
-    template: '%s | Fromagerie Digitale',
-  },
-  description:
-    "Agence digitale spécialisée pour les fromageries artisanales. Sites web, SEO local, e-commerce, branding. Votre histoire, en ligne.",
-  keywords: [
-    'agence digitale fromagerie', 'marketing fromagerie', 'site web fromager',
-    'SEO local fromagerie', 'e-commerce fromage', 'branding artisan fromager',
-  ],
-  authors:  [{ name: 'Fromagerie Digitale' }],
-  creator:  'Fromagerie Digitale',
+  metadataBase: new URL(SITE_URL),
+  title: { default: DEFAULT_TITLE, template: '%s | Fromagerie Digitale' },
+  description: DEFAULT_DESCRIPTION,
+  applicationName: 'Fromagerie Digitale',
+  authors: [{ name: 'Fromagerie Digitale' }],
+  creator: 'Fromagerie Digitale',
   openGraph: {
-    type:      'website',
-    locale:    'fr_FR',
-    url:       'https://fromageriedigitale.com',
-    siteName:  'Fromagerie Digitale',
-    title:     "Fromagerie Digitale — L'agence qui parle le langage des fromagers",
-    description:
-      "Agence digitale spécialisée pour les fromageries artisanales. Votre histoire, en ligne.",
-    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Fromagerie Digitale' }],
+    type: 'website',
+    locale: 'fr_FR',
+    url: SITE_URL,
+    siteName: 'Fromagerie Digitale',
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
   },
-  twitter: {
-    card:  'summary_large_image',
-    title: "Fromagerie Digitale — L'agence qui parle le langage des fromagers",
-    description: "Agence digitale spécialisée pour les fromageries artisanales.",
-    images: ['/opengraph-image'],
-  },
+  twitter: { card: 'summary_large_image', title: DEFAULT_TITLE, description: DEFAULT_DESCRIPTION },
   robots: { index: true, follow: true },
   verification: { google: 'RQQ135bc5ssUC3mxQxX9qB31FAtpsWiTCvywGaepiP0' },
-  alternates: { canonical: 'https://fromageriedigitale.com' },
+  alternates: { canonical: '/' },
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export const viewport: Viewport = {
+  themeColor: '#1C2C37',
+}
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=Caveat:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="fr" className={poppins.variable}>
       <body className="antialiased">
         <LocalBusinessSchema />
         <ConditionalChrome>{children}</ConditionalChrome>

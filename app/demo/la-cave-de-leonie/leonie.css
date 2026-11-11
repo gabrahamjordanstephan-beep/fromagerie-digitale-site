@@ -1,0 +1,47 @@
+/* Habillage propre à la boutique démo « La Cave de Léonie ». Toutes les classes sont préfixées lv-. */
+.lv-root { font-family: var(--lv-sans), system-ui, sans-serif; color: #2a2118 }
+.lv-root a { color: #2a2118 }
+.lv-root :focus-visible { outline: 3px solid #a6461f; outline-offset: 3px }
+.lv-mono { font-family: var(--lv-mono), ui-monospace, monospace }
+.lv-serif { font-family: var(--lv-serif), Georgia, serif }
+.lv-paper {
+  background-color: #f7f1e6;
+  background-image: radial-gradient(rgba(42, 33, 24, .035) 1px, transparent 1px);
+  background-size: 6px 6px;
+}
+
+@keyframes lvUp { from { opacity: 0; transform: translateY(16px) } to { opacity: 1; transform: none } }
+@keyframes lvIn { from { transform: translateX(100%) } to { transform: none } }
+@keyframes lvFade { from { opacity: 0 } to { opacity: 1 } }
+@keyframes lvPop { 0% { transform: scale(1) } 40% { transform: scale(1.35) } 100% { transform: scale(1) } }
+@keyframes lvSwap { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: none } }
+@keyframes lvZoom { from { transform: scale(1.1) } to { transform: scale(1) } }
+@keyframes lvRise { from { opacity: 0; transform: translateY(30px) } to { opacity: 1; transform: none } }
+@keyframes lvDraw { from { opacity: 0; transform: translate(-10px, 10px) } to { opacity: 1; transform: none } }
+
+.lv-hero > * { animation: lvUp 600ms cubic-bezier(.2,.7,.2,1) backwards }
+.lv-hero > *:nth-child(2) { animation-delay: 90ms }
+.lv-hero > *:nth-child(3) { animation-delay: 180ms }
+.lv-hero > *:nth-child(4) { animation-delay: 270ms }
+.lv-drawer { animation: lvIn 320ms cubic-bezier(.2,.7,.2,1) both }
+.lv-scrim { animation: lvFade 240ms ease-out both }
+.lv-swap { animation: lvSwap 280ms ease-out both }
+.lv-badge-pop { animation: lvPop 360ms ease-out }
+.lv-arch img { animation: lvZoom 1600ms cubic-bezier(.2,.7,.2,1) backwards }
+.lv-inset { animation: lvRise 700ms 450ms cubic-bezier(.2,.7,.2,1) backwards }
+.lv-outline { animation: lvDraw 800ms 250ms cubic-bezier(.2,.7,.2,1) backwards }
+
+.lv-tag { transition: transform 220ms ease-out, box-shadow 220ms ease-out }
+.lv-btn { transition: background-color 180ms ease-out, color 180ms ease-out, border-color 180ms ease-out, transform 140ms ease-out }
+.lv-btn:active { transform: scale(.97) }
+.lv-photo img, .lv-vault img { transition: transform 600ms cubic-bezier(.2,.7,.2,1) }
+@media (hover: hover) {
+  .lv-tag:hover { transform: translateY(-3px) rotate(-.3deg); box-shadow: 0 14px 28px rgba(42,33,24,.12) }
+  .lv-tag:hover .lv-photo img, .lv-vault:hover img { transform: scale(1.05) }
+  .lv-dark:hover { background-color: #a6461f !important }
+  .lv-line:hover { border-color: #2a2118 !important }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lv-root *, .lv-root *::before, .lv-root *::after { animation: none !important; transition: none !important }
+}

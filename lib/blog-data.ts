@@ -2,6 +2,7 @@ export interface BlogPost {
   slug: string
   title: string
   excerpt: string
+  /** Corps de l'article en HTML. Vide pour les articles à mise en page dédiée. */
   content: string
   category: string
   date: string
@@ -10,18 +11,38 @@ export interface BlogPost {
     name: string
     role: string
   }
+  image: string
+  imageAlt: string
+  /** Mise en page dédiée (sommaire, checklist interactive). */
+  layout?: 'fiche-google'
 }
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'fiche-google-fromagerie-7-reglages',
+    image: '/images/blog/une-large.webp',
+    imageAlt: 'Un fromager coupe une meule au comptoir de sa boutique',
+    title: 'Fiche Google : les 7 réglages qui font venir les clients en boutique',
+    excerpt:
+      'Horaires, photos, catégories, avis. La fiche Google est souvent la première vitrine de votre fromagerie. Voici comment la rendre irrésistible en une matinée.',
+    category: 'Visibilité locale',
+    date: '2026-11-11',
+    readingTime: 6,
+    author: { name: 'Abraham Jordan', role: 'Cofondateur' },
+    layout: 'fiche-google',
+    content: '',
+  },
+  {
     slug: 'pourquoi-votre-fromagerie-a-besoin-dun-site-web',
+    image: '/images/blog/une.webp',
+    imageAlt: "Un fromager coupe une meule au comptoir de sa boutique",
     title: 'Pourquoi votre fromagerie a besoin d\'un site web en 2025',
     excerpt:
       'Vos clients cherchent vos horaires sur Google avant de se déplacer. Sans site web, vous êtes invisible, même si votre fromage est exceptionnel.',
     category: 'Stratégie digitale',
     date: '2025-05-10',
     readingTime: 5,
-    author: { name: 'Alice Gautro', role: 'Co-fondatrice' },
+    author: { name: 'Sandra Munon', role: 'Cofondatrice' },
     content: `
 <p>Imaginez un client qui vient de découvrir votre fromagerie en passant devant votre vitrine un samedi matin. Il est intrigué, mais il n'a pas le temps de s'arrêter. Le soir, chez lui, il vous cherche sur Google. Il veut vos horaires, votre adresse exacte, vos spécialités. Et il ne trouve rien.</p>
 
@@ -72,13 +93,15 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'seo-local-fromagerie-attirer-clients-quartier',
+    image: '/images/blog/retrait.webp',
+    imageAlt: "Un fromager prépare des commandes au comptoir de sa boutique",
     title: 'SEO local pour fromagerie : comment attirer des clients dans votre quartier',
     excerpt:
       'Apparaître en tête de Google Maps quand un client cherche "fromagerie" près de chez lui : c\'est possible, même sans budget publicitaire.',
-    category: 'SEO',
+    category: 'Visibilité locale',
     date: '2025-05-03',
     readingTime: 7,
-    author: { name: 'Grenguende Abraham', role: 'Co-fondateur' },
+    author: { name: 'Abraham Jordan', role: 'Cofondateur' },
     content: `
 <p>Le SEO local, c'est la discipline qui vous permet d'apparaître sur Google quand quelqu'un dans votre quartier cherche un produit ou un service que vous proposez. Pour une fromagerie, c'est l'un des leviers les plus puissants, et les plus sous-exploités.</p>
 
@@ -138,13 +161,15 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'instagram-fromagerie-5-idees-contenus',
+    image: '/images/blog/vitrine.webp',
+    imageAlt: "Un fromager au travail derrière une vitrine garnie de fromages",
     title: 'Instagram pour fromageries : 5 idées de contenus qui engagent vraiment',
     excerpt:
       'Pas besoin d\'être photographe professionnel. Voici 5 types de posts qui fonctionnent pour les fromageries artisanales, testés et approuvés.',
     category: 'Réseaux sociaux',
     date: '2025-04-25',
     readingTime: 6,
-    author: { name: 'Alice Gautro', role: 'Co-fondatrice' },
+    author: { name: 'Sandra Munon', role: 'Cofondatrice' },
     content: `
 <p>Instagram est l'un des réseaux les plus visuels qui soit, et le fromage, c'est beau. Une meule bien affinée, un plateau généreux, un fromage en coupe qui révèle sa pâte... tout ça, ça se photographie parfaitement.</p>
 
@@ -193,13 +218,15 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'fiche-google-my-business-fromagerie-erreurs',
+    image: '/images/blog/avis.webp',
+    imageAlt: "Une cliente échange avec le fromager au comptoir",
     title: '5 erreurs sur votre fiche Google qui font fuir vos clients',
     excerpt:
       'Une fiche Google incomplète ou mal tenue, c\'est des clients perdus chaque jour. Voici les 5 erreurs les plus courantes, et comment les corriger en moins d\'une heure.',
     category: 'Stratégie digitale',
     date: '2025-04-10',
     readingTime: 4,
-    author: { name: 'Grenguende Abraham', role: 'Co-fondateur' },
+    author: { name: 'Abraham Jordan', role: 'Cofondateur' },
     content: `
 <p>Google Business Profile (ex Google My Business) est souvent la première chose que vos clients voient de vous. Avant votre site, avant Instagram : c'est la fiche Google. Et pourtant, la plupart des fromagers la laissent incomplète ou mal tenue. Voici les 5 erreurs qui vous coûtent des clients.</p>
 

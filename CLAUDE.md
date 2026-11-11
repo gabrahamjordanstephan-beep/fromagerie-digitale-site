@@ -8,8 +8,8 @@
 - **Site :** fromageriedigitale.com
 - **Tagline :** "L'agence qui parle le langage des fromagers"
 - **Baseline :** "Votre histoire, en ligne."
-- **Fondatrice :** Alice Gautro
-- **Co-fondateur :** Grenguende Abraham — gabrahamjordanstephan@gmail.com
+- **Cofondatrice :** Sandra Munon
+- **Cofondateur :** Abraham Jordan, gabrahamjordanstephan@gmail.com
 - **Objectif :** Convertir des artisans fromagers en clients de l'agence
 - **Adresse :** 9 rue Waldeck Rousseau, 75017 Paris
 - **SIREN :** 908 178 866 R.C.S. Paris
@@ -24,12 +24,13 @@
 | Langage | TypeScript strict (zéro `any`) |
 | Styling | Tailwind CSS avec palette FD |
 | Police | Poppins (Google Fonts) |
-| Booking | Cal.com embed (`@calcom/embed-react`) — appel découverte 30 min |
+| Formulaire | `/contact` + route `/api/contact`, envoi par Resend (API HTTP, sans SDK) |
 | CMS | Sanity.io v3 (Sprint 4+) |
 | Deploy | Vercel — région cdg1 |
 
-> ⚠️ Crisp chatbot supprimé — tous les CTA pointent vers `/contact`
-> ⚠️ Formulaire de contact + API Resend supprimés (Sprint 3.5) — remplacés par Cal.com
+> Refonte 2026 : Cal.com retiré, formulaire de devis remis en place (Resend). Tous les CTA pointent vers `/contact` ou `#contact` sur l'accueil.
+> Règle éditoriale : zéro tiret dans les textes visibles. Tarifs : tout est sur devis.
+> La boutique `/demo/la-cave-de-leonie` est une démo fictive, en noindex.
 
 ---
 
@@ -50,9 +51,9 @@
 ## Variables d'environnement
 
 ```bash
-# Cal.com — compte agence
-NEXT_PUBLIC_CAL_USERNAME=                 # ex: fromagerie-digitale
-NEXT_PUBLIC_CAL_EVENT_SLUG=decouverte-30min
+RESEND_API_KEY=
+CONTACT_TO_EMAIL=contact@fromageriedigitale.com
+CONTACT_FROM_EMAIL="Fromagerie Digitale <formulaire@fromageriedigitale.com>"
 
 NEXT_PUBLIC_SITE_URL=https://fromageriedigitale.com
 
@@ -62,7 +63,7 @@ NEXT_PUBLIC_SANITY_DATASET=production
 SANITY_API_TOKEN=
 ```
 
-> ⚠️ Sans `NEXT_PUBLIC_CAL_USERNAME`, la page /contact affiche un fallback mailto vers `contact@fromageriedigitale.com`.
+> ⚠️ Sans ces variables, le formulaire affiche un message d'erreur invitant à écrire à contact@fromageriedigitale.com.
 
 ---
 

@@ -1,27 +1,44 @@
 import type { Metadata } from 'next'
-import { HeroSection }      from '@/components/sections/HeroSection'
-import { StatementSection } from '@/components/sections/StatementSection'
-import { ServicesPreview }  from '@/components/sections/ServicesPreview'
-import { ValuesSection }    from '@/components/sections/ValuesSection'
-import { PhotoFeature }     from '@/components/sections/PhotoFeature'
-import { CtaBanner }        from '@/components/sections/CtaBanner'
+import { Hero } from '@/components/home/Hero'
+import { Manifesto } from '@/components/home/Manifesto'
+import { OfferTabs } from '@/components/home/OfferTabs'
+import { Method } from '@/components/home/Method'
+import { ProjectDemo } from '@/components/home/ProjectDemo'
+import { Values } from '@/components/home/Values'
+import { Faq } from '@/components/home/Faq'
+import { ContactSection } from '@/components/contact/ContactSection'
+import { JsonLd } from '@/components/seo/JsonLd'
+import { HOME_FAQ } from '@/lib/home-data'
 
 export const metadata: Metadata = {
-  title:       "Fromagerie Digitale — Agence digitale pour fromagers",
+  title: { absolute: "Fromagerie Digitale, l'agence digitale des fromageries artisanales" },
   description:
-    "Agence digitale spécialisée pour les fromageries artisanales. Sites web, SEO local, e-commerce, branding. Votre histoire, en ligne.",
-  alternates:  { canonical: 'https://fromageriedigitale.com' },
+    'Site, fiche Google, référencement local et IA, identité, vidéo : on aide les fromagers à remplir leur boutique. Diagnostic offert, sans engagement.',
+  alternates: { canonical: '/' },
 }
 
 export default function HomePage() {
   return (
     <>
-      <HeroSection />
-      <StatementSection />
-      <ServicesPreview />
-      <ValuesSection />
-      <PhotoFeature />
-      <CtaBanner />
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: HOME_FAQ.map((f) => ({
+            '@type': 'Question',
+            name: f.q,
+            acceptedAnswer: { '@type': 'Answer', text: f.a },
+          })),
+        }}
+      />
+      <Hero />
+      <Manifesto />
+      <OfferTabs />
+      <Method />
+      <ProjectDemo />
+      <Values />
+      <Faq items={HOME_FAQ} title="Ce que les fromagers nous demandent." />
+      <ContactSection />
     </>
   )
 }

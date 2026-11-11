@@ -10,12 +10,12 @@ const nextConfig = {
   async headers() {
     const csp = [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' https://app.cal.com https://cal.com",
+      "script-src 'self' 'unsafe-inline'",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' data: https://fonts.gstatic.com",
       "img-src 'self' data: blob: https:",
-      "frame-src https://app.cal.com https://cal.com",
-      "connect-src 'self' https://app.cal.com https://cal.com",
+      "frame-src 'none'",
+      "connect-src 'self'",
       "media-src 'self'",
       "object-src 'none'",
       "base-uri 'self'",
@@ -44,12 +44,16 @@ const nextConfig = {
     ]
   },
   async redirects() {
-    return [{
-      source:      '/:path*',
-      has:         [{ type: 'host', value: 'www.fromageriedigitale.com' }],
-      destination: 'https://fromageriedigitale.com/:path*',
-      permanent:   true,
-    }]
+    return [
+      {
+        source:      '/:path*',
+        has:         [{ type: 'host', value: 'www.fromageriedigitale.com' }],
+        destination: 'https://fromageriedigitale.com/:path*',
+        permanent:   true,
+      },
+      // Offre fusionnée dans « Référencement local et IA »
+      { source: '/services/autorite-geo', destination: '/services/visibilite-geo-ia', permanent: true },
+    ]
   },
   compress:       true,
   poweredByHeader: false,

@@ -1,81 +1,50 @@
 import Link from 'next/link'
-import { Linkedin } from 'lucide-react'
-import { services as servicesData } from '@/lib/services-data'
+import { BASELINE, CONTACT_EMAIL, TAGLINE } from '@/lib/site'
 
-const services = servicesData.map(s => ({
-  label: s.name,
-  href:  `/services/${s.slug}`,
-}))
+const AGENCE = [
+  { href: '/services', label: 'Offre' },
+  { href: '/#methode', label: 'Méthode' },
+  { href: '/#projet-demo', label: 'Projet démo' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/a-propos', label: 'À propos' },
+]
 
 export function Footer() {
-  const year = new Date().getFullYear()
-
   return (
-    <footer className="bg-fd-dark text-white px-6 lg:px-16 pt-20 pb-10">
-      <div className="max-w-[1400px] mx-auto">
-
-        {/* Top — logo + nav */}
-        <div className="border-t border-white/8 pt-14 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12">
-
-          {/* Brand */}
-          <div className="max-w-xs">
-            <img src="/logo.svg" alt="Fromagerie Digitale" className="h-10 w-auto mb-4" />
-            <p className="text-white/35 text-sm leading-relaxed mt-2">
-              L&apos;agence qui parle le langage des fromagers. On accompagne les artisans dans leur développement digital.
-            </p>
+    <footer className="bg-fd-dark text-[#A9B8C1]">
+      <div className="mx-auto flex max-w-page flex-col gap-10 px-gutter pb-8 pt-14">
+        <div className="flex flex-wrap justify-between gap-8">
+          <div className="flex max-w-[360px] flex-[1_1_280px] flex-col gap-3">
+            <span className="text-base font-bold text-white">Fromagerie Digitale</span>
+            <span className="text-sm leading-relaxed">
+              {TAGLINE}. {BASELINE}
+            </span>
           </div>
-
-          {/* Services */}
-          <div>
-            <p className="text-white/25 text-[11px] tracking-[0.28em] uppercase mb-6">Services</p>
-            <ul className="space-y-3">
-              {services.map(({ label, href }) => (
-                <li key={href}>
-                  <Link href={href} className="text-white/50 hover:text-white text-sm transition-colors duration-200">
-                    {label}
-                  </Link>
-                </li>
+          <nav aria-label="Liens de pied de page" className="flex flex-wrap gap-12">
+            <div className="flex flex-col gap-2.5 text-sm">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white">Agence</span>
+              {AGENCE.map((l) => (
+                <Link key={l.href} href={l.href} className="text-[#A9B8C1] no-underline hover:text-white">
+                  {l.label}
+                </Link>
               ))}
-            </ul>
-          </div>
-
-          {/* Agence */}
-          <div>
-            <p className="text-white/25 text-[11px] tracking-[0.28em] uppercase mb-6">Agence</p>
-            <div className="space-y-3">
-              <Link href="/a-propos" className="block text-white/50 hover:text-white text-sm transition-colors duration-200">
-                À propos
-              </Link>
-              <Link href="/blog" className="block text-white/50 hover:text-white text-sm transition-colors duration-200">
-                Blog
-              </Link>
-              <Link href="/contact" className="block text-white/50 hover:text-fd-gold text-sm transition-colors duration-200">
-                Formulaire de contact
-              </Link>
-              <a href="mailto:contact@fromageriedigitale.com" className="block text-white/50 hover:text-fd-gold text-sm transition-colors duration-200">
-                contact@fromageriedigitale.com
-              </a>
-              <a
-                href="https://www.linkedin.com/company/fromageriedigitale/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-white/50 hover:text-[#0A66C2] text-sm transition-colors duration-200"
-              >
-                <Linkedin size={14} />
-                LinkedIn
-              </a>
-              <p className="text-white/30 text-sm">Paris, Île-de-France</p>
             </div>
-          </div>
+            <div className="flex flex-col gap-2.5 text-sm">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white">Contact</span>
+              <Link href="/contact" className="text-[#A9B8C1] no-underline hover:text-white">Nous écrire</Link>
+              <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#A9B8C1] no-underline hover:text-white">
+                {CONTACT_EMAIL}
+              </a>
+              <span>Paris</span>
+            </div>
+          </nav>
         </div>
-
-        {/* Bottom bar */}
-        <div className="border-t border-white/8 mt-16 pt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <p className="text-white/20 text-xs">© {year} Fromagerie Digitale</p>
-          <div className="flex gap-6">
-            <Link href="/mentions-legales" className="text-white/20 hover:text-white/50 text-xs transition-colors">Mentions légales</Link>
-            <Link href="/politique-de-confidentialite" className="text-white/20 hover:text-white/50 text-xs transition-colors">Confidentialité</Link>
-          </div>
+        <div className="flex flex-wrap justify-between gap-4 border-t border-white/10 pt-6 text-xs">
+          <span>© {new Date().getFullYear()} Fromagerie Digitale</span>
+          <span className="flex gap-6">
+            <Link href="/mentions-legales" className="text-[#A9B8C1] hover:text-white">Mentions légales</Link>
+            <Link href="/politique-de-confidentialite" className="text-[#A9B8C1] hover:text-white">Confidentialité</Link>
+          </span>
         </div>
       </div>
     </footer>

@@ -4,7 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title:      'Mentions légales',
   description: 'Mentions légales du site Fromagerie Digitale, agence digitale spécialisée fromageries artisanales.',
-  alternates: { canonical: 'https://fromageriedigitale.com/mentions-legales' },
+  alternates: { canonical: '/mentions-legales' },
   robots:     { index: false, follow: true },
 }
 
@@ -17,10 +17,10 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
 
 export default function MentionsLegalesPage() {
   return (
-    <div className="pt-20 min-h-screen bg-fd-cream">
+    <div className="min-h-screen bg-fd-cream">
 
       {/* Header */}
-      <section className="bg-fd-navy py-20 px-6">
+      <section className="fd-grid-bg bg-fd-dark py-20 px-6">
         <div className="max-w-3xl mx-auto">
           <p className="text-fd-gold font-medium text-xs uppercase tracking-widest mb-4">
             Informations légales
@@ -28,7 +28,7 @@ export default function MentionsLegalesPage() {
           <h1 className="font-bold text-white" style={{ fontSize: 'clamp(32px, 5vw, 64px)' }}>
             Mentions légales
           </h1>
-          <p className="text-white/40 text-sm mt-4">Dernière mise à jour : mai 2025</p>
+          <p className="text-white/40 text-sm mt-4">Dernière mise à jour : novembre 2026</p>
         </div>
       </section>
 
@@ -48,7 +48,7 @@ export default function MentionsLegalesPage() {
                   Formulaire de contact
                 </Link>
               </li>
-              <li><strong className="text-fd-navy">Directrice de la publication :</strong> Alice Gautro</li>
+              <li><strong className="text-fd-navy">Directrice de la publication :</strong> Sandra Munon</li>
             </ul>
           </Section>
 
