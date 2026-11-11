@@ -1,14 +1,13 @@
 import { AUTHORS, type BlogPost } from '@/lib/blog-types'
 
 export const videosReseaux: BlogPost = {
-  slug: 'instagram-fromagerie-5-idees-contenus',
+  slug: 'videos-reels-tiktok-fromagerie',
   title: 'Reels et TikTok pour fromagerie : 7 idées de vidéos faciles à tourner',
   metaTitle: 'Vidéos Instagram et TikTok pour fromagerie : 7 idées',
   excerpt:
     'Retournement des meules, coupe du comté, arrivage du lundi : 7 idées de vidéos courtes à tourner au téléphone pour faire connaître votre fromagerie sur Instagram et TikTok.',
   category: 'Réseaux sociaux',
-  date: '2025-04-25',
-  updated: '2026-11-11',
+  date: '2026-11-11',
   author: AUTHORS.sandra,
   image: '/images/blog/une.webp',
   imageAlt: 'Un fromager coupe une meule au comptoir de sa boutique',
@@ -94,7 +93,7 @@ export const publicite: BlogPost = {
   <li><strong>Un nouveau service</strong> : commande en retrait, livraison locale, ateliers de dégustation.</li>
   <li><strong>Une deuxième boutique</strong> ou un nouveau marché.</li>
 </ul>
-<p>En dehors de ces moments, une <a href="/blog/fiche-google-fromagerie-7-reglages">fiche Google soignée</a> et des <a href="/blog/instagram-fromagerie-5-idees-contenus">vidéos régulières</a> travaillent souvent mieux pour vous.</p>
+<p>En dehors de ces moments, une <a href="/blog/fiche-google-fromagerie-7-reglages">fiche Google soignée</a> et des <a href="/blog/videos-reels-tiktok-fromagerie">vidéos régulières</a> travaillent souvent mieux pour vous.</p>
 
 <h2>Meta ou Google : quelle différence ?</h2>
 <p><strong>Meta (Facebook et Instagram)</strong> montre vos annonces à des personnes qui ne vous cherchaient pas, dans un rayon autour de la boutique. C’est l’outil de la découverte : une belle vidéo de coupe, une offre de fêtes.</p>
@@ -162,7 +161,7 @@ export const tiktokShop: BlogPost = {
   <li><strong>L’épicerie fine</strong> : confitures pour fromages, biscuits, condiments, conditionnés et étiquetés.</li>
   <li><strong>Les coffrets cadeaux</strong> composés de produits qui voyagent bien.</li>
 </ul>
-<p>Le fromage lui-même peut alors rester en boutique, avec la <a href="/blog/pourquoi-votre-fromagerie-a-besoin-dun-site-web">commande en retrait sur votre site</a>.</p>
+<p>Le fromage lui-même peut alors rester en boutique, avec la <a href="/blog/site-internet-fromagerie">commande en retrait sur votre site</a>.</p>
 
 <h2>Quelles obligations pour vendre à distance ?</h2>
 <ul>
@@ -173,7 +172,7 @@ export const tiktokShop: BlogPost = {
 <p>Si vous expédiez déjà par votre site, une partie du travail est faite : il s’agit d’adapter vos fiches et vos procédures aux exigences de la plateforme.</p>
 
 <h2>TikTok Shop vaut-il le coup pour une fromagerie ?</h2>
-<p>Il peut l’être si vous publiez déjà régulièrement des <a href="/blog/instagram-fromagerie-5-idees-contenus">vidéos</a>, si vous expédiez des produits compatibles avec les règles, et si vous visez un public plus large que votre quartier. Si votre clientèle est surtout locale, la fiche Google, le site et la commande en retrait sont prioritaires.</p>
+<p>Il peut l’être si vous publiez déjà régulièrement des <a href="/blog/videos-reels-tiktok-fromagerie">vidéos</a>, si vous expédiez des produits compatibles avec les règles, et si vous visez un public plus large que votre quartier. Si votre clientèle est surtout locale, la fiche Google, le site et la commande en retrait sont prioritaires.</p>
 `,
   faq: [
     {

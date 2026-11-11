@@ -1,14 +1,13 @@
 import { AUTHORS, type BlogPost } from '@/lib/blog-types'
 
 export const siteFromagerie: BlogPost = {
-  slug: 'pourquoi-votre-fromagerie-a-besoin-dun-site-web',
+  slug: 'site-internet-fromagerie',
   title: 'Site internet de fromagerie : ce qu’il doit contenir pour faire venir des clients',
   metaTitle: 'Site internet pour fromagerie : les pages essentielles',
   excerpt:
     'Horaires, arrivages, commande en retrait, producteurs : ce qu’un site de fromagerie doit montrer pour être trouvé sur Google et donner envie de passer en boutique.',
   category: 'Site internet',
-  date: '2025-05-10',
-  updated: '2026-11-11',
+  date: '2026-11-11',
   author: AUTHORS.abraham,
   image: '/images/blog/retrait.webp',
   imageAlt: 'Un fromager prépare des commandes au comptoir de sa boutique',
@@ -71,14 +70,13 @@ export const siteFromagerie: BlogPost = {
 }
 
 export const seoLocal: BlogPost = {
-  slug: 'seo-local-fromagerie-attirer-clients-quartier',
+  slug: 'seo-local-fromagerie',
   title: 'SEO local pour fromagerie : être trouvé par les clients de son quartier',
   metaTitle: 'SEO local pour fromagerie : la méthode simple',
   excerpt:
     'Fiche Google, avis, cohérence des informations, contenus locaux : la méthode simple pour apparaître quand on cherche une fromagerie près de chez soi.',
   category: 'Visibilité locale',
-  date: '2025-05-03',
-  updated: '2026-11-11',
+  date: '2026-11-11',
   author: AUTHORS.abraham,
   image: '/images/blog/vitrine.webp',
   imageAlt: 'Un fromager au travail derrière une vitrine garnie de fromages',
@@ -209,7 +207,7 @@ export const geoIA: BlogPost = {
 <p>Testez vous-même, régulièrement, avec plusieurs formulations : « fromagerie à [votre ville] », « où acheter du comté affiné à [quartier] », « meilleur fromager pour un plateau de fêtes à [ville] ». Notez si vous apparaissez, et quelles sources l’IA cite. Ces sources vous disent où vous devez être présent.</p>
 
 <h2>Le GEO remplace-t-il le référencement local ?</h2>
-<p>Non, il s’appuie dessus. Une <a href="/blog/fiche-google-fromagerie-7-reglages">fiche Google soignée</a>, des <a href="/blog/avis-google-fromagerie-obtenir-repondre">avis réguliers</a> et un <a href="/blog/seo-local-fromagerie-attirer-clients-quartier">bon référencement local</a> restent la base. Le GEO ajoute une couche : des contenus qui répondent clairement aux questions et une présence dans les sources que les IA consultent.</p>
+<p>Non, il s’appuie dessus. Une <a href="/blog/fiche-google-fromagerie-7-reglages">fiche Google soignée</a>, des <a href="/blog/avis-google-fromagerie-obtenir-repondre">avis réguliers</a> et un <a href="/blog/seo-local-fromagerie">bon référencement local</a> restent la base. Le GEO ajoute une couche : des contenus qui répondent clairement aux questions et une présence dans les sources que les IA consultent.</p>
 `,
   faq: [
     {
@@ -277,7 +275,7 @@ export const avisGoogle: BlogPost = {
 <p>Ne publiez jamais une réponse générée sans la relire, et ne collez pas de données personnelles de vos clients dans un outil en ligne. C’est exactement ce que nous travaillons pendant l’<a href="/services/atelier-ia-fromager">atelier IA fromager</a>.</p>
 
 <h2>Les avis aident-ils vraiment le référencement ?</h2>
-<p>Oui : la notoriété fait partie des critères de classement local de Google, et les avis en sont un élément visible. Ils comptent aussi pour les assistants IA, qui s’appuient sur ce que les clients disent de vous. Voir notre guide du <a href="/blog/seo-local-fromagerie-attirer-clients-quartier">référencement local</a>.</p>
+<p>Oui : la notoriété fait partie des critères de classement local de Google, et les avis en sont un élément visible. Ils comptent aussi pour les assistants IA, qui s’appuient sur ce que les clients disent de vous. Voir notre guide du <a href="/blog/seo-local-fromagerie">référencement local</a>.</p>
 `,
   faq: [
     {

@@ -40,7 +40,7 @@ export const identiteVisuelle: BlogPost = {
 <p>Les réponses orientent le style : plutôt artisanal et chaleureux, plutôt sobre et contemporain, plutôt ancré dans une région.</p>
 
 <h2>Pourquoi un logo animé ?</h2>
-<p>Les vidéos courtes sont devenues un format central sur Instagram et TikTok. Une version animée de votre logo, de deux ou trois secondes, signe vos vidéos de façon cohérente et professionnelle, sans effort supplémentaire à chaque publication. Voir aussi nos <a href="/blog/instagram-fromagerie-5-idees-contenus">idées de vidéos pour fromagerie</a>.</p>
+<p>Les vidéos courtes sont devenues un format central sur Instagram et TikTok. Une version animée de votre logo, de deux ou trois secondes, signe vos vidéos de façon cohérente et professionnelle, sans effort supplémentaire à chaque publication. Voir aussi nos <a href="/blog/videos-reels-tiktok-fromagerie">idées de vidéos pour fromagerie</a>.</p>
 
 <h2>Quels supports prévoir dès le départ ?</h2>
 <ul>

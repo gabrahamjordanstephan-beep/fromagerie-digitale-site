@@ -53,6 +53,10 @@ const nextConfig = {
       },
       // Offre fusionnée dans « Référencement local et IA »
       { source: '/services/autorite-geo', destination: '/services/visibilite-geo-ia', permanent: true },
+      // Anciens articles remplacés par les guides des nouvelles offres
+      { source: '/blog/pourquoi-votre-fromagerie-a-besoin-dun-site-web', destination: '/blog/site-internet-fromagerie', permanent: true },
+      { source: '/blog/seo-local-fromagerie-attirer-clients-quartier', destination: '/blog/seo-local-fromagerie', permanent: true },
+      { source: '/blog/instagram-fromagerie-5-idees-contenus', destination: '/blog/videos-reels-tiktok-fromagerie', permanent: true },
       // Article fusionné dans le guide des 7 réglages de la fiche Google
       { source: '/blog/fiche-google-my-business-fromagerie-erreurs', destination: '/blog/fiche-google-fromagerie-7-reglages', permanent: true },
     ]
