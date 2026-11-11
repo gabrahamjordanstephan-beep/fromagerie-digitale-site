@@ -40,13 +40,13 @@ export function Method() {
           <div aria-hidden="true" className="absolute left-[12.5%] right-[12.5%] top-[27px] h-0.5 bg-white/15">
             <div className="fd-fill h-full bg-fd-gold" style={{ width: `${Math.round((step / last) * 100)}%` }} />
           </div>
-          <ol role="tablist" aria-label="Étapes de la méthode" className="relative m-0 grid list-none grid-cols-4 gap-2 p-0">
+          <div role="tablist" aria-label="Étapes de la méthode" className="relative grid grid-cols-4 gap-2">
             {METHOD.map((m, i) => {
               const on = i === step
               const done = i < step
               return (
-                <li key={m.num} className="flex justify-center">
                   <button
+                    key={m.num}
                     type="button"
                     role="tab"
                     aria-selected={on}
@@ -70,10 +70,9 @@ export function Method() {
                       <span className="hidden text-[13px] text-fd-mist sm:inline">{m.when}</span>
                     </span>
                   </button>
-                </li>
               )
             })}
-          </ol>
+          </div>
         </div>
 
         {/* Détail de l'étape */}

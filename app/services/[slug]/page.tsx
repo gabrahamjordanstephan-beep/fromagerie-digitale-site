@@ -8,7 +8,7 @@ import { JsonLd } from '@/components/seo/JsonLd'
 import { METHOD } from '@/lib/home-data'
 import { postsForService } from '@/lib/blog-data'
 import { SERVICES, getService, leverOf } from '@/lib/services'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, seoTitle } from '@/lib/site'
 
 type Props = { params: { slug: string } }
 
@@ -20,10 +20,10 @@ export function generateMetadata({ params }: Props): Metadata {
   const s = getService(params.slug)
   if (!s) return {}
   return {
-    title: s.metaTitle,
+    title: seoTitle(s.metaTitle),
     description: s.metaDescription,
     alternates: { canonical: `/services/${s.slug}` },
-    openGraph: { title: `${s.metaTitle} | Fromagerie Digitale`, description: s.metaDescription, url: `/services/${s.slug}` },
+    openGraph: { title: `${s.metaTitle} | Fromagerie Digitale`, description: s.metaDescription, url: `/services/${s.slug}`, images: ['/opengraph-image'] },
   }
 }
 

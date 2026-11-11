@@ -26,3 +26,12 @@ export const NAV_LINKS = [
 export function absoluteUrl(path = ''): string {
   return `${SITE_URL}${path}`
 }
+
+/**
+ * Titre pour Google : ajoute « | Fromagerie Digitale » seulement si le tout reste sous 60 caractères,
+ * pour que le titre ne soit pas tronqué dans les résultats.
+ */
+export function seoTitle(title: string): { absolute: string } {
+  const full = `${title} | ${SITE_NAME}`
+  return { absolute: full.length <= 60 ? full : title }
+}

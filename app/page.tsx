@@ -11,7 +11,7 @@ import { JsonLd } from '@/components/seo/JsonLd'
 import { HOME_FAQ } from '@/lib/home-data'
 
 export const metadata: Metadata = {
-  title: { absolute: "Fromagerie Digitale, l'agence digitale des fromageries artisanales" },
+  title: { absolute: 'Fromagerie Digitale, agence digitale pour fromageries' },
   description:
     'Site, fiche Google, référencement local et IA, identité, vidéo : on aide les fromagers à remplir leur boutique. Diagnostic offert, sans engagement.',
   alternates: { canonical: '/' },

@@ -51,6 +51,13 @@ const nextConfig = {
         destination: 'https://fromageriedigitale.com/:path*',
         permanent:   true,
       },
+      // Un seul domaine pour Google : le .fr renvoie vers le .com
+      {
+        source:      '/:path*',
+        has:         [{ type: 'host', value: '(?:www\\.)?fromageriedigitale\\.fr' }],
+        destination: 'https://fromageriedigitale.com/:path*',
+        permanent:   true,
+      },
       // Offre fusionnée dans « Référencement local et IA »
       { source: '/services/autorite-geo', destination: '/services/visibilite-geo-ia', permanent: true },
       // Anciens articles remplacés par les guides des nouvelles offres

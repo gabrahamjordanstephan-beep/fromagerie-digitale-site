@@ -459,7 +459,7 @@ export function LeonieShop() {
               })}
             </div>
 
-            <article
+            <div
               id="recette-panneau"
               role="tabpanel"
               aria-labelledby={`recette-${rec}`}
@@ -527,7 +527,7 @@ export function LeonieShop() {
                   </blockquote>
                 </div>
               </div>
-            </article>
+            </div>
           </div>
         </section>
 

@@ -10,7 +10,7 @@ import { JsonLd } from '@/components/seo/JsonLd'
 import { blogPosts, formatDate, getBlogPost, type BlogPostWithMeta } from '@/lib/blog-data'
 import { getService } from '@/lib/services'
 import { FICHE_GOOGLE_CHECKS, FICHE_GOOGLE_INTRO, FICHE_GOOGLE_STEPS } from '@/lib/articles/fiche-google'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, seoTitle } from '@/lib/site'
 
 type Props = { params: { slug: string } }
 
@@ -22,7 +22,7 @@ export function generateMetadata({ params }: Props): Metadata {
   const post = getBlogPost(params.slug)
   if (!post) return {}
   return {
-    title: post.metaTitle ?? post.title,
+    title: seoTitle(post.metaTitle ?? post.title),
     description: post.excerpt,
     keywords: post.keywords,
     alternates: { canonical: `/blog/${post.slug}` },

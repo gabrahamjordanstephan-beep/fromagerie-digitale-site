@@ -93,7 +93,7 @@ export function ServiceExplorer() {
             ))}
           </div>
 
-          <article
+          <div
             id="service-panneau"
             role="tabpanel"
             aria-labelledby={`onglet-${s.slug}`}
@@ -157,7 +157,7 @@ export function ServiceExplorer() {
                 </Link>
               </div>
             </div>
-          </article>
+          </div>
         </div>
       </div>
     </section>
