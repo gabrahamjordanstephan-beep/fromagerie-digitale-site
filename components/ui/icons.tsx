@@ -71,20 +71,3 @@ export const ChevronDown = (p: IconProps) => (
 export function PathIcon({ d, ...p }: IconProps & { d: string }) {
   return <Svg {...p}><path d={d} /></Svg>
 }
-
-export function Logo({ dark = false }: { dark?: boolean }) {
-  return (
-    <span className="flex items-center gap-3">
-      <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
-        <path d="M4 22 L28 10 L28 24 Z" fill="#F4BD45" />
-        <path d="M4 22 L28 10 L22 6 Z" fill={dark ? '#F4BD45' : '#E1A62A'} opacity={dark ? 0.55 : 1} />
-        <circle cx="20" cy="19" r="2" fill="#1C2C37" />
-        <circle cx="14" cy="21" r="1.4" fill="#1C2C37" />
-      </svg>
-      <span className="flex flex-col leading-none">
-        <span className="text-base font-bold tracking-[0.02em]">FROMAGERIE</span>
-        <span className={`text-xs font-semibold tracking-[0.18em] ${dark ? 'text-fd-gold' : 'text-fd-navy'}`}>DIGITALE</span>
-      </span>
-    </span>
-  )
-}

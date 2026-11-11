@@ -3,7 +3,8 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { Logo, Menu } from '@/components/ui/icons'
+import { Menu } from '@/components/ui/icons'
+import { Logo } from '@/components/ui/Logo'
 import { NAV_LINKS } from '@/lib/site'
 
 /** En-tête commun : clair sur l'accueil, bleu nuit sur les autres pages. */
@@ -24,7 +25,7 @@ export function Header() {
     >
       <div className="mx-auto flex h-[76px] max-w-wide items-center justify-between gap-6 px-gutter">
         <Link href="/" aria-label="Fromagerie Digitale, accueil" className="text-inherit no-underline">
-          <Logo dark={!light} />
+          <Logo onDark={!light} />
         </Link>
 
         <nav aria-label="Navigation principale" className="hidden items-center gap-8 md:flex">

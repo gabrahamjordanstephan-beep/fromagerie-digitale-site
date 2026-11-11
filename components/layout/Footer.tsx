@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Logo } from '@/components/ui/Logo'
 import { BASELINE, CONTACT_EMAIL, TAGLINE } from '@/lib/site'
 
 const AGENCE = [
@@ -15,7 +16,7 @@ export function Footer() {
       <div className="mx-auto flex max-w-page flex-col gap-10 px-gutter pb-8 pt-14">
         <div className="flex flex-wrap justify-between gap-8">
           <div className="flex max-w-[360px] flex-[1_1_280px] flex-col gap-3">
-            <span className="text-base font-bold text-white">Fromagerie Digitale</span>
+            <Logo onDark className="h-10 w-auto" />
             <span className="text-sm leading-relaxed">
               {TAGLINE}. {BASELINE}
             </span>
