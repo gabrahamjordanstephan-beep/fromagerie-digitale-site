@@ -2,12 +2,13 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { ArrowUpRight, PathIcon } from '@/components/ui/icons'
+import { ArrowRight, ArrowUpRight, Check, PathIcon } from '@/components/ui/icons'
 import { Breadcrumb } from '@/components/ui/Breadcrumb'
 import { CopyLink } from '@/components/blog/CopyLink'
 import { Checklist } from '@/components/blog/Checklist'
 import { JsonLd } from '@/components/seo/JsonLd'
-import { blogPosts, formatDate, getBlogPost, type BlogPost } from '@/lib/blog-data'
+import { blogPosts, formatDate, getBlogPost, type BlogPostWithMeta } from '@/lib/blog-data'
+import { getService } from '@/lib/services'
 import { FICHE_GOOGLE_CHECKS, FICHE_GOOGLE_INTRO, FICHE_GOOGLE_STEPS } from '@/lib/articles/fiche-google'
 import { SITE_URL } from '@/lib/site'
 
@@ -21,8 +22,9 @@ export function generateMetadata({ params }: Props): Metadata {
   const post = getBlogPost(params.slug)
   if (!post) return {}
   return {
-    title: post.title,
+    title: post.metaTitle ?? post.title,
     description: post.excerpt,
+    keywords: post.keywords,
     alternates: { canonical: `/blog/${post.slug}` },
     authors: [{ name: post.author.name }],
     openGraph: {
@@ -31,6 +33,7 @@ export function generateMetadata({ params }: Props): Metadata {
       description: post.excerpt,
       url: `/blog/${post.slug}`,
       publishedTime: post.date,
+      modifiedTime: post.updated ?? post.date,
       authors: [post.author.name],
       images: [{ url: post.image, alt: post.imageAlt }],
     },
@@ -109,10 +112,15 @@ export default function ArticlePage({ params }: Props) {
   const post = getBlogPost(params.slug)
   if (!post) notFound()
 
-  const related: BlogPost[] = [
-    ...blogPosts.filter((p) => p.slug !== post.slug && p.category === post.category),
-    ...blogPosts.filter((p) => p.slug !== post.slug && p.category !== post.category),
-  ].slice(0, 3)
+  const service = getService(post.service)
+  // Articles liés : même offre d'abord, puis même thème, puis les plus récents.
+  const score = (p: BlogPostWithMeta) => (p.service === post.service ? 2 : 0) + (p.category === post.category ? 1 : 0)
+  const related: BlogPostWithMeta[] = blogPosts
+    .filter((p) => p.slug !== post.slug)
+    .map((p, i) => ({ p, i }))
+    .sort((a, b) => score(b.p) - score(a.p) || a.i - b.i)
+    .slice(0, 3)
+    .map(({ p }) => p)
 
   return (
     <>
@@ -124,11 +132,21 @@ export default function ArticlePage({ params }: Props) {
           description: post.excerpt,
           image: `${SITE_URL}${post.image}`,
           datePublished: post.date,
-          dateModified: post.date,
+          dateModified: post.updated ?? post.date,
+          keywords: post.keywords.join(', '),
+          articleSection: post.category,
+          wordCount: post.readingTime * 200,
           author: { '@type': 'Person', name: post.author.name, url: `${SITE_URL}/a-propos` },
           publisher: { '@id': `${SITE_URL}/#agence` },
           mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
           inLanguage: 'fr-FR',
+        }}
+      />
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: post.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
         }}
       />
 
@@ -148,7 +166,14 @@ export default function ArticlePage({ params }: Props) {
                   {post.author.name}
                 </Link>
                 <span className="text-[13px] text-fd-slate">
-                  <time dateTime={post.date}>{formatDate(post.date)}</time> · {post.readingTime} min de lecture
+                  {post.updated ? (
+                    <>
+                      Mis à jour le <time dateTime={post.updated}>{formatDate(post.updated)}</time>
+                    </>
+                  ) : (
+                    <time dateTime={post.date}>{formatDate(post.date)}</time>
+                  )}{' '}
+                  · {post.readingTime} min de lecture
                 </span>
               </span>
             </div>
@@ -167,7 +192,46 @@ export default function ArticlePage({ params }: Props) {
 
       <article className="bg-fd-cream">
         <div className="prose prose-lg prose-fd mx-auto max-w-[720px] px-gutter py-14">
+          <aside aria-label="En bref" className="not-prose mb-10 rounded-2xl border border-fd-gold bg-[#FFF8E6] p-6">
+            <p className="m-0 mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-fd-navy">En bref</p>
+            <ul className="m-0 flex list-none flex-col gap-2.5 p-0">
+              {post.summary.map((s) => (
+                <li key={s} className="flex gap-2.5 text-[16px] leading-relaxed text-fd-ink">
+                  <Check size={18} stroke="#314C5C" strokeWidth={2.4} className="mt-1 shrink-0" />
+                  {s}
+                </li>
+              ))}
+            </ul>
+          </aside>
           {post.layout === 'fiche-google' ? <FicheGoogleBody /> : <div dangerouslySetInnerHTML={{ __html: post.content }} />}
+
+          <section aria-labelledby="questions" className="not-prose mt-14">
+            <h2 id="questions" className="m-0 mb-4 text-[clamp(24px,2.6vw,30px)] font-bold text-fd-dark">Questions fréquentes</h2>
+            <div className="flex flex-col divide-y divide-fd-line border-y border-fd-line">
+              {post.faq.map((f) => (
+                <details key={f.q} className="group py-4">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-[17px] font-semibold text-fd-ink">
+                    <h3 className="m-0 text-[17px] font-semibold">{f.q}</h3>
+                    <span aria-hidden="true" className="text-xl text-fd-navy transition-transform group-open:rotate-45">+</span>
+                  </summary>
+                  <p className="m-0 mt-3 text-base leading-relaxed text-fd-slate">{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+
+          {service && (
+            <aside className="not-prose mt-12 flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-fd-dark p-6 text-white">
+              <span className="flex min-w-[220px] flex-1 flex-col gap-1">
+                <span className="text-xs font-semibold uppercase tracking-[0.16em] text-fd-gold">Notre offre sur le sujet</span>
+                <span className="text-lg font-bold">{service.name}</span>
+                <span className="text-sm leading-normal text-fd-fog">{service.promise}</span>
+              </span>
+              <Link href={`/services/${service.slug}`} className="fd-btn inline-flex min-h-[48px] items-center gap-2 rounded-full bg-fd-gold px-5 text-sm font-semibold text-fd-dark no-underline">
+                Découvrir l&apos;offre <ArrowRight size={16} />
+              </Link>
+            </aside>
+          )}
 
           <div className="not-prose mt-14 flex flex-wrap items-center gap-4 rounded-2xl border border-fd-line bg-white p-6">
             <span aria-hidden="true" className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-fd-dark font-bold text-fd-gold">

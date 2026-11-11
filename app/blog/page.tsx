@@ -10,19 +10,18 @@ import { blogPosts, formatDate } from '@/lib/blog-data'
 export const metadata: Metadata = {
   title: 'Blog : conseils digitaux pour fromagers',
   description:
-    'Fiche Google, site, Instagram, avis clients : des conseils concrets, écrits pour des fromagers qui ont peu de temps.',
+    'Fiche Google, référencement IA, avis, vidéo, packaging, publicité : des conseils concrets pour remplir votre fromagerie, écrits pour des fromagers pressés.',
   alternates: { canonical: '/blog' },
 }
 
 export default function BlogPage() {
-  const sorted = [...blogPosts].sort((a, b) => b.date.localeCompare(a.date))
-  const [featured, ...rest] = sorted
+  const [featured, ...rest] = blogPosts
   const cards: PostCard[] = rest.map((p) => ({
     slug: p.slug,
     title: p.title,
     excerpt: p.excerpt,
     category: p.category,
-    dateLabel: formatDate(p.date),
+    dateLabel: formatDate(p.updated ?? p.date),
     readingTime: p.readingTime,
     image: p.image,
     imageAlt: p.imageAlt,
@@ -37,7 +36,7 @@ export default function BlogPage() {
             Des idées concrètes pour <span className="fd-mark">remplir votre boutique</span>.
           </h1>
           <p className="m-0 max-w-[620px] text-lg leading-relaxed text-fd-body">
-            Visibilité locale, réseaux sociaux, site web. Des conseils concrets, écrits pour des fromagers qui ont peu de temps.
+            Visibilité locale, intelligence artificielle, vidéo, identité, publicité. Des conseils concrets, écrits pour des fromagers qui ont peu de temps.
           </p>
         </div>
       </section>

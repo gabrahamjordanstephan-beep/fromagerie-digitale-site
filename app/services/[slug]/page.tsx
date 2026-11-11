@@ -6,6 +6,7 @@ import { Breadcrumb } from '@/components/ui/Breadcrumb'
 import { GoldCta } from '@/components/ui/GoldCta'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { METHOD } from '@/lib/home-data'
+import { postsForService } from '@/lib/blog-data'
 import { SERVICES, getService, leverOf } from '@/lib/services'
 import { SITE_URL } from '@/lib/site'
 
@@ -32,6 +33,7 @@ export default function ServicePage({ params }: Props) {
   const lever = leverOf(s.lever)
   const others = SERVICES.filter((x) => x.slug !== s.slug)
   const sameLever = others.filter((x) => x.lever === s.lever)
+  const articles = postsForService(s.slug)
   const suggestions = [...sameLever, ...others.filter((x) => x.lever !== s.lever)].slice(0, 3)
 
   return (
@@ -119,6 +121,30 @@ export default function ServicePage({ params }: Props) {
           </ol>
         </div>
       </section>
+
+      {articles.length > 0 && (
+        <section className="bg-white">
+          <div className="mx-auto flex max-w-page flex-col gap-6 px-gutter pb-section">
+            <h2 className="m-0 text-[clamp(26px,3vw,34px)] font-bold text-fd-dark">Nos conseils sur le sujet</h2>
+            <ul className="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-4 p-0">
+              {articles.map((a) => (
+                <li key={a.slug}>
+                  <Link
+                    href={`/blog/${a.slug}`}
+                    className="fd-card flex h-full flex-col gap-2 rounded-2xl border border-[#E4DCCD] bg-fd-paper p-5 text-fd-dark no-underline"
+                  >
+                    <span className="text-xs font-semibold uppercase tracking-[0.14em] text-fd-slate">{a.category}</span>
+                    <span className="text-lg font-bold leading-snug">{a.title}</span>
+                    <span className="mt-auto inline-flex items-center gap-1.5 pt-1 text-sm font-semibold text-fd-navy">
+                      Lire l&apos;article <ArrowUpRight size={16} />
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
 
       <section className="bg-fd-cream">
         <div className="mx-auto flex max-w-page flex-col gap-8 px-gutter py-section">

@@ -53,6 +53,8 @@ const nextConfig = {
       },
       // Offre fusionnée dans « Référencement local et IA »
       { source: '/services/autorite-geo', destination: '/services/visibilite-geo-ia', permanent: true },
+      // Article fusionné dans le guide des 7 réglages de la fiche Google
+      { source: '/blog/fiche-google-my-business-fromagerie-erreurs', destination: '/blog/fiche-google-fromagerie-7-reglages', permanent: true },
     ]
   },
   compress:       true,
