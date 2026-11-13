@@ -32,7 +32,8 @@ export const FOUNDERS_DATA: Founder[] = [
     name: 'Sandra Munon',
     role: 'Cofondatrice',
     title: 'Cofondatrice · Stratégie, design et contenu',
-    // Photo à ajouter : public/images/equipe/sandra-munon.webp, une fois le portrait validé.
+    photo: '/images/equipe/sandra-munon.webp',
+    photoAlt: 'Portrait de Sandra Munon, cofondatrice de Fromagerie Digitale',
     bio: '',
     does: [
       'Définir avec vous les priorités et le plan d’action de votre boutique',
