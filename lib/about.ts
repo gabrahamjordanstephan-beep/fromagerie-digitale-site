@@ -25,7 +25,7 @@ export const FOUNDERS_DATA: Founder[] = [
       'Concevoir un site simple, accessible et conforme',
       'Suivre les résultats et vous les expliquer clairement',
     ],
-    skills: ['Stratégie produit', 'Expérience utilisateur', 'RGAA et RGPD'],
+    skills: ['Stratégie produit', 'Expérience utilisateur', 'Référencement local et IA', 'Publicité Meta et Google', 'Automatisation IA'],
   },
   {
     initials: 'SM',
