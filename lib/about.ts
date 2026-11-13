@@ -19,7 +19,7 @@ export const FOUNDERS_DATA: Founder[] = [
     title: 'Cofondateur',
     photo: '/images/equipe/abraham-jordan.webp',
     photoAlt: 'Portrait d’Abraham Jordan, cofondateur de Fromagerie Digitale',
-    bio: "Quatre ans à piloter des projets digitaux dans les télécoms, l'administration publique et l'assurance. Il apporte la méthode : écouter, prioriser, mesurer.",
+    bio: '',
     does: [
       'Cadrer votre projet et fixer les priorités',
       'Concevoir un site simple, accessible et conforme',
