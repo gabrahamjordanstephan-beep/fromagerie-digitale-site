@@ -8,6 +8,8 @@ import { JsonLd } from '@/components/seo/JsonLd'
 import { METHOD } from '@/lib/home-data'
 import { postsForService } from '@/lib/blog-data'
 import { SERVICES, getService, leverOf } from '@/lib/services'
+import { getServiceDetail } from '@/lib/service-details'
+import { Faq } from '@/components/home/Faq'
 import { SITE_URL, seoTitle } from '@/lib/site'
 
 type Props = { params: { slug: string } }
@@ -31,6 +33,7 @@ export default function ServicePage({ params }: Props) {
   const s = getService(params.slug)
   if (!s) notFound()
   const lever = leverOf(s.lever)
+  const d = getServiceDetail(s.slug)
   const others = SERVICES.filter((x) => x.slug !== s.slug)
   const sameLever = others.filter((x) => x.lever === s.lever)
   const articles = postsForService(s.slug)
@@ -50,6 +53,15 @@ export default function ServicePage({ params }: Props) {
           provider: { '@id': `${SITE_URL}/#agence` },
         }}
       />
+      {d && (
+        <JsonLd
+          data={{
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: d.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+          }}
+        />
+      )}
 
       <section className="fd-grid-bg bg-fd-dark text-white">
         <div className="fd-hero mx-auto flex max-w-page flex-col gap-6 px-gutter pb-[clamp(56px,7vw,96px)] pt-[clamp(56px,8vw,104px)]">
@@ -70,6 +82,30 @@ export default function ServicePage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {d && (
+        <section className="bg-white">
+          <div className="mx-auto grid max-w-page gap-10 px-gutter py-section lg:grid-cols-[1.4fr_1fr] lg:gap-16">
+            <div className="fd-reveal flex flex-col gap-5">
+              <p className="fd-eyebrow m-0 text-fd-slate">Pourquoi c&apos;est important</p>
+              {d.intro.map((p) => (
+                <p key={p.slice(0, 24)} className="m-0 text-lg leading-relaxed text-fd-body">{p}</p>
+              ))}
+            </div>
+            <div className="fd-reveal flex flex-col gap-4 self-start rounded-3xl bg-fd-cream p-8">
+              <h2 className="m-0 text-xl font-bold text-fd-dark">Vous vous reconnaissez ?</h2>
+              <ul className="m-0 flex list-none flex-col gap-3 p-0">
+                {d.signs.map((x) => (
+                  <li key={x} className="flex gap-3 text-base leading-normal">
+                    <Check size={18} stroke="#314C5C" strokeWidth={2.4} className="mt-1 shrink-0" />
+                    {x}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="bg-fd-cream">
         <div className="mx-auto grid max-w-page gap-6 px-gutter py-section lg:grid-cols-[1.4fr_1fr]">
@@ -103,7 +139,32 @@ export default function ServicePage({ params }: Props) {
         </div>
       </section>
 
-      <section className="bg-white">
+      {d && (
+        <section className="bg-white">
+          <div className="mx-auto flex max-w-page flex-col gap-10 px-gutter py-section">
+            <div className="flex max-w-[720px] flex-col gap-3">
+              <p className="fd-eyebrow text-fd-slate">Le détail</p>
+              <h2 className="fd-h2 fd-reveal text-fd-navy">Ce que nous faisons, étape par étape.</h2>
+            </div>
+            <ol className="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-5 p-0">
+              {d.steps.map((st, i) => (
+                <li key={st.title} className="fd-reveal flex flex-col gap-3 rounded-2xl border border-[#E4DCCD] bg-fd-paper p-6">
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-fd-dark text-sm font-bold text-fd-gold">{String(i + 1).padStart(2, '0')}</span>
+                  <h3 className="m-0 text-xl font-bold text-fd-dark">{st.title}</h3>
+                  <p className="m-0 text-[15px] leading-relaxed text-fd-slate">{st.text}</p>
+                </li>
+              ))}
+            </ol>
+            <div className="fd-reveal flex flex-col gap-2 rounded-3xl bg-fd-navy p-8 text-white md:p-10">
+              <span className="text-xs font-semibold uppercase tracking-[0.16em] text-fd-gold">{d.example.title}</span>
+              <p className="m-0 max-w-[820px] text-lg leading-relaxed">{d.example.text}</p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {!d && (
+      <section className="bg-fd-cream">
         <div className="mx-auto flex max-w-page flex-col gap-10 px-gutter py-section">
           <div className="flex max-w-[720px] flex-col gap-3">
             <p className="fd-eyebrow text-fd-slate">Comment ça se passe</p>
@@ -111,7 +172,7 @@ export default function ServicePage({ params }: Props) {
           </div>
           <ol className="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-5 p-0">
             {METHOD.map((m) => (
-              <li key={m.num} className="fd-reveal flex flex-col gap-3 rounded-2xl bg-fd-cream p-6">
+              <li key={m.num} className="fd-reveal flex flex-col gap-3 rounded-2xl bg-white p-6">
                 <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-fd-dark text-sm font-bold text-fd-gold">{m.num}</span>
                 <h3 className="m-0 text-xl font-bold text-fd-dark">{m.title}</h3>
                 <p className="m-0 text-[15px] leading-relaxed text-fd-slate">{m.headline}</p>
@@ -121,6 +182,9 @@ export default function ServicePage({ params }: Props) {
           </ol>
         </div>
       </section>
+      )}
+
+      {d && <Faq items={d.faq} title="Vos questions, nos réponses." />}
 
       {articles.length > 0 && (
         <section className="bg-white">
