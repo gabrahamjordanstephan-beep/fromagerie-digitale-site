@@ -50,7 +50,7 @@ export function Hero() {
           <div className="flex flex-wrap items-center gap-4">
             <Link
               href="#contact"
-              className="fd-btn inline-flex min-h-[60px] items-center gap-3 rounded-full bg-fd-dark py-0 pl-7 pr-2.5 text-base font-semibold text-white no-underline"
+              className="fd-btn inline-flex min-h-[56px] items-center gap-3 rounded-full bg-fd-dark py-0 pl-7 pr-2.5 text-base font-semibold text-white no-underline"
             >
               Réserver mon diagnostic offert
               <span className="inline-flex h-[42px] w-[42px] items-center justify-center rounded-full bg-fd-gold">

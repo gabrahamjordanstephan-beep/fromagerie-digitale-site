@@ -25,15 +25,15 @@ export function Footer() {
             <div className="flex flex-col gap-2.5 text-sm">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white">Agence</span>
               {AGENCE.map((l) => (
-                <Link key={l.href} href={l.href} className="text-[#A9B8C1] no-underline hover:text-white">
+                <Link key={l.href} href={l.href} className="inline-block py-2 text-[#A9B8C1] no-underline hover:text-white">
                   {l.label}
                 </Link>
               ))}
             </div>
             <div className="flex flex-col gap-2.5 text-sm">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white">Contact</span>
-              <Link href="/contact" className="text-[#A9B8C1] no-underline hover:text-white">Nous écrire</Link>
-              <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#A9B8C1] no-underline hover:text-white">
+              <Link href="/contact" className="inline-block py-2 text-[#A9B8C1] no-underline hover:text-white">Nous écrire</Link>
+              <a href={`mailto:${CONTACT_EMAIL}`} className="inline-block py-2 text-[#A9B8C1] no-underline hover:text-white">
                 {CONTACT_EMAIL}
               </a>
               <span>Paris</span>
@@ -43,8 +43,8 @@ export function Footer() {
         <div className="flex flex-wrap justify-between gap-4 border-t border-white/10 pt-6 text-xs">
           <span>© {new Date().getFullYear()} Fromagerie Digitale</span>
           <span className="flex gap-6">
-            <Link href="/mentions-legales" className="text-[#A9B8C1] hover:text-white">Mentions légales</Link>
-            <Link href="/politique-de-confidentialite" className="text-[#A9B8C1] hover:text-white">Confidentialité</Link>
+            <Link href="/mentions-legales" className="inline-block py-3 text-[#A9B8C1] hover:text-white">Mentions légales</Link>
+            <Link href="/politique-de-confidentialite" className="inline-block py-3 text-[#A9B8C1] hover:text-white">Confidentialité</Link>
           </span>
         </div>
       </div>

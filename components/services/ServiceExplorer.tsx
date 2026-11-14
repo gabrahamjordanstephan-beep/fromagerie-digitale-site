@@ -145,13 +145,13 @@ export function ServiceExplorer() {
                 <button
                   type="button"
                   onClick={() => pick((cur + 1) % SERVICES.length)}
-                  className="fd-btn inline-flex min-h-[48px] items-center gap-2 rounded-full border border-[#C9BFAE] bg-transparent px-[18px] text-sm font-semibold text-fd-navy"
+                  className="fd-btn inline-flex min-h-[48px] items-center gap-2 rounded-full border border-[#C9BFAE] bg-transparent px-[18px] text-[15px] font-semibold text-fd-navy"
                 >
                   Service suivant <ArrowRight size={16} />
                 </button>
                 <Link
                   href={`/services/${s.slug}`}
-                  className="fd-btn inline-flex min-h-[48px] items-center gap-2 rounded-full bg-fd-dark px-5 text-sm font-semibold text-white no-underline"
+                  className="fd-btn inline-flex min-h-[48px] items-center gap-2 rounded-full bg-fd-dark px-5 text-[15px] font-semibold text-white no-underline"
                 >
                   Voir la page du service <ArrowUpRight size={16} stroke="#F4BD45" />
                 </Link>

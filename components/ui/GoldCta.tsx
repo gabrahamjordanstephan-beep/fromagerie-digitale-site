@@ -22,7 +22,7 @@ export function GoldCta({
         </div>
         <Link
           href={href}
-          className="fd-btn inline-flex min-h-[58px] items-center gap-2.5 rounded-full bg-fd-dark px-7 text-base font-semibold text-white no-underline"
+          className="fd-btn inline-flex min-h-[56px] items-center gap-2.5 rounded-full bg-fd-dark px-7 text-base font-semibold text-white no-underline"
         >
           {label} <ArrowRight />
         </Link>

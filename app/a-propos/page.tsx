@@ -54,10 +54,10 @@ export default function AboutPage() {
               Fromagerie Digitale, c&apos;est une conviction partagée : les fromagers font un des plus beaux métiers de France, et ils méritent d&apos;être aussi visibles en ligne que les grandes enseignes.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link href="#fondateurs" className="fd-btn inline-flex min-h-[54px] items-center gap-2.5 rounded-full bg-fd-gold px-[26px] text-base font-semibold text-fd-dark no-underline">
+              <Link href="#fondateurs" className="fd-btn inline-flex min-h-[56px] items-center gap-2.5 rounded-full bg-fd-gold px-[26px] text-base font-semibold text-fd-dark no-underline">
                 Rencontrer les fondateurs <ArrowRight />
               </Link>
-              <Link href="#histoire" className="fd-btn inline-flex min-h-[54px] items-center rounded-full border border-white/25 px-6 text-base font-medium text-white no-underline">
+              <Link href="#histoire" className="fd-btn inline-flex min-h-[56px] items-center rounded-full border border-white/25 px-6 text-base font-medium text-white no-underline">
                 Notre histoire
               </Link>
             </div>
@@ -66,7 +66,7 @@ export default function AboutPage() {
           <div className="relative mx-auto grid min-w-0 max-w-[500px] flex-[1_1_380px] grid-cols-2 items-end gap-4">
             <span
               aria-hidden="true"
-              className="fd-badge absolute left-[42%] top-[6%] z-[3] flex h-[84px] w-[84px] flex-col items-center justify-center rounded-full bg-fd-gold text-center text-[11px] font-bold leading-tight text-fd-dark shadow-[0_10px_30px_rgba(0,0,0,0.3)] sm:h-[104px] sm:w-[104px] sm:text-xs"
+              className="fd-badge absolute left-[42%] top-[6%] z-[3] flex h-[84px] w-[84px] flex-col items-center justify-center rounded-full bg-fd-gold text-center text-xs font-bold leading-tight text-fd-dark shadow-[0_10px_30px_rgba(0,0,0,0.3)] sm:h-[104px] sm:w-[104px] sm:text-xs"
             >
               100 %
               <br />
@@ -188,7 +188,7 @@ export default function AboutPage() {
                 La rigueur du digital, <span className="text-fd-gold">le goût du terroir.</span>
               </h2>
             </div>
-            <Link href="/#projet-demo" className="fd-btn inline-flex min-h-[52px] items-center gap-2.5 rounded-full border border-white/25 py-0 pl-[22px] pr-2 text-[15px] font-medium text-white no-underline">
+            <Link href="/#projet-demo" className="fd-btn inline-flex min-h-[48px] items-center gap-2.5 rounded-full border border-white/25 py-0 pl-[22px] pr-2 text-[15px] font-medium text-white no-underline">
               Voir le projet démo
               <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white">
                 <ArrowUpRight size={16} stroke="#1C2C37" strokeWidth={2.2} />

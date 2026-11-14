@@ -121,7 +121,7 @@
   }
 
   /* Surtitre de section */
-  .fd-eyebrow { @apply m-0 text-xs font-semibold uppercase tracking-[0.2em] }
+  .fd-eyebrow { @apply m-0 text-[13px] font-semibold uppercase tracking-[0.2em] }
   .fd-h2 { @apply m-0 text-[clamp(32px,4.4vw,56px)] font-bold leading-[1.1] }
 }
 

@@ -47,7 +47,7 @@ export function OfferTabs() {
                 tabIndex={on ? 0 : -1}
                 onClick={() => select(i)}
                 onKeyDown={onKey}
-                className={`fd-btn inline-flex min-h-[48px] items-center gap-2.5 rounded-full border border-fd-navy px-[22px] text-base font-semibold ${
+                className={`fd-btn inline-flex min-h-[48px] items-center gap-2.5 rounded-full border border-fd-navy px-[22px] text-[15px] font-semibold ${
                   on ? 'bg-fd-navy text-white' : 'bg-transparent text-fd-navy'
                 }`}
               >
@@ -70,10 +70,10 @@ export function OfferTabs() {
             <h3 className="m-0 text-[32px] font-bold leading-tight">{active.title}</h3>
             <p className="m-0 text-base leading-relaxed text-fd-fog">{active.desc}</p>
             <div className="mt-2 flex flex-wrap gap-3">
-              <Link href="#contact" className="fd-btn inline-flex min-h-[48px] items-center rounded-full bg-fd-gold px-[22px] text-sm font-semibold text-fd-dark no-underline">
+              <Link href="#contact" className="fd-btn inline-flex min-h-[48px] items-center rounded-full bg-fd-gold px-[22px] text-[15px] font-semibold text-fd-dark no-underline">
                 En parler ensemble
               </Link>
-              <Link href="/services" className="fd-btn inline-flex min-h-[48px] items-center rounded-full border border-white/40 px-[22px] text-sm font-semibold text-white no-underline">
+              <Link href="/services" className="fd-btn inline-flex min-h-[48px] items-center rounded-full border border-white/40 px-[22px] text-[15px] font-semibold text-white no-underline">
                 Voir le détail des offres
               </Link>
             </div>

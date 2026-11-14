@@ -155,7 +155,7 @@ export function Guide() {
               </div>
               <Link
                 href="/contact"
-                className="fd-btn inline-flex min-h-[52px] items-center gap-2.5 self-start rounded-full bg-fd-gold px-6 text-[15px] font-semibold text-fd-dark no-underline"
+                className="fd-btn inline-flex min-h-[48px] items-center gap-2.5 self-start rounded-full bg-fd-gold px-6 text-[15px] font-semibold text-fd-dark no-underline"
               >
                 En parler lors du diagnostic offert <ArrowRight />
               </Link>

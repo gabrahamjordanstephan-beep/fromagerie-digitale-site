@@ -26,11 +26,11 @@ export default function NotFound() {
           Elle n&apos;existe plus ou a changé d&apos;adresse. Voici de quoi retrouver votre chemin.
         </p>
         <div className="flex flex-wrap gap-3 pt-2">
-          <Link href="/" className="fd-btn inline-flex min-h-[54px] items-center gap-2.5 rounded-full bg-fd-gold px-6 text-base font-semibold text-fd-dark no-underline">
+          <Link href="/" className="fd-btn inline-flex min-h-[56px] items-center gap-2.5 rounded-full bg-fd-gold px-6 text-base font-semibold text-fd-dark no-underline">
             Retour à l&apos;accueil <ArrowRight />
           </Link>
           {LINKS.map((l) => (
-            <Link key={l.href} href={l.href} className="fd-btn inline-flex min-h-[54px] items-center rounded-full border border-white/25 px-6 text-base font-medium text-white no-underline">
+            <Link key={l.href} href={l.href} className="fd-btn inline-flex min-h-[56px] items-center rounded-full border border-white/25 px-6 text-base font-medium text-white no-underline">
               {l.label}
             </Link>
           ))}

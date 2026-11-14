@@ -197,7 +197,7 @@ export function ContactForm({ defaultKind = 'devis' }: { defaultKind?: RequestKi
         type="submit"
         disabled={status === 'sending'}
         aria-busy={status === 'sending'}
-        className="fd-btn mt-1 inline-flex min-h-[54px] items-center justify-center gap-2.5 rounded-full border-0 bg-fd-dark text-base font-semibold text-white disabled:cursor-wait disabled:opacity-85"
+        className="fd-btn mt-1 inline-flex min-h-[56px] items-center justify-center gap-2.5 rounded-full border-0 bg-fd-dark text-base font-semibold text-white disabled:cursor-wait disabled:opacity-85"
       >
         {status === 'sending' ? (
           <>
@@ -210,7 +210,7 @@ export function ContactForm({ defaultKind = 'devis' }: { defaultKind?: RequestKi
           'Réserver mon diagnostic'
         )}
       </button>
-      <p className="m-0 text-xs leading-normal text-fd-slate">
+      <p className="m-0 text-[13px] leading-normal text-fd-slate">
         Vos données servent uniquement à vous recontacter.{' '}
         <Link href="/politique-de-confidentialite" className="text-fd-navy underline">
           Politique de confidentialité

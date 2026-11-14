@@ -89,7 +89,7 @@ export function Plans() {
                 </ul>
                 <Link
                   href="/contact"
-                  className={`fd-btn mt-auto inline-flex min-h-[52px] items-center justify-center rounded-full text-[15px] font-semibold text-fd-dark no-underline ${
+                  className={`fd-btn mt-auto inline-flex min-h-[48px] items-center justify-center rounded-full text-[15px] font-semibold text-fd-dark no-underline ${
                     on ? 'bg-fd-gold' : 'bg-fd-cream'
                   }`}
                 >

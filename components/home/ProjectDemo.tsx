@@ -38,7 +38,7 @@ function AfterMockup() {
       </div>
       <div className="flex flex-1 gap-[4%] px-[5%] pb-[3%] pt-[4%]">
         <div className="flex flex-[1.15] flex-col justify-center gap-[6%]">
-          <span className="text-[clamp(8px,0.85vw,11px)] font-semibold uppercase tracking-[0.14em] text-[#9A6B2F]">Fromagerie · Affinage maison</span>
+          <span className="text-[clamp(9px,0.85vw,12px)] font-semibold uppercase tracking-[0.14em] text-[#7A5220]">Fromagerie · Affinage maison</span>
           <span className="text-[clamp(16px,2.9vw,36px)] font-bold leading-[1.02] tracking-[-0.03em]">Affinés dans notre cave, à deux pas du marché.</span>
           <span className="text-[clamp(8px,0.95vw,12px)] leading-normal text-[#5B4B3A]">Commandez avant jeudi, retirez samedi matin.</span>
           <span className="flex flex-wrap gap-1.5">
@@ -53,7 +53,7 @@ function AfterMockup() {
       <div className="grid grid-cols-3 gap-[2%] px-[5%] pb-[4%]">
         {tiles.map(([k, v]) => (
           <span key={v} className="flex flex-col gap-1 rounded-lg border border-[#E8DFD0] bg-white px-[8%] py-[6%]">
-            <span className="text-[clamp(7px,0.75vw,10px)] font-semibold text-[#9A6B2F]">{k}</span>
+            <span className="text-[clamp(7px,0.75vw,10px)] font-semibold text-[#7A5220]">{k}</span>
             <span className="text-[clamp(8px,1vw,13px)] font-bold">{v}</span>
           </span>
         ))}
@@ -164,7 +164,7 @@ export function ProjectDemo() {
             </div>
             <Link
               href="#contact"
-              className="fd-btn mt-auto inline-flex min-h-[52px] items-center gap-2.5 self-start rounded-full bg-fd-dark px-6 text-[15px] font-semibold text-white no-underline"
+              className="fd-btn mt-auto inline-flex min-h-[48px] items-center gap-2.5 self-start rounded-full bg-fd-dark px-6 text-[15px] font-semibold text-white no-underline"
             >
               Le même pour votre fromagerie <ArrowRight stroke="#F4BD45" />
             </Link>

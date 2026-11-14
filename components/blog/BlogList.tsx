@@ -55,7 +55,7 @@ export function BlogList({ posts }: { posts: PostCard[] }) {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Fiche Google, Instagram, avis clients..."
-                className="w-full border-0 bg-transparent p-0 text-base font-normal text-fd-ink placeholder:text-fd-slate focus:ring-0"
+                className="min-h-[48px] w-full border-0 bg-transparent p-0 text-base font-normal text-fd-ink placeholder:text-fd-slate focus:ring-0"
               />
             </span>
           </label>

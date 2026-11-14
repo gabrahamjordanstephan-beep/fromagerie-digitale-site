@@ -20,13 +20,13 @@ export function Breadcrumb({ items, dark = false }: { items: Crumb[]; dark?: boo
           })),
         }}
       />
-      <nav aria-label="Fil d'Ariane" className={`text-xs ${dark ? 'text-fd-mist' : 'text-fd-slate'}`}>
-        <ol className="m-0 flex list-none flex-wrap items-center gap-1.5 p-0">
+      <nav aria-label="Fil d'Ariane" className={`text-[13px] ${dark ? 'text-fd-mist' : 'text-fd-slate'}`}>
+        <ol className="m-0 flex list-none flex-wrap items-center gap-x-1.5 p-0">
           {items.map((c, i) => (
-            <li key={c.label} className="flex items-center gap-1.5">
+            <li key={c.label} className="flex min-h-[32px] items-center gap-1.5">
               {i > 0 && <span aria-hidden="true">/</span>}
               {c.href ? (
-                <Link href={c.href} className={dark ? 'text-fd-mist hover:text-white' : 'text-fd-slate hover:text-fd-dark'}>
+                <Link href={c.href} className={`inline-flex min-h-[32px] items-center ${dark ? 'text-fd-mist hover:text-white' : 'text-fd-slate hover:text-fd-dark'}`}>
                   {c.label}
                 </Link>
               ) : (

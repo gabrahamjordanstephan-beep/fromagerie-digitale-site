@@ -36,7 +36,7 @@ export function Header() {
                 key={l.href}
                 href={l.href}
                 aria-current={current ? 'page' : undefined}
-                className={`text-sm no-underline underline-offset-8 hover:underline hover:decoration-fd-gold hover:decoration-2 ${
+                className={`inline-flex min-h-[44px] items-center text-sm no-underline underline-offset-8 hover:underline hover:decoration-fd-gold hover:decoration-2 ${
                   current
                     ? 'font-semibold underline decoration-fd-gold decoration-2'
                     : 'font-medium'

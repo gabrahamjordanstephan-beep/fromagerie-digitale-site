@@ -96,7 +96,7 @@ function FicheGoogleBody() {
                 <strong className="text-base text-fd-dark">Pas le temps de tout régler ?</strong>
                 <span className="text-[15px] text-fd-body">On audite votre fiche gratuitement lors du diagnostic offert.</span>
               </span>
-              <Link href="/contact" className="fd-btn inline-flex min-h-[48px] items-center rounded-full bg-fd-dark px-5 text-sm font-semibold text-white no-underline">
+              <Link href="/contact" className="fd-btn inline-flex min-h-[48px] items-center rounded-full bg-fd-dark px-5 text-[15px] font-semibold text-white no-underline">
                 Demander mon audit
               </Link>
             </aside>
@@ -227,7 +227,7 @@ export default function ArticlePage({ params }: Props) {
                 <span className="text-lg font-bold">{service.name}</span>
                 <span className="text-sm leading-normal text-fd-fog">{service.promise}</span>
               </span>
-              <Link href={`/services/${service.slug}`} className="fd-btn inline-flex min-h-[48px] items-center gap-2 rounded-full bg-fd-gold px-5 text-sm font-semibold text-fd-dark no-underline">
+              <Link href={`/services/${service.slug}`} className="fd-btn inline-flex min-h-[48px] items-center gap-2 rounded-full bg-fd-gold px-5 text-[15px] font-semibold text-fd-dark no-underline">
                 Découvrir l&apos;offre <ArrowRight size={16} />
               </Link>
             </aside>

@@ -137,14 +137,14 @@ export function Method() {
                 <button
                   type="button"
                   onClick={() => go(step + 1)}
-                  className="fd-btn inline-flex min-h-[48px] items-center gap-2 rounded-full border-0 bg-fd-gold px-5 text-sm font-semibold text-fd-dark"
+                  className="fd-btn inline-flex min-h-[48px] items-center gap-2 rounded-full border-0 bg-fd-gold px-5 text-[15px] font-semibold text-fd-dark"
                 >
                   Étape suivante <ArrowRight />
                 </button>
               ) : (
                 <Link
                   href="#contact"
-                  className="fd-btn inline-flex min-h-[48px] items-center gap-2 rounded-full bg-fd-gold px-5 text-sm font-semibold text-fd-dark no-underline"
+                  className="fd-btn inline-flex min-h-[48px] items-center gap-2 rounded-full bg-fd-gold px-5 text-[15px] font-semibold text-fd-dark no-underline"
                 >
                   Commencer par l&apos;étape 1 <ArrowRight />
                 </Link>

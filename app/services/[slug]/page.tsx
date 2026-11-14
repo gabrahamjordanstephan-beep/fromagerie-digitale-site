@@ -73,10 +73,10 @@ export default function ServicePage({ params }: Props) {
           <h1 className="m-0 max-w-[900px] text-[clamp(40px,6vw,72px)] font-bold leading-[1.02] tracking-[-0.025em]">{s.name}</h1>
           <p className="m-0 max-w-[620px] text-xl leading-relaxed text-fd-fog">{s.promise}</p>
           <div className="flex flex-wrap gap-3 pt-2">
-            <Link href="/contact" className="fd-btn inline-flex min-h-[54px] items-center gap-2.5 rounded-full bg-fd-gold px-6 text-base font-semibold text-fd-dark no-underline">
+            <Link href="/contact" className="fd-btn inline-flex min-h-[56px] items-center gap-2.5 rounded-full bg-fd-gold px-6 text-base font-semibold text-fd-dark no-underline">
               Demander un devis <ArrowRight />
             </Link>
-            <Link href="/services#services" className="fd-btn inline-flex min-h-[54px] items-center rounded-full border border-white/25 px-6 text-base font-medium text-white no-underline">
+            <Link href="/services#services" className="fd-btn inline-flex min-h-[56px] items-center rounded-full border border-white/25 px-6 text-base font-medium text-white no-underline">
               Voir les autres services
             </Link>
           </div>
