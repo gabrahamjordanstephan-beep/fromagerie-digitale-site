@@ -60,6 +60,12 @@ const nextConfig = {
       },
       // Offre fusionnée dans « Référencement local et IA »
       { source: '/services/autorite-geo', destination: '/services/visibilite-geo-ia', permanent: true },
+      // Anciennes adresses de services encore connues de Google (Search Console)
+      { source: '/services/content-marketing', destination: '/services/content-video-first', permanent: true },
+      { source: '/services/formation', destination: '/services/atelier-ia-fromager', permanent: true },
+      { source: '/services/packaging', destination: '/services/packaging-premium', permanent: true },
+      { source: '/services/ads', destination: '/services/performance-ads', permanent: true },
+      { source: '/services/branding', destination: '/services/identite-fromagere', permanent: true },
       // Anciens articles remplacés par les guides des nouvelles offres
       { source: '/blog/pourquoi-votre-fromagerie-a-besoin-dun-site-web', destination: '/blog/site-internet-fromagerie', permanent: true },
       { source: '/blog/seo-local-fromagerie-attirer-clients-quartier', destination: '/blog/seo-local-fromagerie', permanent: true },
