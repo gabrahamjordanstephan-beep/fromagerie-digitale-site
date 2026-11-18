@@ -3,10 +3,12 @@ import { avisGoogle, ficheGoogle, geoIA, seoLocal, siteFromagerie } from '@/lib/
 import { identiteVisuelle, packaging } from '@/lib/articles/marque'
 import { publicite, tiktokShop, videosReseaux } from '@/lib/articles/ventes'
 import { FICHE_GOOGLE_INTRO, FICHE_GOOGLE_STEPS } from '@/lib/articles/fiche-google'
+import { agenceWeb } from '@/lib/articles/agence'
 
 export type { BlogPost } from '@/lib/blog-types'
 
 const RAW: BlogPost[] = [
+  agenceWeb,
   ficheGoogle,
   geoIA,
   avisGoogle,
