@@ -2,6 +2,7 @@ import type { BlogPost } from '@/lib/blog-types'
 import { avisGoogle, ficheGoogle, geoIA, seoLocal, siteFromagerie } from '@/lib/articles/visibilite'
 import { identiteVisuelle, packaging } from '@/lib/articles/marque'
 import { publicite, tiktokShop, videosReseaux } from '@/lib/articles/ventes'
+import { ecommerceFromagerie } from '@/lib/articles/ecommerce'
 import { FICHE_GOOGLE_INTRO, FICHE_GOOGLE_STEPS } from '@/lib/articles/fiche-google'
 
 export type { BlogPost } from '@/lib/blog-types'
@@ -17,6 +18,7 @@ const RAW: BlogPost[] = [
   tiktokShop,
   identiteVisuelle,
   packaging,
+  ecommerceFromagerie,
 ]
 
 /** Texte brut d'un article, pour le temps de lecture. */
